@@ -1,11 +1,14 @@
+import { Helmet } from 'react-helmet'
+
 function App() {
-  const a = 2
-  const as = {
-    asfsafasfafsa: 1,
-    asfasfasfasfasfasf: 2,
-    asfasfsafsafsafasfasfasf: 2,
-  }
-  return <div>Hello World!</div>
+  return (
+    <div className='text-xl'>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Small HTML & CSS & JS Projects</title>
+      </Helmet>
+    </div>
+  )
 }
 
 export default App

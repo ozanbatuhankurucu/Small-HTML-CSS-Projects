@@ -1,23 +1,23 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -27,7 +27,7 @@ module.exports = {
     // allow jsx syntax in js files (for next.js project)
     'react/jsx-filename-extension': [
       1,
-      { extensions: ['.js', '.jsx', '.ts', 'tsx'] }
+      { extensions: ['.js', '.jsx', '.ts', 'tsx'] },
     ],
     'import/extensions': [
       'error',
@@ -36,21 +36,9 @@ module.exports = {
         js: 'never',
         jsx: 'never',
         ts: 'never',
-        tsx: 'never'
-      }
+        tsx: 'never',
+      },
     ],
     'jsx-quotes': [2, 'prefer-single'],
-    'comma-dangle': [
-      true,
-      {
-        singleline: 'never',
-        multiline: {
-          objects: 'always',
-          arrays: 'always',
-          functions: 'never',
-          typeLiterals: 'ignore'
-        }
-      }
-    ]
-  }
+  },
 }
