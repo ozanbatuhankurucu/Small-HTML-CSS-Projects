@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ProjectCard() {
   return (
-    <div className='border p-2 md:p-0 text-center border-gray-400 rounded h-32 flex items-center justify-center'>
-      Hidden Search Widget
-    </div>
+    <Link to='hidden-search-widget'>
+      <div className='p-2 bg-white text-center shadow-md  rounded-lg  h-32 flex items-center justify-center md:p-0'>
+        <h3 className='text-3xl font-bold'> Hidden Search Widget</h3>
+      </div>
+    </Link>
   )
 }
 
