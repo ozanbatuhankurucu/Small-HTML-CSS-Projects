@@ -65,6 +65,8 @@ module.exports = {
           ':': 'before'
         }
       }
-    ]
+    ],
+    'react/jsx-one-expression-per-line': 'off',
+    'no-console': 'off'
   }
 }

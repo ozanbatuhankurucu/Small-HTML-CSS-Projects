@@ -1,11 +1,15 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ProjectCard() {
+interface ProjectCardProps {
+  name: string
+  to: string
+}
+
+function ProjectCard({ name, to }: ProjectCardProps) {
   return (
-    <Link to='hidden-search-widget'>
+    <Link to={to}>
       <div className='p-2 bg-white text-center shadow-md  rounded-lg  h-32 flex items-center justify-center md:p-0'>
-        <h3 className='text-3xl font-bold'> Hidden Search Widget</h3>
+        <h3 className='text-3xl font-bold'> {name}</h3>
       </div>
     </Link>
   )

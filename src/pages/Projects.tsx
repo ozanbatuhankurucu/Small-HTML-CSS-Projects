@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet'
 import { Outlet } from 'react-router-dom'
 import ProjectCardList from '../components/ProjectCardList'
 import ProjectCard from '../components/ProjectCard'
+import projects from '../constants'
+import { Project } from '../types'
 
 function App() {
   return (
@@ -11,15 +13,9 @@ function App() {
         <title>Small HTML & CSS & JS Projects</title>
       </Helmet>
       <ProjectCardList>
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {projects.map(({ name, to }: Project) => (
+          <ProjectCard name={name} to={to} />
+        ))}
       </ProjectCardList>
       <Outlet />
     </div>

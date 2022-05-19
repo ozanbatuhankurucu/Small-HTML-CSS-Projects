@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import Projects from '../pages/Projects'
-import HiddenSearchWidget from '../projects/HiddenSearchWidget'
+import HiddenSearchWidget from '../projects/HiddenSearchWidget/HiddenSearchWidget'
 
 const routes = [
   {
