@@ -1,5 +1,6 @@
-import HiddenSearchWidget from './HiddenSearchWidget'
 import Helmet from 'react-helmet'
+import HiddenSearchWidget from './HiddenSearchWidget'
+
 function Wrapper() {
   return (
     <div className='h-screen flex justify-center items-center bg-crystal'>

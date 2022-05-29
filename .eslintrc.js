@@ -46,7 +46,7 @@ module.exports = {
     'object-curly-newline': [
       'error',
       {
-        ObjectExpression: 'off',
+        ObjectExpression: 'always',
         ObjectPattern: {
           multiline: true
         },
@@ -67,6 +67,8 @@ module.exports = {
       }
     ],
     'react/jsx-one-expression-per-line': 'off',
-    'no-console': 'off'
+    'no-console': 'off',
+    'react/jsx-closing-bracket-location': 'off',
+    'react/require-default-props': 'off'
   }
 }

@@ -17,8 +17,9 @@ function HiddenSearchWidget({
   const [showSearchWidget, setShowSearchWidget] = useState<boolean>(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    if (searchInputRef.current && showSearchWidget)
+    if (searchInputRef.current && showSearchWidget) {
       searchInputRef.current.focus()
+    }
   }, [showSearchWidget])
 
   return (
@@ -35,7 +36,9 @@ function HiddenSearchWidget({
         placeholder={placeholder}
       />
       <div
-        style={{ color: iconColor }}
+        style={{
+          color: iconColor
+        }}
         className='flex items-center cursor-pointer '>
         <FaSearch
           size={18}

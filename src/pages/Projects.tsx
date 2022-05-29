@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet'
-import { Outlet } from 'react-router-dom'
 import ProjectCardList from '../components/ProjectCardList'
 import ProjectCard from '../components/ProjectCard'
 import projects from '../constants'
