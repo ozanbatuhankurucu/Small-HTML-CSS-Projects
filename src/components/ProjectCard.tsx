@@ -17,7 +17,7 @@ function ProjectCard({ name, to, imgSrc }: ProjectCardProps) {
           src={ProjectCardImages[imgSrc]}
           alt={imgSrc}
         />
-        <div className='w-full border-b py-2 rounded-b-xl text-center text-lg font-bold text-gray-100 bg-slate-700'>
+        <div className='w-full border-b py-2 rounded-b-xl text-center text-lg font-bold text-slate-100 bg-slate-700'>
           {name}
         </div>
       </div>

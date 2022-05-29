@@ -6,7 +6,7 @@ import { Project } from '../types'
 
 function App() {
   return (
-    <div className='p-4 h-screen'>
+    <div className='p-4 h-screen bg-slate-100'>
       <Helmet>
         <meta charSet='utf-8' />
         <title>Small HTML & CSS & JS Projects</title>
