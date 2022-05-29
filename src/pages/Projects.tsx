@@ -17,7 +17,6 @@ function App() {
           <ProjectCard name={name} to={to} />
         ))}
       </ProjectCardList>
-      <Outlet />
     </div>
   )
 }
