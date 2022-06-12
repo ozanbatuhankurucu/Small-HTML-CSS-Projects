@@ -6,14 +6,14 @@ import { Project } from '../types'
 
 function App() {
   return (
-    <div className='p-4 h-screen bg-slate-100'>
+    <div className='h-screen bg-slate-200 flex justify-center items-center'>
       <Helmet>
         <meta charSet='utf-8' />
         <title>Small HTML & CSS & JS Projects</title>
       </Helmet>
       <ProjectCardList>
-        {projects.map(({ name, to, imgSrc }: Project) => (
-          <ProjectCard name={name} to={to} imgSrc={imgSrc} />
+        {projects.map(({ name, to }: Project) => (
+          <ProjectCard name={name} to={to} />
         ))}
       </ProjectCardList>
     </div>

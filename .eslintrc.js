@@ -69,6 +69,13 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'no-console': 'off',
     'react/jsx-closing-bracket-location': 'off',
-    'react/require-default-props': 'off'
+    'react/require-default-props': 'off',
+    quotes: [
+      'error',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ]
   }
 }

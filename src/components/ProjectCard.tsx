@@ -1,24 +1,18 @@
 import { Link } from 'react-router-dom'
-import ProjectCardImages from '../assets/images'
-import { imgSrcType } from '../types'
+import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 
 interface ProjectCardProps {
   name: string
   to: string
-  imgSrc: imgSrcType
 }
 
-function ProjectCard({ name, to, imgSrc }: ProjectCardProps) {
+function ProjectCard({ name, to }: ProjectCardProps) {
   return (
     <Link to={to}>
-      <div className='rounded-xl h-32'>
-        <img
-          className='w-full border-t rounded-t-xl'
-          src={ProjectCardImages[imgSrc]}
-          alt={imgSrc}
-        />
-        <div className='w-full border-b py-2 rounded-b-xl text-center text-lg font-bold text-slate-100 bg-slate-700'>
-          {name}
+      <div className='flex'>
+        <div className='flex gap-2 items-center'>
+          <span className='font-medium'>{name}</span>
+          <FaRegArrowAltCircleRight size={16} />
         </div>
       </div>
     </Link>
