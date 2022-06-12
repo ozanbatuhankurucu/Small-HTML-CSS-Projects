@@ -8,12 +8,12 @@ interface ProjectCardProps {
 
 function ProjectCard({ name, to }: ProjectCardProps) {
   return (
-    <Link to={to}>
-      <div className='flex'>
-        <div className='flex gap-2 items-center'>
-          <span className='font-medium'>{name}</span>
-          <FaRegArrowAltCircleRight size={16} />
-        </div>
+    <Link className='relative' to={to}>
+      <div className='h-[2px] absolute -top-1 -left-2  bg-slate-900 w-10 mb-1' />
+      <div className='w-[2px] absolute -top-0 -left-2 bg-slate-900 h-3' />
+      <div className='flex gap-4 items-center'>
+        <div className='font-medium text-xl'>{name}</div>
+        <FaRegArrowAltCircleRight size={20} />
       </div>
     </Link>
   )
