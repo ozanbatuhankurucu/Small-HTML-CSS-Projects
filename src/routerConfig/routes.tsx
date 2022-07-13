@@ -2,6 +2,7 @@ import { Navigate } from 'react-router-dom'
 import Projects from '../pages/Projects'
 import HiddenSearchWidget from '../projects/HiddenSearchWidget'
 import BlurryLoading from '../projects/BlurryLoading/BlurryLoading'
+import ScrollAnimation from '../projects/ScrollAnimation/ScrollAnimation'
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     id: '3',
     path: '/projects/blurry-loading',
     element: <BlurryLoading />
+  },
+  {
+    id: '4',
+    path: '/projects/scroll-animation',
+    element: <ScrollAnimation />
   }
 ]
 export default routes

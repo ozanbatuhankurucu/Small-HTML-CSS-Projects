@@ -70,6 +70,8 @@ module.exports = {
     'no-console': 'off',
     'react/jsx-closing-bracket-location': 'off',
     'react/require-default-props': 'off',
+    'implicit-arrow-linebreak': 'off',
+    multiline: 'consistent',
     quotes: [
       'error',
       'single',

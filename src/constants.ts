@@ -8,6 +8,10 @@ const projects: Project[] = [
   {
     name: 'Blurry Loading',
     to: 'blurry-loading'
+  },
+  {
+    name: 'Scroll Animation',
+    to: 'scroll-animation'
   }
 ]
 
