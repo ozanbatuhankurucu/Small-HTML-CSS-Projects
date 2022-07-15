@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import ContentCard from './ContentCard'
 

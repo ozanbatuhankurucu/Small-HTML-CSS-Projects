@@ -71,7 +71,7 @@ module.exports = {
     'react/jsx-closing-bracket-location': 'off',
     'react/require-default-props': 'off',
     'implicit-arrow-linebreak': 'off',
-    multiline: 'consistent',
+    multiline: 'off',
     quotes: [
       'error',
       'single',
