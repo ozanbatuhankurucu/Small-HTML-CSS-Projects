@@ -43,20 +43,7 @@ module.exports = {
     ],
     'jsx-quotes': [2, 'prefer-single'],
     'comma-dangle': ['error', 'never'],
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: 'always',
-        ObjectPattern: {
-          multiline: true
-        },
-        ImportDeclaration: 'never',
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 3
-        }
-      }
-    ],
+    'object-curly-newline': 'off',
     'operator-linebreak': [
       'error',
       'after',

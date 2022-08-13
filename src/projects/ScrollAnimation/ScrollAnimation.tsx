@@ -1,11 +1,10 @@
 import { Helmet } from 'react-helmet'
 import smoothCards from './constants'
 import ContentCard from './ContentCard'
-import useScrollAnimation from './useScrollAnimation'
+import useScrollAnimation from '../../hooks/useScrollAnimation'
 
 function ScrollAnimation() {
   useScrollAnimation()
-
   return (
     <div>
       <Helmet>

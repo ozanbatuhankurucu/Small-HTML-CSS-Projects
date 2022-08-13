@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import scale from './utils'
+import React from 'react'
+import usePercentageData from './usePercentageData'
 
 interface PercentageProps {
   percentage: number
@@ -7,25 +7,7 @@ interface PercentageProps {
 }
 
 function Percentage({ percentage, setPercentage }: PercentageProps) {
-  const interval = useRef<number>()
-  const textOpacity = scale(percentage, 0, 100, 1, 0)
-
-  useEffect(() => {
-    interval.current = window.setInterval(() => {
-      setPercentage((prev: number) => prev + 1)
-    }, 50)
-
-    return () => {
-      window.clearInterval(interval.current)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (percentage > 99) {
-      window.clearInterval(interval.current)
-    }
-  }, [percentage])
-
+  const { textOpacity } = usePercentageData(percentage, setPercentage)
   return (
     <div
       style={{

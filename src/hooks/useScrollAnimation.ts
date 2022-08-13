@@ -2,8 +2,6 @@ import { useEffect, useLayoutEffect } from 'react'
 
 const useScrollAnimation = () => {
   useEffect(() => {
-    console.log('useeffect')
-
     const boxes = document.querySelectorAll('.box')
     const triggerBottom = window.innerHeight * 0.85
     const onScroll = () => {
