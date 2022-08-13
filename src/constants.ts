@@ -12,6 +12,10 @@ const projects: Project[] = [
   {
     name: 'Scroll Animation',
     to: 'scroll-animation'
+  },
+  {
+    name: 'Split Landing Page',
+    to: 'split-landing-page'
   }
 ]
 

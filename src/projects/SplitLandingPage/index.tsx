@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import SplitLandingPage from './SplitLandingPage'
 
 function Wrapper() {
   return (
@@ -8,6 +9,7 @@ function Wrapper() {
         <meta charSet='utf-8' />
         <title>Split Landing Page</title>
       </Helmet>
+      <SplitLandingPage />
     </div>
   )
 }

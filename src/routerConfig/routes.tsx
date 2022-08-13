@@ -3,6 +3,7 @@ import Projects from '../pages/Projects'
 import HiddenSearchWidget from '../projects/HiddenSearchWidget'
 import BlurryLoading from '../projects/BlurryLoading'
 import ScrollAnimation from '../projects/ScrollAnimation'
+import SplitLandingPage from '../projects/SplitLandingPage'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     id: '4',
     path: '/projects/scroll-animation',
     element: <ScrollAnimation />
+  },
+  {
+    id: '5',
+    path: '/projects/split-landing-page',
+    element: <SplitLandingPage />
   }
 ]
 export default routes
