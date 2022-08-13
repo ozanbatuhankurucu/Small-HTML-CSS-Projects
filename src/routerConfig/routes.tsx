@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom'
 import Projects from '../pages/Projects'
 import HiddenSearchWidget from '../projects/HiddenSearchWidget'
-import BlurryLoading from '../projects/BlurryLoading/BlurryLoading'
-import ScrollAnimation from '../projects/ScrollAnimation/ScrollAnimation'
+import BlurryLoading from '../projects/BlurryLoading'
+import ScrollAnimation from '../projects/ScrollAnimation'
 
 const routes = [
   {
