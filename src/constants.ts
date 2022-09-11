@@ -1,4 +1,5 @@
 import { Project } from './types'
+import generateUniqueKey from './utils'
 
 const projects: Project[] = [
   {
@@ -19,4 +20,9 @@ const projects: Project[] = [
   }
 ]
 
-export default projects
+const projectsWithId = projects.map((project) => ({
+  ...project,
+  id: generateUniqueKey(project.name)
+}))
+
+export default projectsWithId
