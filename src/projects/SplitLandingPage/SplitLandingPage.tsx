@@ -1,30 +1,52 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 function SplitLandingPage() {
+  const leftSide = useRef<HTMLDivElement | null>(null)
+  const rightSide = useRef<HTMLDivElement | null>(null)
   useEffect(() => {
-    const leftSide = document.getElementById('left-side')
-    const rightSide = document.getElementById('right-side')
-    leftSide?.addEventListener('mouseover', () => {
-      leftSide?.classList.add('!w-3/4')
-      rightSide?.classList.add('!w-1/4')
-    })
-    leftSide?.addEventListener('mouseleave', () => {
-      leftSide?.classList.remove('!w-3/4')
-      rightSide?.classList.remove('!w-1/4')
-    })
-    rightSide?.addEventListener('mouseover', () => {
-      leftSide?.classList.add('!w-1/4')
-      rightSide?.classList.add('!w-3/4')
-    })
-    rightSide?.addEventListener('mouseleave', () => {
-      leftSide?.classList.remove('!w-1/4')
-      rightSide?.classList.remove('!w-3/4')
-    })
+    const leftSideElement = leftSide.current
+    const rightSideElement = rightSide.current
+    const handleLeftSideMouseOver = () => {
+      leftSideElement?.classList.add('!w-3/4')
+      rightSideElement?.classList.add('!w-1/4')
+    }
+    const handleLeftSideMouseLeave = () => {
+      leftSideElement?.classList.remove('!w-3/4')
+      rightSideElement?.classList.remove('!w-1/4')
+    }
+    const handleRightSideMouseOver = () => {
+      leftSideElement?.classList.add('!w-1/4')
+      rightSideElement?.classList.add('!w-3/4')
+    }
+    const handleRightSideMouseLeave = () => {
+      leftSideElement?.classList.remove('!w-1/4')
+      rightSideElement?.classList.remove('!w-3/4')
+    }
+    leftSideElement?.addEventListener('mouseover', handleLeftSideMouseOver)
+    leftSideElement?.addEventListener('mouseleave', handleLeftSideMouseLeave)
+    rightSideElement?.addEventListener('mouseover', handleRightSideMouseOver)
+    rightSideElement?.addEventListener('mouseleave', handleRightSideMouseLeave)
+    return () => {
+      leftSideElement?.removeEventListener('mouseover', handleLeftSideMouseOver)
+      leftSideElement?.removeEventListener(
+        'mouseleave',
+        handleLeftSideMouseLeave
+      )
+      rightSideElement?.removeEventListener(
+        'mouseover',
+        handleRightSideMouseOver
+      )
+      rightSideElement?.removeEventListener(
+        'mouseleave',
+        handleRightSideMouseLeave
+      )
+    }
   }, [])
 
   return (
     <div className='relative w-full h-full bg-[#333]'>
       <div
+        ref={leftSide}
         id='left-side'
         className='before:content-[""] before:absolute before:w-full before:h-full before:bg-left-bg-color absolute left-0 w-1/2 h-full overflow-hidden bg-[url("/src/assets/images/ps.jpeg")] bg-no-repeat bg-cover transition-all'>
         <h1 className='text-[4rem] text-white absolute left-1/2 top-[20%] -translate-x-1/2 whitespace-nowrap'>
@@ -37,6 +59,7 @@ function SplitLandingPage() {
         </a>
       </div>
       <div
+        ref={rightSide}
         id='right-side'
         className='before:content-[""] before:absolute before:w-full before:h-full before:bg-right-bg-color absolute right-0 w-1/2 h-full overflow-hidden bg-[url("/src/assets/images/xbox.jpeg")] bg-no-repeat bg-cover transition-all'>
         <h1 className='text-[4rem] text-white absolute left-1/2 top-[20%] -translate-x-1/2 whitespace-nowrap'>
