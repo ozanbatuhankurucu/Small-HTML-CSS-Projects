@@ -8,7 +8,7 @@ function Wrapper() {
         <meta charSet='utf-8' />
         <title>Split Landing Page</title>
       </Helmet>
-      <div className='h-screen flex justify-center items-center '>
+      <div className='h-screen'>
         <SplitLandingPage />
       </div>
     </>

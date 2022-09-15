@@ -1,7 +1,8 @@
 import { Project } from './types'
 import generateUniqueKey from './utils'
 
-const projects: Project[] = [
+// hard coded values must be uppercase
+const PROJECTS: Project[] = [
   {
     name: 'Hidden Search Widget',
     to: 'hidden-search-widget'
@@ -20,7 +21,7 @@ const projects: Project[] = [
   }
 ]
 
-const projectsWithId = projects.map((project) => ({
+const projectsWithId = PROJECTS.map((project) => ({
   ...project,
   id: generateUniqueKey(project.name)
 }))

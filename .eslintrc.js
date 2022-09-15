@@ -65,6 +65,7 @@ module.exports = {
       {
         allowTemplateLiterals: true
       }
-    ]
+    ],
+    'function-paren-newline': 'off'
   }
 }
