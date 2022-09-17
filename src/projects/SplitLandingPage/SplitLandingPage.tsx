@@ -48,7 +48,7 @@ function SplitLandingPage() {
       <div
         ref={leftSide}
         id='left-side'
-        className='before:content-[""] before:absolute before:w-full before:h-full before:bg-left-bg-color absolute left-0 w-1/2 h-full overflow-hidden bg-[url("/src/assets/images/ps.jpeg")] bg-no-repeat bg-cover transition-all'>
+        className='before:content-[""] before:absolute before:w-full before:h-full before:bg-left-bg-color absolute left-0 w-1/2 h-full overflow-hidden bg-ps bg-no-repeat bg-cover transition-all'>
         <h1 className='text-[4rem] text-white absolute left-1/2 top-[20%] -translate-x-1/2 whitespace-nowrap'>
           Playstation 5
         </h1>
@@ -61,7 +61,7 @@ function SplitLandingPage() {
       <div
         ref={rightSide}
         id='right-side'
-        className='before:content-[""] before:absolute before:w-full before:h-full before:bg-right-bg-color absolute right-0 w-1/2 h-full overflow-hidden bg-[url("/src/assets/images/xbox.jpeg")] bg-no-repeat bg-cover transition-all'>
+        className='before:content-[""] before:absolute before:w-full before:h-full before:bg-right-bg-color absolute right-0 w-1/2 h-full overflow-hidden bg-xbox bg-no-repeat bg-cover transition-all'>
         <h1 className='text-[4rem] text-white absolute left-1/2 top-[20%] -translate-x-1/2 whitespace-nowrap'>
           XBox Series X
         </h1>

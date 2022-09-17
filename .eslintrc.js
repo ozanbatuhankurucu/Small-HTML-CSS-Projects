@@ -59,13 +59,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'implicit-arrow-linebreak': 'off',
     multiline: 'off',
-    quotes: [
-      'error',
-      'single',
-      {
-        allowTemplateLiterals: true
-      }
-    ],
+    quotes: 'off',
     'function-paren-newline': 'off'
   }
 }
