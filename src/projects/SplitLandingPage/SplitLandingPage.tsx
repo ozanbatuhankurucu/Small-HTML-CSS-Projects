@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react'
 function SplitLandingPage() {
   const leftSide = useRef<HTMLDivElement | null>(null)
   const rightSide = useRef<HTMLDivElement | null>(null)
+
   useEffect(() => {
     const leftSideElement = leftSide.current
     const rightSideElement = rightSide.current
@@ -27,6 +28,7 @@ function SplitLandingPage() {
     rightSideElement?.addEventListener('mouseover', handleRightSideMouseOver)
     rightSideElement?.addEventListener('mouseleave', handleRightSideMouseLeave)
     return () => {
+      console.log('clean up func')
       leftSideElement?.removeEventListener('mouseover', handleLeftSideMouseOver)
       leftSideElement?.removeEventListener(
         'mouseleave',

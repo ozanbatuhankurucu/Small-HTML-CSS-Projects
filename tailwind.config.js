@@ -9,8 +9,8 @@ module.exports = {
         'right-btn-hover-color': 'rgba(28, 122, 28, 1)'
       },
       backgroundImage: {
-        ps: "url('/src/assets/images/ps.jpeg')",
-        xbox: "url('/src/assets/images/xbox.jpeg')"
+        ps: "url('/src/assets/images/ps.png')",
+        xbox: "url('/src/assets/images/xbox.png')"
       }
     }
   },
