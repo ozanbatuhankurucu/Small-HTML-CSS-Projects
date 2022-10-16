@@ -4,6 +4,7 @@ import HiddenSearchWidget from '../projects/HiddenSearchWidget'
 import BlurryLoading from '../projects/BlurryLoading'
 import ScrollAnimation from '../projects/ScrollAnimation'
 import SplitLandingPage from '../projects/SplitLandingPage'
+import FormWaveAnimation from '../projects/FormWaveAnimation'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     id: '5',
     path: '/projects/split-landing-page',
     element: <SplitLandingPage />
+  },
+  {
+    id: '6',
+    path: '/projects/form-wave-animation',
+    element: <FormWaveAnimation />
   }
 ]
 export default routes

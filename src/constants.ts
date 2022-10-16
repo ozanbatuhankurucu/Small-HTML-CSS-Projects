@@ -18,6 +18,10 @@ const PROJECTS: Project[] = [
   {
     name: 'Split Landing Page',
     to: 'split-landing-page'
+  },
+  {
+    name: 'Form Wave Animation',
+    to: 'form-wave-animation'
   }
 ]
 
