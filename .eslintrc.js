@@ -60,6 +60,23 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     multiline: 'off',
     quotes: 'off',
-    'function-paren-newline': 'off'
+    'function-paren-newline': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id']
+        }
+      }
+    ],
+    'jsx-a11y/label-has-for': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id']
+        }
+      }
+    ],
+    'jsx-a11y/mouse-events-have-key-events': 'off'
   }
 }
