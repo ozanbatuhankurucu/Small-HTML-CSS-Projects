@@ -76,6 +76,7 @@ module.exports = {
           some: ['nesting', 'id']
         }
       }
-    ]
+    ],
+    'jsx-a11y/mouse-events-have-key-events': 'off'
   }
 }
