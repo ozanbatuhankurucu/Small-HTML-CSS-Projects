@@ -4,7 +4,7 @@ import HiddenSearchWidget from '../projects/HiddenSearchWidget'
 import BlurryLoading from '../projects/BlurryLoading'
 import ScrollAnimation from '../projects/ScrollAnimation'
 import SplitLandingPage from '../projects/SplitLandingPage'
-import FormWaveAnimation from '../projects/FormWaveAnimation'
+import Wrapper from '../projects/FormWaveAnimation'
 
 const routes = [
   {
@@ -40,7 +40,7 @@ const routes = [
   {
     id: '6',
     path: '/projects/form-wave-animation',
-    element: <FormWaveAnimation />
+    element: <Wrapper />
   }
 ]
 export default routes
