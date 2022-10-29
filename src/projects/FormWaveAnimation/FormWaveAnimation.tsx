@@ -1,68 +1,50 @@
 import React, { FormEvent } from 'react'
-import cx from 'classnames'
 import useFocusedData from './useFocusedData'
+import InputLabel from './InputLabel'
 
-const INPUT_DEFAULT_COMMON_CLASSES = 'inline-block transition-all duration-150'
-const EMAIL_INPUT_LABEL = 'Email'
-const PASSWORD_INPUT_LABEL = 'Password'
 function FormWaveAnimation() {
   const {
     email,
     password,
     setEmail,
     setPassword,
-    inputEventHandlers,
+    isPasswordInputFocused,
     passwordInputEventHandlers,
-    emailInputFocusedClasses,
-    passwordInputFocusedClasses
+    isEmailInputFocused,
+    emailInputEventHandlers
   } = useFocusedData()
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
   }
 
   return (
-    <div className='bg-black-400 px-8 py-12 rounded w-full sm:w-96'>
-      <h1 className='font-bold text-2xl mb-12 text-center'>Please Login</h1>
-      <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+    <div className='bg-white px-8 py-12 rounded-3xl w-full sm:w-96'>
+      <h1 className='font-extrabold text-2xl text-center text-black'>
+        Please Login
+      </h1>
+      <div className='text-center mt-4 text-sm'>
+        Hey, Enter your details to get sign in to your account
+      </div>
+      <form className='flex flex-col gap-6 mt-4' onSubmit={handleSubmit}>
         <div className='relative flex flex-col'>
-          <label className='absolute top-4 text-base font-bold' htmlFor='e'>
-            {EMAIL_INPUT_LABEL.split('').map((letter, index) => (
-              <span
-                className={cx(
-                  `${INPUT_DEFAULT_COMMON_CLASSES} delay-[${index * 50}ms]`,
-                  emailInputFocusedClasses
-                )}>
-                {letter}
-              </span>
-            ))}
-          </label>
-          <input
+          <InputLabel
+            label='Email'
+            isInputFocused={isEmailInputFocused}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className='text-white border-0 bg-transparent border-b-2 border-white py-4 focus:outline-none focus:border-b-lightblue focus:caret-lightblue'
             id='email'
             type='email'
             required
-            onFocus={inputEventHandlers.onFocus}
-            onBlur={inputEventHandlers.onBlur}
+            onFocus={emailInputEventHandlers.onFocus}
+            onBlur={emailInputEventHandlers.onBlur}
           />
         </div>
-        <div className='relative flex flex-col mt-8'>
-          <label className='absolute top-4 text-base font-bold' htmlFor='p'>
-            {PASSWORD_INPUT_LABEL.split('').map((letter, index) => (
-              <span
-                className={cx(
-                  `${INPUT_DEFAULT_COMMON_CLASSES} delay-[${index * 50}ms]`,
-                  passwordInputFocusedClasses
-                )}>
-                {letter}
-              </span>
-            ))}
-          </label>
-          <input
+        <div className='relative flex flex-col mt-2'>
+          <InputLabel
+            label='Password'
+            isInputFocused={isPasswordInputFocused}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='text-white border-0 bg-transparent border-b-2 border-white py-4 focus:outline-none focus:border-b-lightblue focus:caret-lightblue'
             id='password'
             type='password'
             required
@@ -70,15 +52,16 @@ function FormWaveAnimation() {
             onBlur={passwordInputEventHandlers.onBlur}
           />
         </div>
+        <p className='text-sm'>Having trouble in sign in?</p>
         <button
-          className='bg-lightblue text-black text-base font-medium rounded py-3 mt-8 focus:scale-[98%]'
+          className='bg-[#FDC886] text-black text-sm font-bold rounded-lg py-2 mt-4 focus:scale-[98%]'
           type='submit'>
-          Login
+          Sign in
         </button>
       </form>
-      <p className='text-sm font-bold mt-8'>
+      <p className='text-sm font-medium mt-8 text-center text-black'>
         Don&apos;t have an account?{' '}
-        <a className='text-lightblue' href='https://www.google.com'>
+        <a className='font-black' href='https://www.google.com'>
           Register
         </a>
       </p>

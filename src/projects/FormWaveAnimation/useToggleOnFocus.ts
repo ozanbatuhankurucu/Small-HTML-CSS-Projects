@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
 const useToggleOnFocus = (initialState = false) => {
-  const [isEmailInputFocused, toggle] = useState(initialState)
+  const [isInputFocused, toggle] = useState(initialState)
 
   const eventHandlers: {
     onFocus: () => void
@@ -14,7 +14,7 @@ const useToggleOnFocus = (initialState = false) => {
     []
   )
 
-  return { isEmailInputFocused, eventHandlers }
+  return { isInputFocused, eventHandlers }
 }
 
 export default useToggleOnFocus
