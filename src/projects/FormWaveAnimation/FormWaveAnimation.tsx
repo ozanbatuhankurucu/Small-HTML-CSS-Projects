@@ -50,6 +50,7 @@ function FormWaveAnimation() {
             required
             onFocus={passwordInputEventHandlers.onFocus}
             onBlur={passwordInputEventHandlers.onBlur}
+            showHideButton
           />
         </div>
         <p className='text-sm'>Having trouble in sign in?</p>

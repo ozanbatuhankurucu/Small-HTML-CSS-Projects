@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, useState } from 'react'
 import cx from 'classnames'
 
 interface InputLabelProps {
@@ -11,6 +11,7 @@ interface InputLabelProps {
   required?: InputHTMLAttributes<HTMLInputElement>['required']
   onFocus: InputHTMLAttributes<HTMLInputElement>['onFocus']
   onBlur: InputHTMLAttributes<HTMLInputElement>['onBlur']
+  showHideButton?: boolean
 }
 function InputLabel({
   label,
@@ -21,8 +22,11 @@ function InputLabel({
   onBlur,
   onFocus,
   type,
-  required
+  required,
+  showHideButton
 }: InputLabelProps) {
+  const [inputType, setInputType] = useState(type)
+
   return (
     <>
       <label
@@ -32,8 +36,7 @@ function InputLabel({
           <span
             style={{ transitionDelay: `${index * 50}ms` }}
             className={cx('inline-block transition-all duration-150', {
-              '-translate-y-6': isInputFocused || value,
-              'text-black': isInputFocused
+              '-translate-y-6 !text-black': isInputFocused || value
             })}>
             {letter}
           </span>
@@ -42,13 +45,39 @@ function InputLabel({
       <input
         value={value}
         onChange={onChange}
-        className='text-white border-0 bg-transparent border-b-2 border-gray-300 py-4 focus:outline-none focus:border-b-black focus:caret-black valid:border-b-black'
+        className={cx(
+          'text-black border-0 bg-transparent border-b-2 border-gray-300 py-4',
+          {
+            '!outline-none !caret-black !border-b-black':
+              isInputFocused || value
+          }
+        )}
         id={id}
-        type={type}
+        type={inputType}
         required={required}
         onFocus={onFocus}
         onBlur={onBlur}
       />
+      {showHideButton && (
+        <button
+          type='button'
+          className={cx(
+            'absolute right-0 top-[50%] -translate-y-[50%] text-xs text-gray-800',
+            {
+              'line-through': inputType === 'password'
+            }
+          )}
+          onClick={() => {
+            if (inputType === 'password') {
+              setInputType('text')
+            }
+            if (inputType === 'text') {
+              setInputType('password')
+            }
+          }}>
+          Hide
+        </button>
+      )}
     </>
   )
 }
