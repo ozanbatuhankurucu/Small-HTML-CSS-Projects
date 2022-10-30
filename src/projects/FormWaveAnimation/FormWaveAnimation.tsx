@@ -28,50 +28,47 @@ const FormWaveAnimation = () => {
         Hey, Enter your details to get sign in to your account
       </div>
       <form className='flex flex-col gap-6 mt-4' onSubmit={handleSubmit}>
-        <div className='relative flex flex-col'>
-          <InputLabel
-            label='Email'
-            isInputFocused={isEmailInputFocused}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            id='email'
-            type='email'
-            required
-            onFocus={emailInputEventHandlers.onFocus}
-            onBlur={emailInputEventHandlers.onBlur}
-          />
-        </div>
-        <div className='relative flex flex-col mt-2'>
-          <InputLabel
-            label='Password'
-            isInputFocused={isPasswordInputFocused}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            id='password'
-            type={passwordInputType}
-            required
-            onFocus={passwordInputEventHandlers.onFocus}
-            onBlur={passwordInputEventHandlers.onBlur}>
-            <button
-              type='button'
-              className={cx(
-                'absolute right-0 top-[50%] -translate-y-[50%] text-xs text-gray-800',
-                {
-                  'line-through': passwordInputType === 'password'
-                }
-              )}
-              onClick={() => {
-                if (passwordInputType === 'password') {
-                  setPasswordInputType('text')
-                }
-                if (passwordInputType === 'text') {
-                  setPasswordInputType('password')
-                }
-              }}>
-              Hide
-            </button>
-          </InputLabel>
-        </div>
+        <InputLabel
+          label='Email'
+          isInputFocused={isEmailInputFocused}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          id='email'
+          type='email'
+          required
+          onFocus={emailInputEventHandlers.onFocus}
+          onBlur={emailInputEventHandlers.onBlur}
+        />
+        <InputLabel
+          className='mt-2'
+          label='Password'
+          isInputFocused={isPasswordInputFocused}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          id='password'
+          type={passwordInputType}
+          required
+          onFocus={passwordInputEventHandlers.onFocus}
+          onBlur={passwordInputEventHandlers.onBlur}>
+          <button
+            type='button'
+            className={cx(
+              'absolute right-0 top-[50%] -translate-y-[50%] text-xs text-gray-800',
+              {
+                'line-through': passwordInputType === 'password'
+              }
+            )}
+            onClick={() => {
+              if (passwordInputType === 'password') {
+                setPasswordInputType('text')
+              }
+              if (passwordInputType === 'text') {
+                setPasswordInputType('password')
+              }
+            }}>
+            Hide
+          </button>
+        </InputLabel>
         <p className='text-sm'>Having trouble in sign in?</p>
         <button
           className='bg-[#FDC886] text-black text-sm font-bold rounded-lg py-2 mt-4 focus:scale-[98%]'

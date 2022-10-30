@@ -11,6 +11,7 @@ interface InputLabelProps {
   required?: InputHTMLAttributes<HTMLInputElement>['required']
   onFocus: InputHTMLAttributes<HTMLInputElement>['onFocus']
   onBlur: InputHTMLAttributes<HTMLInputElement>['onBlur']
+  className?: string
   children?: ReactNode
 }
 const InputLabel: FC<InputLabelProps> = ({
@@ -23,9 +24,10 @@ const InputLabel: FC<InputLabelProps> = ({
   onFocus,
   type,
   required,
+  className,
   children
 }) => (
-  <>
+  <div className={cx('relative flex flex-col', className)}>
     <label
       className='absolute top-4 text-base font-bold text-gray-500'
       htmlFor='e'>
@@ -55,7 +57,7 @@ const InputLabel: FC<InputLabelProps> = ({
       onBlur={onBlur}
     />
     {children}
-  </>
+  </div>
 )
 
 export default InputLabel
