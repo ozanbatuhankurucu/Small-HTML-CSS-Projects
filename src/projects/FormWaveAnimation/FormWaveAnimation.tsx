@@ -1,8 +1,9 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useState } from 'react'
+import cx from 'classnames'
 import useFocusedData from './useFocusedData'
 import InputLabel from './InputLabel'
 
-function FormWaveAnimation() {
+const FormWaveAnimation = () => {
   const {
     email,
     password,
@@ -13,6 +14,7 @@ function FormWaveAnimation() {
     isEmailInputFocused,
     emailInputEventHandlers
   } = useFocusedData()
+  const [passwordInputType, setPasswordInputType] = useState('password')
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
   }
@@ -46,12 +48,29 @@ function FormWaveAnimation() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             id='password'
-            type='password'
+            type={passwordInputType}
             required
             onFocus={passwordInputEventHandlers.onFocus}
-            onBlur={passwordInputEventHandlers.onBlur}
-            showHideButton
-          />
+            onBlur={passwordInputEventHandlers.onBlur}>
+            <button
+              type='button'
+              className={cx(
+                'absolute right-0 top-[50%] -translate-y-[50%] text-xs text-gray-800',
+                {
+                  'line-through': passwordInputType === 'password'
+                }
+              )}
+              onClick={() => {
+                if (passwordInputType === 'password') {
+                  setPasswordInputType('text')
+                }
+                if (passwordInputType === 'text') {
+                  setPasswordInputType('password')
+                }
+              }}>
+              Hide
+            </button>
+          </InputLabel>
         </div>
         <p className='text-sm'>Having trouble in sign in?</p>
         <button

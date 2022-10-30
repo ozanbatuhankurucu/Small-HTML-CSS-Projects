@@ -77,6 +77,13 @@ module.exports = {
         }
       }
     ],
-    'jsx-a11y/mouse-events-have-key-events': 'off'
+    'jsx-a11y/mouse-events-have-key-events': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function'
+      }
+    ]
   }
 }
