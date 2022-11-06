@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cx from 'classnames'
 
-function SplitLandingPage() {
+const SplitLandingPage = () => {
   const [leftSideMouseOver, setLeftSideMouseOver] = useState(false)
   const [rightSideMouseOver, setRightSideMouseOver] = useState(false)
 

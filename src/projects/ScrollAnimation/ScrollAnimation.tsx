@@ -2,7 +2,7 @@ import smoothCards from './constants'
 import ContentCard from './ContentCard'
 import useScrollAnimation from '../../hooks/useScrollAnimation'
 
-function ScrollAnimation() {
+const ScrollAnimation = () => {
   useScrollAnimation()
   return (
     <>

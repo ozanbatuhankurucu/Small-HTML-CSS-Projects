@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import cx from 'classnames'
 import useFocusedData from './useFocusedData'
 import InputLabel from './InputLabel'
+import SocialLogins from './SocialLogins'
 
 const FormWaveAnimation = () => {
   const {
@@ -20,7 +21,7 @@ const FormWaveAnimation = () => {
   }
 
   return (
-    <div className='bg-white px-8 py-12 rounded-3xl w-full sm:w-96'>
+    <div className='bg-white px-8 py-12 rounded-3xl w-full sm:w-[28rem]'>
       <h1 className='font-extrabold text-2xl text-center text-black'>
         Please Login
       </h1>
@@ -71,15 +72,16 @@ const FormWaveAnimation = () => {
         </InputLabel>
         <p className='text-sm'>Having trouble in sign in?</p>
         <button
-          className='bg-[#FDC886] text-black text-sm font-bold rounded-lg py-2 mt-4 focus:scale-[98%]'
+          className='bg-[#FDC886] text-black text-sm font-bold rounded-lg py-2 mt-2 focus:scale-[98%]'
           type='submit'>
           Sign in
         </button>
       </form>
+      <SocialLogins />
       <p className='text-sm font-medium mt-8 text-center text-black'>
         Don&apos;t have an account?{' '}
         <a className='font-black' href='https://www.google.com'>
-          Register
+          Request Now
         </a>
       </p>
     </div>

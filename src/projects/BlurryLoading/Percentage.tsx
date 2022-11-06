@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import usePercentageData from './usePercentageData'
 
 interface PercentageProps {
@@ -6,7 +6,7 @@ interface PercentageProps {
   setPercentage: React.Dispatch<React.SetStateAction<number>>
 }
 
-function Percentage({ percentage, setPercentage }: PercentageProps) {
+const Percentage: FC<PercentageProps> = ({ percentage, setPercentage }) => {
   const { textOpacity } = usePercentageData(percentage, setPercentage)
   return (
     <div

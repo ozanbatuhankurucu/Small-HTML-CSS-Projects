@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa'
 import styled from 'styled-components'
 import classNames from 'classnames'
+import { FC } from 'react'
 import useInputFocus from '../../hooks/useInputFocus'
 
 const SearchInput = styled.input`
@@ -10,10 +11,10 @@ interface HiddenSearchWidgetProps {
   placeholder?: string
   iconColor?: string // example color hex code : #246142
 }
-function HiddenSearchWidget({
+const HiddenSearchWidget: FC<HiddenSearchWidgetProps> = ({
   placeholder,
   iconColor
-}: HiddenSearchWidgetProps) {
+}) => {
   const { inputRef, setShowInputWidget, showInputWidget } = useInputFocus(false)
 
   return (

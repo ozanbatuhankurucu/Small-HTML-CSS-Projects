@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import routes from './routes'
 
-function AppRouter() {
+const AppRouter = () => {
   const routeComponents = routes.map(({ path, element, id }) => (
     <Route key={id} path={path} element={element} />
   ))

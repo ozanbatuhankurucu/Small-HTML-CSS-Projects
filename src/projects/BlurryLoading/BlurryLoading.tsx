@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Percentage from './Percentage'
 import scale from './utils'
 
-function BlurryLoading() {
+const BlurryLoading = () => {
   const [percentage, setPercentage] = useState<number>(0)
   const blurPercentage = scale(percentage, 0, 100, 64, 0)
   return (
