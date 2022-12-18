@@ -24,9 +24,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
       <div className='p-4 bg-[#292B31] h-40 w-60 rounded-xl'>
         <div className='flex justify-between items-center'>
           <div className='font-bold text-base text-white'>{projectName}</div>
-          <div className='border-[2px] rounded-full p-[2px] border-[#898A90]'>
-            <ArrowRight className='text-white' size={15} />
-          </div>
         </div>
         <div className='mt-2 border border-[#36383E]' />
         <div className='flex justify-between items-center mt-4'>
@@ -37,8 +34,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <span className='text-white font-bold text-sm'>{progressText}</span>
         </div>
         <IndicatorProgress className='mt-1' value={progress * 10} />
-        <div className='inline-block pt-1 px-3 mt-4 rounded-full bg-[#36383E] text-[#9494A1] font-semibold text-sm'>
-          {moment(addedDate).format('DD MMM YYYY')}
+        <div className='flex justify-between items-center mt-4'>
+          <div className='inline-block pt-1 px-3 rounded-full bg-[#36383E] text-[#9494A1] font-semibold text-sm'>
+            {moment(addedDate).format('DD MMM YYYY')}
+          </div>
+          <div className='flex items-center justify-center ml-auto border-[2px] w-6 h-6 rounded-full border-[#898A90]'>
+            <ArrowRight className='text-white' size={15} />
+          </div>
         </div>
       </div>
     </Link>
