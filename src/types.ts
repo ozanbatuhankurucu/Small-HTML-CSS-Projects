@@ -1,5 +1,7 @@
 export interface Project {
-  name: string
+  projectName: string
   to: string
+  progress: number
+  addedDate: string
   id?: string
 }

@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet'
-import ProjectCardList from '../components/ProjectCardList'
 import ProjectCard from '../components/ProjectCard'
+import ProjectCardList from '../components/ProjectCardList'
 import projects from '../constants'
-import { Project } from '../types'
 
 const App = () => (
   <>
@@ -10,10 +9,17 @@ const App = () => (
       <meta charSet='utf-8' />
       <title>Small HTML & CSS & JS Projects</title>
     </Helmet>
-    <div className='h-screen bg-slate-200 flex justify-center items-center'>
+    <div className='p-8 h-screen bg-[#25262C]'>
+      <h1 className='text-white font-bold text-2xl'>PROJECTS</h1>
       <ProjectCardList>
-        {projects.map(({ name, to, id }: Project) => (
-          <ProjectCard key={id} name={name} to={to} />
+        {projects.map(({ projectName, to, id, progress, addedDate }) => (
+          <ProjectCard
+            key={id}
+            projectName={projectName}
+            to={to}
+            progress={progress}
+            addedDate={addedDate}
+          />
         ))}
       </ProjectCardList>
     </div>
