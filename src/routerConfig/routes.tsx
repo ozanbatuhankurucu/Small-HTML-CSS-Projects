@@ -6,6 +6,7 @@ import ScrollAnimation from '../projects/ScrollAnimation'
 import SplitLandingPage from '../projects/SplitLandingPage'
 import Wrapper from '../projects/FormWaveAnimation'
 import SoundBoard from '../projects/SoundBoard'
+import DadJokes from '../projects/DadJokes'
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
     id: '7',
     path: '/projects/sound-board',
     element: <SoundBoard />
+  },
+  {
+    id: '8',
+    path: '/projects/dad-jokes',
+    element: <DadJokes />
   }
 ]
 export default routes

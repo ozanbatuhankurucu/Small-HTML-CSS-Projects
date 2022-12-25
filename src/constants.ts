@@ -38,6 +38,12 @@ const PROJECTS: Project[] = [
     to: 'sound-board',
     progress: 10,
     addedDate: '2022-12-18'
+  },
+  {
+    projectName: 'Dad Jokes',
+    to: 'dad-jokes',
+    progress: 1,
+    addedDate: '2022-12-25'
   }
 ]
 
