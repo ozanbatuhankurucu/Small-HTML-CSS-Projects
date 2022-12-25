@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react'
 import { Applause, Boo, Gasp, Tada, Victory, Wrong } from '../../sounds'
 
 const sounds = [

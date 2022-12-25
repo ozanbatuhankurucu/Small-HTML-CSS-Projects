@@ -23,13 +23,13 @@ const SoundBox: FC<SoundBoxProps> = ({
   const toggle = () => setPlaying(!playing)
 
   const resetOtherSounds = () => {
-    soundRefs.forEach(({ ref, playState }) => {
+    soundRefs.forEach(({ ref, playState: refPlayState }) => {
       if (ref && ref.current) {
         if (ref.current !== soundRef.current) {
-          const [playing, setPlaying] = playState
+          const [, setRefPlayState] = refPlayState
           ref.current.pause()
           ref.current.currentTime = 0
-          setPlaying(false)
+          setRefPlayState(false)
         }
       }
     })
