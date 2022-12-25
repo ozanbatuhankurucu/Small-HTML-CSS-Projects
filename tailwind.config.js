@@ -9,7 +9,8 @@ module.exports = {
         'right-btn-hover-color': 'rgba(28, 122, 28, 1)',
         steelblue: '#4682B4',
         'black-400': 'rgba(0, 0, 0, 0.4)',
-        lightblue: '#ADD8E6'
+        lightblue: '#ADD8E6',
+        'sound-box-card-bg-color': 'rgba(90, 24, 154, 0.6)'
       },
       backgroundImage: {
         ps: "url('/src/assets/images/ps.png')",

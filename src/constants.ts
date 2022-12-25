@@ -30,13 +30,13 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Form Wave Animation',
     to: 'form-wave-animation',
-    progress: 5,
+    progress: 10,
     addedDate: '2022-10-29'
   },
   {
     projectName: 'Sound Board',
     to: 'sound-board',
-    progress: 1,
+    progress: 10,
     addedDate: '2022-12-18'
   }
 ]

@@ -84,6 +84,8 @@ module.exports = {
         namedComponents: 'arrow-function',
         unnamedComponents: 'arrow-function'
       }
-    ]
+    ],
+    'jsx-a11y/media-has-caption': 'off',
+    'no-param-reassign': 'off'
   }
 }

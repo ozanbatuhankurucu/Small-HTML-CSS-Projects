@@ -5,6 +5,7 @@ import BlurryLoading from '../projects/BlurryLoading'
 import ScrollAnimation from '../projects/ScrollAnimation'
 import SplitLandingPage from '../projects/SplitLandingPage'
 import Wrapper from '../projects/FormWaveAnimation'
+import SoundBoard from '../projects/SoundBoard'
 
 const routes = [
   {
@@ -41,6 +42,11 @@ const routes = [
     id: '6',
     path: '/projects/form-wave-animation',
     element: <Wrapper />
+  },
+  {
+    id: '7',
+    path: '/projects/sound-board',
+    element: <SoundBoard />
   }
 ]
 export default routes
