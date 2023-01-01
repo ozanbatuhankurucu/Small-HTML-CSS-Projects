@@ -1,6 +1,6 @@
-import React, { FC, ReactNode, RefObject, useEffect } from 'react'
+import React, { FC, ReactNode, RefObject } from 'react'
 import { SoundRefType } from './types'
-import { useAudioData } from './useAudioData'
+import useAudioData from './useAudioData'
 
 interface SoundBoxProps {
   children?: ReactNode

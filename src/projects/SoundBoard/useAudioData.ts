@@ -1,7 +1,7 @@
 import React, { RefObject, useEffect } from 'react'
 import { SoundRefType } from './types'
 
-export const useAudioData = (
+const useAudioData = (
   playState: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
   soundRefs: Array<SoundRefType>,
   soundRef: RefObject<HTMLAudioElement>
@@ -50,3 +50,4 @@ export const useAudioData = (
 
   return { toggle }
 }
+export default useAudioData
