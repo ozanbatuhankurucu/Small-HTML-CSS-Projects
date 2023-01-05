@@ -25,6 +25,7 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [filteredOptions, setFilteredOptions] = useState(options)
+  const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -89,12 +90,24 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
           ref={dropdownRef}
           className='origin-top-left absolute left-0 mt-3 min-w-[300px] border border-primary-10 backdrop-blur rounded-[4px] shadow-sm'>
           <div className='p-2'>
-            <div className='flex items-center bg-primary-5 text-primary-100 p-2 rounded-[4px]'>
+            <div
+              className={cx(
+                'flex items-center border bg-primary-5 text-primary-100 p-2 rounded-[4px]',
+                {
+                  'bg-primary-10 border-primary-50': isSearchInputFocused
+                }
+              )}>
               <input
                 value={searchQuery}
                 onChange={handleSearchChange}
                 className='block w-full bg-transparent pr-2 leading-5 text-sm font-semibold transition duration-150 ease-in-out focus:outline-none placeholder:text-primary-100'
                 placeholder={searchPlaceholder}
+                onFocus={() => {
+                  setIsSearchInputFocused(true)
+                }}
+                onBlur={() => {
+                  setIsSearchInputFocused(false)
+                }}
               />
               <YourSvg />
             </div>
