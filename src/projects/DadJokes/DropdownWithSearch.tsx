@@ -92,9 +92,9 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
           <div className='p-2'>
             <div
               className={cx(
-                'flex items-center border bg-primary-5 text-primary-100 p-2 rounded-[4px]',
+                'flex items-center border bg-primary-5 text-primary-100 p-2 rounded-[4px] hover:bg-primary-10 hover:border-primary-50',
                 {
-                  'bg-primary-10 border-primary-50': isSearchInputFocused
+                  '!bg-primary-10 !border-primary-50': isSearchInputFocused
                 }
               )}>
               <input
