@@ -127,6 +127,7 @@ const DadJokes = () => {
         options={data}
         value={selectedMetric}
         onChange={setSelectedMetric}
+        searchPlaceholder='Search metric'
       />
     </div>
   )

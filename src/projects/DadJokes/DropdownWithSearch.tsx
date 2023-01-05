@@ -1,5 +1,4 @@
-import { CaretDown, CaretUp, FileSearch } from 'phosphor-react'
-import { FaSearch } from 'react-icons/fa'
+import { CaretDown, CaretUp } from 'phosphor-react'
 import { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
 import Accordion from './Accordion'
@@ -73,7 +72,7 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
         type='button'
         onClick={toggleDropdown}
         className={cx(
-          'flex items-center justify-between gap-2 text-primary-100 bg-primary-2 text-[15px] font-semibold py-2 pl-[14px] pr-4 appearance-none rounded-[1px] leading-5 min-w-[192px] h-9 border border-primary-15  focus:outline-none  hover:bg-primary-10',
+          'flex items-center justify-between gap-2 text-primary-100 bg-primary-2 text-sm font-semibold py-2 pl-[14px] pr-4 appearance-none rounded-[1px] leading-5 min-w-[192px] h-9 border border-primary-15  focus:outline-none  hover:bg-primary-10',
           {
             'bg-primary-10 border-primary-50': isOpen
           }
@@ -102,14 +101,14 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
           </div>
           <hr className='bg-primary-100' />
           <div className='overflow-auto max-h-64 rounded-md shadow-xs py-2'>
-            {filteredOptions.map((option, index) => {
+            {filteredOptions.map((option) => {
               if (option.accordion) {
                 return (
                   <Accordion
                     key={option.accordionTitle}
                     className='px-2'
                     title={option.accordionTitle}>
-                    {option.options.map((option: any, index: number) => (
+                    {option.options.map((option: any) => (
                       <OptionItem
                         key={option.value}
                         className='!pl-[52px]'
