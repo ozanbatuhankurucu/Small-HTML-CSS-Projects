@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
-
+import { ReactComponent as YourSvg } from '../../assets/svg/MagnifyingGlass.svg'
 export interface Option {
   value: string
   label: string
@@ -28,9 +28,6 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const [filteredOptions, setFilteredOptions] = useState(options)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
-  console.log('%c -----options----- ', 'background: #FF0000')
-  console.log(options)
-  console.log('%c -----options----- ', 'background: #FF0000')
 
   const toggleDropdown = () => setIsOpen(!isOpen)
 
@@ -97,10 +94,10 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
               <input
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className='block w-full bg-transparent leading-5 text-sm font-semibold transition duration-150 ease-in-out focus:outline-none placeholder:text-primary-100'
+                className='block w-full bg-transparent pr-2 leading-5 text-sm font-semibold transition duration-150 ease-in-out focus:outline-none placeholder:text-primary-100'
                 placeholder={searchPlaceholder}
               />
-              <FaSearch className='text-primary-70' size={20} />
+              <YourSvg />
             </div>
           </div>
           <hr className='bg-primary-100' />
@@ -108,23 +105,26 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
             {filteredOptions.map((option, index) => {
               if (option.accordion) {
                 return (
-                  <Accordion className='px-2' title={option.accordionTitle}>
-                    {option.options.map((option: any, index: number) => {
-                      return (
-                        <OptionItem
-                          key={index}
-                          option={option}
-                          searchQuery={searchQuery}
-                          onOptionClick={(option) => handleOptionClick(option)}
-                        />
-                      )
-                    })}
+                  <Accordion
+                    key={option.accordionTitle}
+                    className='px-2'
+                    title={option.accordionTitle}>
+                    {option.options.map((option: any, index: number) => (
+                      <OptionItem
+                        key={option.value}
+                        className='!pl-[52px]'
+                        option={option}
+                        searchQuery={searchQuery}
+                        onOptionClick={(option) => handleOptionClick(option)}
+                        tooltipDescription={option.tooltipDescription}
+                      />
+                    ))}
                   </Accordion>
                 )
               }
               return (
                 <OptionItem
-                  key={index}
+                  key={option.value}
                   option={option}
                   searchQuery={searchQuery}
                   onOptionClick={(option) => handleOptionClick(option)}

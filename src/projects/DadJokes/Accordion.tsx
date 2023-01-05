@@ -18,7 +18,7 @@ const Accordion: React.FC<AccordionProps> = ({
     <div>
       <div
         className={cx(
-          'flex gap-2 cursor-pointer font-semibold text-sm text-primary-70',
+          'flex gap-2 cursor-pointer font-semibold text-sm py-[10px] text-primary-70',
           className
         )}
         onClick={() => setIsOpen(!isOpen)}>
@@ -29,7 +29,12 @@ const Accordion: React.FC<AccordionProps> = ({
         )}
         {title}
       </div>
-      <div className={cx('overflow-hidden')}>{children}</div>
+      <div
+        className={cx('hidden overflow-hidden', {
+          '!block': isOpen
+        })}>
+        {children}
+      </div>
     </div>
   )
 }
