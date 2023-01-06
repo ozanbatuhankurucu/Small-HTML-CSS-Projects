@@ -24,9 +24,9 @@ const Accordion: React.FC<AccordionProps> = ({
         )}
         onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? (
-          <CaretDown className='pointer-events-none' />
+          <CaretDown className='pointer-events-none' size={16} />
         ) : (
-          <CaretRight className='pointer-events-none' />
+          <CaretRight className='pointer-events-none' size={16} />
         )}
         {title}
       </div>

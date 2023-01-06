@@ -24,11 +24,7 @@ export const OptionListWithSection: FC<OptionListWithSectionProps> = ({
           className='!pl-[42px]'
           option={option}
           searchQuery={searchQuery}
-          onOptionClick={(option) => {
-            handleOptionClick(
-              sectionTitle ? { ...option, sectionTitle } : option
-            )
-          }}
+          onOptionClick={(option) => handleOptionClick(option)}
           tooltipDescription={option.tooltipDescription}
         />
       ))}

@@ -31,8 +31,9 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const toggleDropdown = () => {
     if (!isOpen) {
       setSearchQuery('')
+      setFilteredOptions(options)
     }
-    setIsOpen(!isOpen)
+    setIsOpen((prev) => !prev)
   }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
