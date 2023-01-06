@@ -4,15 +4,11 @@ import cx from 'classnames'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
 import { ReactComponent as YourSvg } from '../../assets/svg/MagnifyingGlass.svg'
-export interface Option {
-  value: string
-  label: string
-}
 
 interface DropdownProps {
   options: any[]
-  onChange: (selectedOption: Option) => void
-  value: Option
+  onChange: (selectedOption: any) => void
+  value: any
   searchPlaceholder?: string
 }
 
@@ -28,6 +24,9 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
+  console.log('%c -----value----- ', 'background: #FF0000')
+  console.log(value)
+  console.log('%c -----value----- ', 'background: #FF0000')
 
   const toggleDropdown = () => setIsOpen(!isOpen)
 
@@ -41,7 +40,7 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
     )
   }
 
-  const handleOptionClick = (option: Option) => {
+  const handleOptionClick = (option: any) => {
     setIsOpen(false)
     setSearchQuery('')
     setFilteredOptions(options)
@@ -78,6 +77,9 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
             'bg-primary-10 border-primary-50': isOpen
           }
         )}>
+        {value.sectionTitle && (
+          <span className='pointer-events-none'>{value.sectionTitle}: </span>
+        )}
         {value.label}
         {isOpen ? (
           <CaretUp className='pointer-events-none' size={12} />
@@ -121,16 +123,48 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
                     key={option.accordionTitle}
                     className='px-2'
                     title={option.accordionTitle}>
-                    {option.options.map((option: any) => (
-                      <OptionItem
-                        key={option.value}
-                        className='!pl-[52px]'
-                        option={option}
-                        searchQuery={searchQuery}
-                        onOptionClick={(option) => handleOptionClick(option)}
-                        tooltipDescription={option.tooltipDescription}
-                      />
-                    ))}
+                    {option.options.map((option: any) => {
+                      const { sectionTitle } = option
+                      return (
+                        <>
+                          {option.options && (
+                            <>
+                              <div className='text-primary-30 pl-8 uppercase font-semibold text-xs select-none'>
+                                {option.sectionTitle}
+                              </div>
+                              {option.options.map((option: any) => (
+                                <OptionItem
+                                  key={option.value}
+                                  className='!pl-[42px]'
+                                  option={option}
+                                  searchQuery={searchQuery}
+                                  onOptionClick={(option) => {
+                                    handleOptionClick(
+                                      sectionTitle
+                                        ? { ...option, sectionTitle }
+                                        : option
+                                    )
+                                  }}
+                                  tooltipDescription={option.tooltipDescription}
+                                />
+                              ))}
+                            </>
+                          )}
+                          {!option.options && (
+                            <OptionItem
+                              key={option.value}
+                              className='!pl-[52px]'
+                              option={option}
+                              searchQuery={searchQuery}
+                              onOptionClick={(option) =>
+                                handleOptionClick(option)
+                              }
+                              tooltipDescription={option.tooltipDescription}
+                            />
+                          )}
+                        </>
+                      )
+                    })}
                   </Accordion>
                 )
               }

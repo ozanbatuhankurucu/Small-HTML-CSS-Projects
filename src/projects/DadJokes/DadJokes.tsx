@@ -1,42 +1,5 @@
 import React, { useState } from 'react'
-import DropdownWithSearch, { Option } from './DropdownWithSearch'
-
-// {
-// 	accordion: true,
-// 	accordionTitle: 'Precision',
-// 	options: [
-// 		{
-// 			sectionTitle: 'ALL PRODUCTS',
-// 			options: [
-// 				{
-// 					label: 'Weighted Precision',
-// 					value: 'weighted_precision_all_products'
-// 				},
-// 				{
-// 					label: 'Precision at 1',
-// 					value: 'precision_at_1_all_products'
-// 				},
-// 				{
-// 					label: 'Precision at 2',
-// 					value: 'precision_at_2_all_products'
-// 				}
-// 			]
-// 		},
-// 		{
-// 			sectionTitle: 'TOP 10 PRODUCTS',
-// 			options: [
-// 				{
-// 					label: 'Weighted Precision',
-// 					value: 'weighted_precision_top_10_products'
-// 				},
-// 				{
-// 					label: 'Precision at 1',
-// 					value: 'precision_at_1_top_10_products'
-// 				}
-// 			]
-// 		}
-// 	]
-// },
+import DropdownWithSearch from './DropdownWithSearch'
 
 const data = [
   {
@@ -72,6 +35,42 @@ const data = [
     ]
   },
   {
+    accordion: true,
+    accordionTitle: 'Precision',
+    options: [
+      {
+        sectionTitle: 'All Products',
+        options: [
+          {
+            label: 'Weighted Precision',
+            value: 'weighted_precision_all_products'
+          },
+          {
+            label: 'Precision at 1',
+            value: 'precision_at_1_all_products'
+          },
+          {
+            label: 'Precision at 2',
+            value: 'precision_at_2_all_products'
+          }
+        ]
+      },
+      {
+        sectionTitle: 'Top 10 Products',
+        options: [
+          {
+            label: 'Weighted Precision',
+            value: 'weighted_precision_top_10_products'
+          },
+          {
+            label: 'Precision at 1',
+            value: 'precision_at_1_top_10_products'
+          }
+        ]
+      }
+    ]
+  },
+  {
     label: '% View to Added',
     value: 'percent_view_to_added1'
   },
@@ -96,31 +95,12 @@ const data = [
     value: 'net_revenue6'
   }
 ]
-
-const OPTIONS: Option[] = [
-  {
-    value: 'metric1',
-    label: 'Metric 1'
-  },
-  {
-    value: 'metric2',
-    label: 'Netric 2'
-  },
-  {
-    value: 'metric3',
-    label: 'Cetric 3'
-  },
-  {
-    value: 'metric4',
-    label: 'Getric 4'
-  },
-  {
-    value: 'zetric2',
-    label: 'Zetric 2'
-  }
-]
+const DEFAULT_OPTION = {
+  label: 'Net Revenue 5',
+  value: 'net_revenue6'
+}
 const DadJokes = () => {
-  const [selectedMetric, setSelectedMetric] = useState(OPTIONS[0])
+  const [selectedMetric, setSelectedMetric] = useState(DEFAULT_OPTION)
   return (
     <div>
       <DropdownWithSearch

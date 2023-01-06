@@ -24,7 +24,7 @@ const OptionItem: FC<OptionItemProps> = ({
       type='button'
       onClick={() => onOptionClick(option)}
       className={cx(
-        'block w-full font-semibold text-left px-4 py-[10px] text-sm leading-5 text-primary-70 hover:bg-primary-5 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
+        'block w-full font-semibold text-left pr-2 pl-8 py-[10px] text-sm leading-5 text-primary-70 hover:bg-primary-5 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
         {
           '!text-primary-70': searchQuery === '',
           'text-[#242836]': isOptionItemMatchedToSearchQuery,
