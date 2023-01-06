@@ -1,9 +1,12 @@
 import { CaretDown, CaretUp } from 'phosphor-react'
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
 import { ReactComponent as YourSvg } from '../../assets/svg/MagnifyingGlass.svg'
+import { OptionListWithSection } from './OptionListWithSection'
+import * as _ from 'lodash'
+import { isLabelIncludesSearchQuery } from './utils'
 
 interface DropdownProps {
   options: any[]
@@ -24,20 +27,41 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
-  console.log('%c -----value----- ', 'background: #FF0000')
-  console.log(value)
-  console.log('%c -----value----- ', 'background: #FF0000')
 
-  const toggleDropdown = () => setIsOpen(!isOpen)
+  const toggleDropdown = () => {
+    if (!isOpen) {
+      setSearchQuery('')
+    }
+    setIsOpen(!isOpen)
+  }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
     setSearchQuery(value)
-    setFilteredOptions(
-      options.filter((option) =>
-        option.label.toLowerCase().includes(value.toLowerCase())
-      )
+
+    // Filter values process start
+    const optionsWithAccordion = options
+      .filter((option) => option.accordion)
+      .map((option) => ({
+        ...option,
+        options: option.options.filter((option: any) =>
+          isLabelIncludesSearchQuery(option.label, value)
+        )
+      }))
+      .filter((option) => option.options.length > 0)
+
+    const optionsWithoutAccordion = options.filter(
+      (option) =>
+        !option.accordion && isLabelIncludesSearchQuery(option.label, value)
     )
+
+    const filteredOptions = [
+      ...optionsWithAccordion,
+      ...optionsWithoutAccordion
+    ]
+
+    setFilteredOptions(filteredOptions)
+    // Filter values process end
   }
 
   const handleOptionClick = (option: any) => {
@@ -118,59 +142,49 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
           <div className='overflow-auto max-h-64 rounded-md shadow-xs py-2'>
             {filteredOptions.map((option) => {
               if (option.accordion) {
+                const filterSectionTitledOptions = option.options.filter(
+                  (option: any) => option.sectionTitle
+                )
+                const filterNonSectionTitledOptions = option.options.filter(
+                  (option: any) => !option.sectionTitle
+                )
+                const groupedBySectionTitle = _.groupBy(
+                  filterSectionTitledOptions,
+                  'sectionTitle'
+                )
+
                 return (
                   <Accordion
-                    key={option.accordionTitle}
+                    key={option.key}
                     className='px-2'
                     title={option.accordionTitle}>
-                    {option.options.map((option: any) => {
-                      const { sectionTitle } = option
-                      return (
-                        <>
-                          {option.options && (
-                            <>
-                              <div className='text-primary-30 pl-8 uppercase font-semibold text-xs select-none'>
-                                {option.sectionTitle}
-                              </div>
-                              {option.options.map((option: any) => (
-                                <OptionItem
-                                  key={option.value}
-                                  className='!pl-[42px]'
-                                  option={option}
-                                  searchQuery={searchQuery}
-                                  onOptionClick={(option) => {
-                                    handleOptionClick(
-                                      sectionTitle
-                                        ? { ...option, sectionTitle }
-                                        : option
-                                    )
-                                  }}
-                                  tooltipDescription={option.tooltipDescription}
-                                />
-                              ))}
-                            </>
-                          )}
-                          {!option.options && (
-                            <OptionItem
-                              key={option.value}
-                              className='!pl-[52px]'
-                              option={option}
-                              searchQuery={searchQuery}
-                              onOptionClick={(option) =>
-                                handleOptionClick(option)
-                              }
-                              tooltipDescription={option.tooltipDescription}
-                            />
-                          )}
-                        </>
-                      )
-                    })}
+                    <>
+                      {_.map(groupedBySectionTitle, (options, key) => (
+                        <OptionListWithSection
+                          key={key}
+                          handleOptionClick={handleOptionClick}
+                          sectionTitle={key}
+                          options={options}
+                          searchQuery={searchQuery}
+                        />
+                      ))}
+                      {filterNonSectionTitledOptions.map((option: any) => (
+                        <OptionItem
+                          key={option.value}
+                          className='!pl-[42px]'
+                          option={option}
+                          searchQuery={searchQuery}
+                          onOptionClick={(option) => handleOptionClick(option)}
+                          tooltipDescription={option.tooltipDescription}
+                        />
+                      ))}
+                    </>
                   </Accordion>
                 )
               }
               return (
                 <OptionItem
-                  key={option.value}
+                  key={option.key}
                   option={option}
                   searchQuery={searchQuery}
                   onOptionClick={(option) => handleOptionClick(option)}

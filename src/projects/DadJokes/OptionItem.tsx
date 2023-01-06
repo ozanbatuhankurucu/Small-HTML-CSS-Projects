@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import cx from 'classnames'
 import { Info } from 'phosphor-react'
+import { isLabelIncludesSearchQuery } from './utils'
 interface OptionItemProps {
   option: any
   searchQuery: string
@@ -17,8 +18,8 @@ const OptionItem: FC<OptionItemProps> = ({
   className
 }) => {
   const isOptionItemMatchedToSearchQuery =
-    searchQuery &&
-    option.label.toLowerCase().includes(searchQuery.toLowerCase())
+    searchQuery && isLabelIncludesSearchQuery(option.label, searchQuery)
+
   return (
     <button
       type='button'
