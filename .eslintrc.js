@@ -86,6 +86,10 @@ module.exports = {
       }
     ],
     'jsx-a11y/media-has-caption': 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/interactive-supports-focus': 'off',
+    'import/prefer-default-export': 'off'
   }
 }

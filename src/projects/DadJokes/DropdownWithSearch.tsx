@@ -1,16 +1,16 @@
 import { CaretDown, CaretUp } from 'phosphor-react'
 import React, { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
+import * as _ from 'lodash'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
 import { ReactComponent as YourSvg } from '../../assets/svg/MagnifyingGlass.svg'
 import { OptionListWithSection } from './OptionListWithSection'
-import * as _ from 'lodash'
 import { isLabelIncludesSearchQuery } from './utils'
 
 interface DropdownProps {
   options: any[]
-  onChange: (selectedOption: any) => void
+  onChange: (_selectedOption: any) => void
   value: any
   searchPlaceholder?: string
 }
@@ -37,39 +37,40 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    setSearchQuery(value)
+    const { value: targetValue } = event.target
+    setSearchQuery(targetValue)
 
     // Filter values process start
     const optionsWithAccordion = options
       .filter((option) => option.accordion)
       .map((option) => ({
         ...option,
-        options: option.options.filter((option: any) =>
-          isLabelIncludesSearchQuery(option.label, value)
+        options: option.options.filter((opt: any) =>
+          isLabelIncludesSearchQuery(opt.label, targetValue)
         )
       }))
       .filter((option) => option.options.length > 0)
 
     const optionsWithoutAccordion = options.filter(
       (option) =>
-        !option.accordion && isLabelIncludesSearchQuery(option.label, value)
+        !option.accordion &&
+        isLabelIncludesSearchQuery(option.label, targetValue)
     )
 
-    const filteredOptions = [
+    const filteredOptionsBySearchQuery = [
       ...optionsWithAccordion,
       ...optionsWithoutAccordion
     ]
 
-    setFilteredOptions(filteredOptions)
+    setFilteredOptions(filteredOptionsBySearchQuery)
     // Filter values process end
   }
 
-  const handleOptionClick = (option: any) => {
+  const handleOptionClick = (selectedOption: any) => {
     setIsOpen(false)
     setSearchQuery('')
     setFilteredOptions(options)
-    onChange(option)
+    onChange(selectedOption)
   }
 
   useEffect(() => {
@@ -144,10 +145,10 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
             {filteredOptions.map((option) => {
               if (option.accordion) {
                 const filterSectionTitledOptions = option.options.filter(
-                  (option: any) => option.sectionTitle
+                  (opt: any) => opt.sectionTitle
                 )
                 const filterNonSectionTitledOptions = option.options.filter(
-                  (option: any) => !option.sectionTitle
+                  (opt: any) => !opt.sectionTitle
                 )
                 const groupedBySectionTitle = _.groupBy(
                   filterSectionTitledOptions,
@@ -160,25 +161,29 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
                     className='px-2'
                     title={option.accordionTitle}>
                     <>
-                      {_.map(groupedBySectionTitle, (options, key) => (
+                      {_.map(groupedBySectionTitle, (groupedOptions, key) => (
                         <OptionListWithSection
                           key={key}
                           handleOptionClick={handleOptionClick}
                           sectionTitle={key}
-                          options={options}
+                          options={groupedOptions}
                           searchQuery={searchQuery}
                         />
                       ))}
-                      {filterNonSectionTitledOptions.map((option: any) => (
-                        <OptionItem
-                          key={option.value}
-                          className='!pl-[42px]'
-                          option={option}
-                          searchQuery={searchQuery}
-                          onOptionClick={(option) => handleOptionClick(option)}
-                          tooltipDescription={option.tooltipDescription}
-                        />
-                      ))}
+                      {filterNonSectionTitledOptions.map(
+                        (nonSectionTitledOption: any) => (
+                          <OptionItem
+                            key={nonSectionTitledOption.value}
+                            className='!pl-[42px]'
+                            option={nonSectionTitledOption}
+                            searchQuery={searchQuery}
+                            onOptionClick={(opt) => handleOptionClick(opt)}
+                            tooltipDescription={
+                              nonSectionTitledOption.tooltipDescription
+                            }
+                          />
+                        )
+                      )}
                     </>
                   </Accordion>
                 )
@@ -188,7 +193,7 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
                   key={option.key}
                   option={option}
                   searchQuery={searchQuery}
-                  onOptionClick={(option) => handleOptionClick(option)}
+                  onOptionClick={(opt) => handleOptionClick(opt)}
                 />
               )
             })}

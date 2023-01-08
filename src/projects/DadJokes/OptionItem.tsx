@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import cx from 'classnames'
 import { Info } from 'phosphor-react'
 import { isLabelIncludesSearchQuery } from './utils'
+
 interface OptionItemProps {
   option: any
   searchQuery: string
