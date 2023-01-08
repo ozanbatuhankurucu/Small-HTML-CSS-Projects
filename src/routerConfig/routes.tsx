@@ -6,6 +6,7 @@ import ScrollAnimation from '../projects/ScrollAnimation'
 import SplitLandingPage from '../projects/SplitLandingPage'
 import Wrapper from '../projects/FormWaveAnimation'
 import SoundBoard from '../projects/SoundBoard'
+import SearchDropdown from '../projects/SearchDropdown'
 import DadJokes from '../projects/DadJokes'
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
   },
   {
     id: '8',
+    path: '/projects/search-dropdown',
+    element: <SearchDropdown />
+  },
+  {
+    id: '9',
     path: '/projects/dad-jokes',
     element: <DadJokes />
   }
