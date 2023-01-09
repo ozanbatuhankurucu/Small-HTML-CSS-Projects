@@ -2,11 +2,12 @@ import React, { FC } from 'react'
 import cx from 'classnames'
 import { Info } from 'phosphor-react'
 import { isLabelIncludesSearchQuery } from './utils'
+import { Option } from './DropdownWithSearch'
 
 interface OptionItemProps {
-  option: any
+  option: Option
   searchQuery: string
-  onOptionClick: (option: any) => void
+  onOptionClick: (option: Option) => void
   tooltipDescription?: string
   className?: string
 }

@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
+import { Option } from './DropdownWithSearch'
 import OptionItem from './OptionItem'
 
 interface OptionListWithSectionProps {
-  options: any[]
+  options: Option[]
   searchQuery: string
-  handleOptionClick: (option: any) => void
+  handleOptionClick: (option: Option) => void
   sectionTitle: string
 }
 export const OptionListWithSection: FC<OptionListWithSectionProps> = ({
@@ -17,7 +18,7 @@ export const OptionListWithSection: FC<OptionListWithSectionProps> = ({
     <div className='text-primary-30 pl-8 uppercase font-semibold text-xs select-none'>
       {sectionTitle}
     </div>
-    {options.map((option: any) => (
+    {options.map((option) => (
       <OptionItem
         key={option.value}
         className='!pl-[42px]'
