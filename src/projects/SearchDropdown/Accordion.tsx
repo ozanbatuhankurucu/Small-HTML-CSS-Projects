@@ -16,11 +16,6 @@ const Accordion: React.FC<AccordionProps> = ({
   className
 }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const openPanelRef = useRef<HTMLDivElement>(null)
-  const openPanelHeight =
-    isOpen && openPanelRef.current
-      ? `${openPanelRef.current.scrollHeight}px`
-      : '0px'
 
   useEffect(() => {
     if (searchQuery !== '') {
@@ -47,11 +42,9 @@ const Accordion: React.FC<AccordionProps> = ({
         {title}
       </div>
       <div
-        ref={openPanelRef}
-        style={{
-          height: openPanelHeight
-        }}
-        className='transition-all ease-in-out overflow-hidden'>
+        className={cx('block overflow-hidden', {
+          '!hidden': !isOpen
+        })}>
         {children}
       </div>
     </div>
