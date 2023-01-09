@@ -206,6 +206,7 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
                 searchQuery={searchQuery}
                 onOptionClick={(opt) => handleOptionClick(opt)}
                 tooltipDescription={option.tooltipDescription}
+                filteredAccordionOptionsLength={filteredAccordionOptions.length}
               />
             ))}
             {filteredAccordionOptions.length === 0 &&
