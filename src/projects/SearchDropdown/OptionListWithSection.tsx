@@ -1,26 +1,26 @@
-import React, { FC } from 'react'
-import { Option } from './DropdownWithSearch'
+import React from 'react'
 import OptionItem from './OptionItem'
+import { Option } from './types'
 
-interface OptionListWithSectionProps {
-  options: Option[]
+interface OptionListWithSectionProps<ValueType = string> {
+  options: Option<ValueType>[]
   searchQuery: string
-  handleOptionClick: (option: Option) => void
+  handleOptionClick: (option: Option<ValueType>) => void
   sectionTitle: string
 }
-export const OptionListWithSection: FC<OptionListWithSectionProps> = ({
+export const OptionListWithSection = <ValueType extends unknown>({
   handleOptionClick,
   options,
   searchQuery,
   sectionTitle
-}) => (
+}: OptionListWithSectionProps<ValueType>) => (
   <>
     <div className='text-primary-30 pl-8 uppercase font-semibold text-xs select-none'>
       {sectionTitle}
     </div>
     {options.map((option) => (
-      <OptionItem
-        key={option.value}
+      <OptionItem<ValueType>
+        key={option.key}
         className='!pl-[42px]'
         option={option}
         searchQuery={searchQuery}

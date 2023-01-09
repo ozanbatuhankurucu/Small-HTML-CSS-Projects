@@ -1,25 +1,25 @@
-import React, { FC } from 'react'
+import React from 'react'
 import cx from 'classnames'
 import { Info } from 'phosphor-react'
-import { Option } from './DropdownWithSearch'
+import { Option } from './types'
 
-interface OptionItemProps {
-  option: Option
+interface OptionItemProps<ValueType = string> {
+  option: Option<ValueType>
   searchQuery: string
-  onOptionClick: (option: Option) => void
+  onOptionClick: (option: Option<ValueType>) => void
   filteredAccordionOptionsLength?: number
   tooltipDescription?: string
   className?: string
 }
 
-const OptionItem: FC<OptionItemProps> = ({
+const OptionItem = <ValueType extends unknown>({
   option,
   searchQuery,
   onOptionClick,
   filteredAccordionOptionsLength,
   tooltipDescription,
   className
-}) => (
+}: OptionItemProps<ValueType>) => (
   <button
     type='button'
     onClick={() => onOptionClick(option)}
