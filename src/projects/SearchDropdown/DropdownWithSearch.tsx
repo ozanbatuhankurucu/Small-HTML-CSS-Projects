@@ -4,26 +4,41 @@ import cx from 'classnames'
 import * as _ from 'lodash'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
-import { ReactComponent as YourSvg } from '../../assets/svg/MagnifyingGlass.svg'
+import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
 import { OptionListWithSection } from './OptionListWithSection'
 import { isLabelIncludesSearchQuery } from './utils'
-
-interface DropdownProps {
-  options: any[]
-  onChange: (_selectedOption: any) => void
-  value: any
+export interface Option {
+  label: string
+  value: string
+  tooltipDescription?: string
+  sectionTitle?: string
+}
+export interface AccordionOption {
+  key: string
+  accordionTitle: string
+  options: Option[]
+}
+interface DropdownWithSearchProps {
+  accordionOptions?: AccordionOption[]
+  nonAccordionOptions?: Option[]
+  onChange: (_selectedOption: Option) => void
+  value: Option
   searchPlaceholder?: string
 }
 
-const DropdownWithSearch: React.FC<DropdownProps> = ({
-  options,
+const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
+  accordionOptions = [],
+  nonAccordionOptions = [],
   onChange,
   value,
   searchPlaceholder = 'Search...'
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [searchQuery, setSearchQuery] = useState<string>('')
-  const [filteredOptions, setFilteredOptions] = useState(options)
+  const [filteredAccordionOptions, setFilteredAccordionOptions] =
+    useState<AccordionOption[]>(accordionOptions)
+  const [filteredNonAccordionOptions, setFilteredNonAccordionOptions] =
+    useState<Option[]>(nonAccordionOptions)
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
@@ -31,7 +46,7 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
   const toggleDropdown = () => {
     if (!isOpen) {
       setSearchQuery('')
-      setFilteredOptions(options)
+      setFilteredAccordionOptions(accordionOptions)
     }
     setIsOpen((prev) => !prev)
   }
@@ -41,35 +56,29 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
     setSearchQuery(targetValue)
 
     // Filter values process start
-    const optionsWithAccordion = options
-      .filter((option) => option.accordion)
+    const filteredAccordionOptions = accordionOptions
       .map((option) => ({
         ...option,
-        options: option.options.filter((opt: any) =>
+        options: option.options.filter((opt) =>
           isLabelIncludesSearchQuery(opt.label, targetValue)
         )
       }))
       .filter((option) => option.options.length > 0)
 
-    const optionsWithoutAccordion = options.filter(
-      (option) =>
-        !option.accordion &&
-        isLabelIncludesSearchQuery(option.label, targetValue)
+    const filteredNonAccordionOptions = nonAccordionOptions.filter((option) =>
+      isLabelIncludesSearchQuery(option.label, targetValue)
     )
 
-    const filteredOptionsBySearchQuery = [
-      ...optionsWithAccordion,
-      ...optionsWithoutAccordion
-    ]
-
-    setFilteredOptions(filteredOptionsBySearchQuery)
+    setFilteredAccordionOptions(filteredAccordionOptions)
+    setFilteredNonAccordionOptions(filteredNonAccordionOptions)
     // Filter values process end
   }
 
-  const handleOptionClick = (selectedOption: any) => {
+  const handleOptionClick = (selectedOption: Option) => {
     setIsOpen(false)
     setSearchQuery('')
-    setFilteredOptions(options)
+    setFilteredAccordionOptions(accordionOptions)
+    setFilteredNonAccordionOptions(nonAccordionOptions)
     onChange(selectedOption)
   }
 
@@ -137,71 +146,74 @@ const DropdownWithSearch: React.FC<DropdownProps> = ({
                   setIsSearchInputFocused(false)
                 }}
               />
-              <YourSvg />
+              <SearchSvg />
             </div>
           </div>
           <hr className='bg-primary-100' />
           <div className='overflow-auto max-h-64 rounded-md shadow-xs py-2'>
-            {filteredOptions.map((option) => {
-              if (option.accordion) {
-                const filterSectionTitledOptions = option.options.filter(
-                  (opt: any) => opt.sectionTitle
-                )
-                const filterNonSectionTitledOptions = option.options.filter(
-                  (opt: any) => !opt.sectionTitle
-                )
-                const groupedBySectionTitle = _.groupBy(
-                  filterSectionTitledOptions,
-                  'sectionTitle'
-                )
+            {filteredAccordionOptions.map((option) => {
+              const isAccordionOpen =
+                searchQuery !== '' && option.options.length > 0
+              const filterSectionTitledOptions = option.options.filter(
+                (opt) => opt.sectionTitle
+              )
+              const filterNonSectionTitledOptions = option.options.filter(
+                (opt) => !opt.sectionTitle
+              )
+              const groupedBySectionTitle = _.groupBy(
+                filterSectionTitledOptions,
+                'sectionTitle'
+              )
 
-                return (
-                  <Accordion
-                    key={option.key}
-                    className='px-2'
-                    title={option.accordionTitle}>
-                    <>
-                      {_.map(groupedBySectionTitle, (groupedOptions, key) => (
-                        <OptionListWithSection
-                          key={key}
-                          handleOptionClick={handleOptionClick}
-                          sectionTitle={key}
-                          options={groupedOptions}
-                          searchQuery={searchQuery}
-                        />
-                      ))}
-                      {filterNonSectionTitledOptions.map(
-                        (nonSectionTitledOption: any) => (
-                          <OptionItem
-                            key={nonSectionTitledOption.value}
-                            className='!pl-[42px]'
-                            option={nonSectionTitledOption}
-                            searchQuery={searchQuery}
-                            onOptionClick={(opt) => handleOptionClick(opt)}
-                            tooltipDescription={
-                              nonSectionTitledOption.tooltipDescription
-                            }
-                          />
-                        )
-                      )}
-                    </>
-                  </Accordion>
-                )
-              }
               return (
-                <OptionItem
+                <Accordion
                   key={option.key}
-                  option={option}
                   searchQuery={searchQuery}
-                  onOptionClick={(opt) => handleOptionClick(opt)}
-                />
+                  className='px-2'
+                  title={option.accordionTitle}>
+                  <>
+                    {_.map(groupedBySectionTitle, (groupedOptions, key) => (
+                      <OptionListWithSection
+                        key={key}
+                        handleOptionClick={handleOptionClick}
+                        sectionTitle={key}
+                        options={groupedOptions}
+                        searchQuery={searchQuery}
+                      />
+                    ))}
+                    {filterNonSectionTitledOptions.map(
+                      (nonSectionTitledOption) => (
+                        <OptionItem
+                          key={nonSectionTitledOption.value}
+                          className='!pl-[42px]'
+                          option={nonSectionTitledOption}
+                          searchQuery={searchQuery}
+                          onOptionClick={(opt) => handleOptionClick(opt)}
+                          tooltipDescription={
+                            nonSectionTitledOption.tooltipDescription
+                          }
+                        />
+                      )
+                    )}
+                  </>
+                </Accordion>
               )
             })}
-            {filteredOptions.length === 0 && (
-              <div className='text-center text-primary-100 text-sm font-semibold py-2'>
-                No results found
-              </div>
-            )}
+            {filteredNonAccordionOptions.map((option) => (
+              <OptionItem
+                key={option.value}
+                option={option}
+                searchQuery={searchQuery}
+                onOptionClick={(opt) => handleOptionClick(opt)}
+                tooltipDescription={option.tooltipDescription}
+              />
+            ))}
+            {filteredAccordionOptions.length === 0 &&
+              filteredNonAccordionOptions.length === 0 && (
+                <div className='text-center text-primary-100 text-sm font-semibold py-2'>
+                  No results found
+                </div>
+              )}
           </div>
         </div>
       )}

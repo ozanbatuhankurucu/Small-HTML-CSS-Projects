@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import DropdownWithSearch from './DropdownWithSearch'
+import DropdownWithSearch, {
+  AccordionOption,
+  Option
+} from './DropdownWithSearch'
 
-const data = [
+const ACCORDION_OPTIONS: AccordionOption[] = [
   {
     key: '1',
-    accordion: true,
     accordionTitle: 'MACO',
     options: [
       {
@@ -21,7 +23,6 @@ const data = [
   },
   {
     key: '3',
-    accordion: true,
     accordionTitle: 'Precision',
     options: [
       {
@@ -50,33 +51,35 @@ const data = [
         value: 'precision_at_1_top_10_products'
       }
     ]
-  },
+  }
+]
+
+const NON_ACCORDION_OPTIONS: Option[] = [
   {
-    key: '4',
     label: '% View to Added',
     value: 'percent_view_to_added1'
   },
   {
-    key: '5',
     label: 'Net Revenue 1',
     value: 'net_revenue2'
   },
   {
-    key: '6',
     label: '% View to Added 2',
     value: 'percent_view_to_added3'
   }
 ]
-const DEFAULT_OPTION = {
+
+const DEFAULT_OPTION: Option = {
   label: 'Net Revenue 5',
   value: 'net_revenue6'
 }
-const DadJokes = () => {
+const SearchDropdown = () => {
   const [selectedMetric, setSelectedMetric] = useState(DEFAULT_OPTION)
   return (
     <div>
       <DropdownWithSearch
-        options={data}
+        accordionOptions={ACCORDION_OPTIONS}
+        nonAccordionOptions={NON_ACCORDION_OPTIONS}
         value={selectedMetric}
         onChange={setSelectedMetric}
         searchPlaceholder='Search metric'
@@ -85,4 +88,4 @@ const DadJokes = () => {
   )
 }
 
-export default DadJokes
+export default SearchDropdown

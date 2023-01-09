@@ -1,22 +1,34 @@
-import React, { ReactNode, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { CaretRight, CaretDown } from 'phosphor-react'
 import cx from 'classnames'
 
 type AccordionProps = {
   children: ReactNode
   title: string
+  searchQuery: string
   className?: string
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   title,
+  searchQuery,
   children,
   className
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const openPanelRef = useRef<HTMLDivElement>(null)
   const openPanelHeight =
-    isOpen && openPanelRef.current ? openPanelRef.current.scrollHeight : '0px'
+    isOpen && openPanelRef.current
+      ? `${openPanelRef.current.scrollHeight}px`
+      : '0px'
+
+  useEffect(() => {
+    if (searchQuery !== '') {
+      setIsOpen(true)
+    } else {
+      setIsOpen(false)
+    }
+  }, [searchQuery])
 
   return (
     <div>
@@ -26,7 +38,7 @@ const Accordion: React.FC<AccordionProps> = ({
           'flex gap-2 cursor-pointer font-semibold text-sm py-[10px] text-primary-70 select-none',
           className
         )}
-        onClick={() => setIsOpen(!isOpen)}>
+        onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? (
           <CaretDown className='pointer-events-none' size={16} />
         ) : (
