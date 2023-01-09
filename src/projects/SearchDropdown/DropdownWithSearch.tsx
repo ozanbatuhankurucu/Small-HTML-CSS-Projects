@@ -47,6 +47,7 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
     if (!isOpen) {
       setSearchQuery('')
       setFilteredAccordionOptions(accordionOptions)
+      setFilteredNonAccordionOptions(nonAccordionOptions)
     }
     setIsOpen((prev) => !prev)
   }
@@ -152,8 +153,6 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
           <hr className='bg-primary-100' />
           <div className='overflow-auto max-h-64 rounded-md shadow-xs py-2'>
             {filteredAccordionOptions.map((option) => {
-              const isAccordionOpen =
-                searchQuery !== '' && option.options.length > 0
               const filterSectionTitledOptions = option.options.filter(
                 (opt) => opt.sectionTitle
               )
