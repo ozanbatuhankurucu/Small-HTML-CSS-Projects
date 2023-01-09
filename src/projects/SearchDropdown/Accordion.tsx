@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { CaretRight, CaretDown } from 'phosphor-react'
 import cx from 'classnames'
 

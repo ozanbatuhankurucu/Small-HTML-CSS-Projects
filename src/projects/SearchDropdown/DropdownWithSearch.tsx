@@ -7,6 +7,7 @@ import OptionItem from './OptionItem'
 import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
 import { OptionListWithSection } from './OptionListWithSection'
 import { isLabelIncludesSearchQuery } from './utils'
+
 export interface Option {
   label: string
   value: string
@@ -57,7 +58,7 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
     setSearchQuery(targetValue)
 
     // Filter values process start
-    const filteredAccordionOptions = accordionOptions
+    const filteredAccordionOpts = accordionOptions
       .map((option) => ({
         ...option,
         options: option.options.filter((opt) =>
@@ -66,12 +67,12 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
       }))
       .filter((option) => option.options.length > 0)
 
-    const filteredNonAccordionOptions = nonAccordionOptions.filter((option) =>
+    const filteredNonAccordionOpts = nonAccordionOptions.filter((option) =>
       isLabelIncludesSearchQuery(option.label, targetValue)
     )
 
-    setFilteredAccordionOptions(filteredAccordionOptions)
-    setFilteredNonAccordionOptions(filteredNonAccordionOptions)
+    setFilteredAccordionOptions(filteredAccordionOpts)
+    setFilteredNonAccordionOptions(filteredNonAccordionOpts)
     // Filter values process end
   }
 
