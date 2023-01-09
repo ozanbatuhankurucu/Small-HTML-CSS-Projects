@@ -44,20 +44,20 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleButtonRef = useRef<HTMLButtonElement>(null)
 
+  const resetFilteredOptions = () => {
+    setFilteredAccordionOptions(accordionOptions)
+    setFilteredNonAccordionOptions(nonAccordionOptions)
+  }
+
   const toggleDropdown = () => {
     if (!isOpen) {
       setSearchQuery('')
-      setFilteredAccordionOptions(accordionOptions)
-      setFilteredNonAccordionOptions(nonAccordionOptions)
+      resetFilteredOptions()
     }
     setIsOpen((prev) => !prev)
   }
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value: targetValue } = event.target
-    setSearchQuery(targetValue)
-
-    // Filter values process start
+  const filterOptions = (targetValue: string) => {
     const filteredAccordionOpts = accordionOptions
       .map((option) => ({
         ...option,
@@ -73,14 +73,18 @@ const DropdownWithSearch: React.FC<DropdownWithSearchProps> = ({
 
     setFilteredAccordionOptions(filteredAccordionOpts)
     setFilteredNonAccordionOptions(filteredNonAccordionOpts)
-    // Filter values process end
+  }
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value: targetValue } = event.target
+    setSearchQuery(targetValue)
+    filterOptions(targetValue)
   }
 
   const handleOptionClick = (selectedOption: Option) => {
     setIsOpen(false)
     setSearchQuery('')
-    setFilteredAccordionOptions(accordionOptions)
-    setFilteredNonAccordionOptions(nonAccordionOptions)
+    resetFilteredOptions()
     onChange(selectedOption)
   }
 
