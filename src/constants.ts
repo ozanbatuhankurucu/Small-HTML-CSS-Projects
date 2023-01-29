@@ -42,7 +42,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Search Dropdown',
     to: 'search-dropdown',
-    progress: 7,
+    progress: 10,
     addedDate: '2023-01-04'
   },
   {

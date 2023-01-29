@@ -3,8 +3,8 @@ import * as _ from 'lodash'
 import { CaretDown, CaretUp } from 'phosphor-react'
 import React, { useEffect, useRef, useState } from 'react'
 import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
+import SkeletonLoader from '../../components/SkeletonLoader'
 
-// import { LoadingShimmer } from '../LoadingShimmer'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
 import OptionListWithSection from './OptionListWithSection'
@@ -104,6 +104,8 @@ function DropdownWithSearch<ValueType>({
     }
   }, [dropdownRef, toggleButtonRef])
 
+  if (loading) return <SkeletonLoader className='!h-10 !w-36' />
+
   return (
     <div className={cx('relative inline-block text-left', className)}>
       <button
@@ -113,8 +115,7 @@ function DropdownWithSearch<ValueType>({
         className={cx(
           'text-primary-90 bg-primary-2 text-sm font-semibold py-2 pl-[14px] pr-4 rounded-[1px] leading-5 min-w-[192px] border border-primary-15 whitespace-nowrap focus:outline-none  hover:bg-primary-10',
           {
-            '!bg-primary-10 !border-primary-50': isOpen,
-            '!hidden': loading
+            '!bg-primary-10 !border-primary-50': isOpen
           }
         )}>
         <div className='flex items-center justify-between w-full gap-2 pointer-events-none'>
@@ -146,7 +147,6 @@ function DropdownWithSearch<ValueType>({
           </div>
         </div>
       </button>
-      {/* {loading && <LoadingShimmer className='h-10 w-36' />} */}
       {isOpen && (
         <div
           ref={dropdownRef}
