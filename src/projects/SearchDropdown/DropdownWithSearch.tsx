@@ -4,8 +4,6 @@ import { CaretDown, CaretUp } from 'phosphor-react'
 import React, { useEffect, useRef, useState } from 'react'
 import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
 
-import MagnifyingGlass from '@/assets/icons/MagnifyingGlass.svg'
-
 // import { LoadingShimmer } from '../LoadingShimmer'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
