@@ -1,29 +1,39 @@
-import { CaretDown, CaretUp } from 'phosphor-react'
-import React, { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
 import * as _ from 'lodash'
+import { CaretDown, CaretUp } from 'phosphor-react'
+import React, { useEffect, useRef, useState } from 'react'
+import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
+
+import MagnifyingGlass from '@/assets/icons/MagnifyingGlass.svg'
+
+// import { LoadingShimmer } from '../LoadingShimmer'
 import Accordion from './Accordion'
 import OptionItem from './OptionItem'
-import { ReactComponent as SearchSvg } from '../../assets/svg/MagnifyingGlass.svg'
-import { OptionListWithSection } from './OptionListWithSection'
-import { isLabelIncludesSearchQuery } from './utils'
+import OptionListWithSection from './OptionListWithSection'
 import { AccordionOption, Option } from './types'
+import { isLabelIncludesSearchQuery } from './utils'
 
 interface DropdownWithSearchProps<ValueType = string> {
   accordionOptions?: AccordionOption<ValueType>[]
   nonAccordionOptions?: Option<ValueType>[]
-  onChange: (_selectedOption: Option<ValueType>) => void
-  value: Option<ValueType>
   searchPlaceholder?: string
+  menuContainerClass?: string
+  className?: string
+  loading?: boolean
+  onChange: (_selectedOption: Option<ValueType>) => void
+  value: Option<ValueType> | undefined
 }
 
-const DropdownWithSearch = <ValueType extends unknown>({
+function DropdownWithSearch<ValueType>({
   accordionOptions = [],
   nonAccordionOptions = [],
+  menuContainerClass,
+  className,
+  loading,
+  searchPlaceholder = 'Search...',
   onChange,
-  value,
-  searchPlaceholder = 'Search...'
-}: DropdownWithSearchProps<ValueType>) => {
+  value
+}: DropdownWithSearchProps<ValueType>) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [filteredAccordionOptions, setFilteredAccordionOptions] =
@@ -57,8 +67,8 @@ const DropdownWithSearch = <ValueType extends unknown>({
       }))
       .filter((option) => option.options.length > 0)
 
-    const filteredNonAccordionOpts = nonAccordionOptions.filter((option) =>
-      isLabelIncludesSearchQuery(option.label, targetValue)
+    const filteredNonAccordionOpts = nonAccordionOptions.filter((opt) =>
+      isLabelIncludesSearchQuery(opt.label, targetValue)
     )
 
     setFilteredAccordionOptions(filteredAccordionOpts)
@@ -97,35 +107,59 @@ const DropdownWithSearch = <ValueType extends unknown>({
   }, [dropdownRef, toggleButtonRef])
 
   return (
-    <div className='relative inline-block text-left'>
+    <div className={cx('relative inline-block text-left', className)}>
       <button
         ref={toggleButtonRef}
         type='button'
         onClick={toggleDropdown}
         className={cx(
-          'flex items-center justify-between gap-2 text-primary-100 bg-primary-2 text-sm font-semibold py-2 pl-[14px] pr-4 appearance-none rounded-[1px] leading-5 min-w-[192px] h-9 border border-primary-15  focus:outline-none  hover:bg-primary-10',
+          'text-primary-90 bg-primary-2 text-sm font-semibold py-2 pl-[14px] pr-4 rounded-[1px] leading-5 min-w-[192px] border border-primary-15 whitespace-nowrap focus:outline-none  hover:bg-primary-10',
           {
-            '!bg-primary-10 !border-primary-50': isOpen
+            '!bg-primary-10 !border-primary-50': isOpen,
+            '!hidden': loading
           }
         )}>
-        {value.sectionTitle && (
-          <span className='pointer-events-none'>{value.sectionTitle}: </span>
-        )}
-        {value.label}
-        {isOpen ? (
-          <CaretUp className='pointer-events-none' size={12} />
-        ) : (
-          <CaretDown className='pointer-events-none' size={12} />
-        )}
+        <div className='flex items-center justify-between w-full gap-2 pointer-events-none'>
+          <div>
+            {value && (
+              <>
+                {value.labelElement && value.sectionTitle && (
+                  <div className='flex items-center gap-2'>
+                    <span>{value.sectionTitle}:</span>
+                    {value.labelElement}
+                  </div>
+                )}
+                {value.labelElement && !value.sectionTitle && (
+                  <> {value.labelElement} </>
+                )}
+                {!value.labelElement && value.sectionTitle && (
+                  <span>
+                    {value.sectionTitle}: {value.label}
+                  </span>
+                )}
+                {!value.labelElement && !value.sectionTitle && (
+                  <span>{value.label}</span>
+                )}
+              </>
+            )}
+          </div>
+          <div className='w-3 h-3'>
+            {isOpen ? <CaretUp size={12} /> : <CaretDown size={12} />}
+          </div>
+        </div>
       </button>
+      {/* {loading && <LoadingShimmer className='h-10 w-36' />} */}
       {isOpen && (
         <div
           ref={dropdownRef}
-          className='origin-top-left absolute left-0 mt-3 min-w-[300px] border border-primary-10 backdrop-blur-[10px] rounded-[4px] shadow-sm bg-white'>
+          className={cx(
+            'origin-top-left absolute left-0 mt-3 min-w-[300px] border border-primary-10 backdrop-blur-[10px] rounded-[4px] shadow-sm z-10 bg-contrast-100',
+            menuContainerClass
+          )}>
           <div className='p-2'>
             <div
               className={cx(
-                'flex items-center border bg-primary-5 text-primary-100 p-2 rounded-[4px] hover:bg-primary-10 hover:border-primary-50',
+                'flex items-center border bg-primary-5 text-primary-100 p-2 rounded-[4px] hover:bg-primary-10  hover:border-primary-50',
                 {
                   '!bg-primary-10 !border-primary-50': isSearchInputFocused
                 }
@@ -179,13 +213,11 @@ const DropdownWithSearch = <ValueType extends unknown>({
                       (nonSectionTitledOption) => (
                         <OptionItem<ValueType>
                           key={nonSectionTitledOption.key}
+                          isAccordionOption
                           className='!pl-[42px]'
                           option={nonSectionTitledOption}
                           searchQuery={searchQuery}
                           onOptionClick={(opt) => handleOptionClick(opt)}
-                          tooltipDescription={
-                            nonSectionTitledOption.tooltipDescription
-                          }
                         />
                       )
                     )}
@@ -196,10 +228,11 @@ const DropdownWithSearch = <ValueType extends unknown>({
             {filteredNonAccordionOptions.map((option) => (
               <OptionItem<ValueType>
                 key={option.key}
+                className='!text-primary-80 !font-bold'
+                isAccordionOption={false}
                 option={option}
                 searchQuery={searchQuery}
                 onOptionClick={(opt) => handleOptionClick(opt)}
-                tooltipDescription={option.tooltipDescription}
                 filteredAccordionOptionsLength={filteredAccordionOptions.length}
               />
             ))}
@@ -215,5 +248,4 @@ const DropdownWithSearch = <ValueType extends unknown>({
     </div>
   )
 }
-
 export default DropdownWithSearch

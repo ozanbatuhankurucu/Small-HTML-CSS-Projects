@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect, useState } from 'react'
-import { CaretRight, CaretDown } from 'phosphor-react'
 import cx from 'classnames'
+import { CaretDown, CaretRight } from 'phosphor-react'
+import React, { ReactNode, useEffect, useState } from 'react'
 
 type AccordionProps = {
   children: ReactNode

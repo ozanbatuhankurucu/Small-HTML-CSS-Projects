@@ -1,8 +1,10 @@
+import { ReactElement } from 'react'
+
 export interface Option<ValueType = string> {
   key: string
   label: string
+  labelElement?: ReactElement
   value: ValueType
-  tooltipDescription?: string
   sectionTitle?: string
 }
 export interface AccordionOption<ValueType = string> {

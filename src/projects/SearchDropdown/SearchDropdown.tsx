@@ -9,15 +9,14 @@ const ACCORDION_OPTIONS: AccordionOption[] = [
     options: [
       {
         key: '32',
-        label: 'Maco by Suggested Order',
-        value: 'maco_suggested_order12',
-        tooltipDescription: 'Maco by Suggested Order'
+        label: 'Test',
+        labelElement: <div>Test</div>,
+        value: 'maco_suggested_order12'
       },
       {
         key: '33',
         label: 'Maco Total',
-        value: 'maco_total232',
-        tooltipDescription: 'Maco Total'
+        value: 'maco_total232'
       }
     ]
   },
