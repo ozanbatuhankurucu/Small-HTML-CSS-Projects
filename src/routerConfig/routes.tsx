@@ -8,6 +8,7 @@ import Wrapper from '../projects/FormWaveAnimation'
 import SoundBoard from '../projects/SoundBoard'
 import SearchDropdown from '../projects/SearchDropdown'
 import DadJokes from '../projects/DadJokes'
+import DiamondAutograder from '../projects/DiamondAutograder'
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
     id: '9',
     path: '/projects/dad-jokes',
     element: <DadJokes />
+  },
+  {
+    id: '10',
+    path: '/projects/diamond-autograder',
+    element: <DiamondAutograder />
   }
 ]
 export default routes
