@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { stepsData } from './constants'
-import { StepContent } from './StepContent'
-import { Steps } from './Steps'
+import { StepContent } from './components/StepContent'
+import { Steps } from './components/Steps'
 import { Step, StepsDataType } from './types'
 
 export const DiamondAutograder = () => {

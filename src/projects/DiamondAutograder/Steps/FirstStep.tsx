@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box } from '../Box'
+import { Box } from '../components/Box'
 import { SHAPES } from '../constants'
 import { Shape, Step, StepsDataType } from '../types'
 

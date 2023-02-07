@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { DiamondAutograder } from './DiamondAutograder'
-import { Steps } from './Steps'
+import { Steps } from './components/Steps'
 
 const Wrapper = () => {
   return (

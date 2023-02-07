@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { FC } from 'react'
 import { Box } from './Box'
-import { Step, StepsDataType } from './types'
+import { Step, StepsDataType } from '../types'
 
 interface StepsProps {
   steps: StepsDataType
