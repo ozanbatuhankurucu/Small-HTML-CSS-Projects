@@ -6,13 +6,8 @@ import { Step, StepsDataType } from '../types'
 interface StepsProps {
   steps: StepsDataType
   selectedStep: number
-  setSelectedStep: (selectedStep: number) => void
 }
-export const Steps: FC<StepsProps> = ({
-  steps,
-  selectedStep,
-  setSelectedStep
-}) => {
+export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
   return (
     <div className='flex flex-col gap-5 items-center justify-center'>
       {_.map(steps, ({ icon, label, step, key, selectedValue }) => (
@@ -21,7 +16,6 @@ export const Steps: FC<StepsProps> = ({
           icon={icon}
           label={selectedValue ?? label}
           isSelected={selectedStep !== undefined && step === selectedStep}
-          onClick={() => setSelectedStep(step)}
         />
       ))}
     </div>

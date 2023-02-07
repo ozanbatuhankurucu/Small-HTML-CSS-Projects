@@ -13,7 +13,7 @@ export const FirstStep: FC<FirstStepProps> = ({
   setSelectedStep,
   setSteps
 }) => {
-  const handleBoxOnClick = (selectedShape: Shape) => {
+  const handleShapeBoxOnClick = (selectedShape: Shape) => {
     setSelectedStep(1)
     setSteps((prev) => ({
       ...prev,
@@ -34,7 +34,7 @@ export const FirstStep: FC<FirstStepProps> = ({
             key={shape}
             label={shape}
             isSelected={shape === firstStep.selectedValue}
-            onClick={() => handleBoxOnClick(shape)}
+            onClick={() => handleShapeBoxOnClick(shape)}
           />
         ))}
       </div>

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import cx from 'classnames'
 
 interface BoxProps {
-  label?: string
+  label?: string | number
   icon?: React.ReactElement | string
   isSelected?: boolean
   className?: string

@@ -26,7 +26,13 @@ export const StepContent: FC<StepContentProps> = ({
   }
 
   if (selectedStep === 1) {
-    return <SecondStep />
+    return (
+      <SecondStep
+        setSelectedStep={setSelectedStep}
+        secondStep={steps.secondStep}
+        setSteps={setSteps}
+      />
+    )
   }
   return null
 }

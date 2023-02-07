@@ -7,7 +7,7 @@ export interface Step {
   step: number
   icon: React.ReactElement
   key: string
-  selectedValue?: string
+  selectedValue?: string | number
 }
 
 export type Shape =
