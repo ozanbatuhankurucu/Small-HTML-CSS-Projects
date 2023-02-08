@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { UploadSimple } from 'phosphor-react'
 import { v4 } from 'uuid'
-import { Shape, Step, StepsDataType } from './types'
+import { Shape, StepsDataType } from './types'
 
 export const stepsData: StepsDataType = _.mapValues(
   {

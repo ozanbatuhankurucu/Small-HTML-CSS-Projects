@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { FirstStep } from '../Steps/FirstStep'
 import { SecondStep } from '../Steps/SecondStep'
+import { ThirdStep } from '../Steps/ThirdStep'
 import { StepsDataType } from '../types'
 
 interface StepContentProps {
@@ -33,6 +34,10 @@ export const StepContent: FC<StepContentProps> = ({
         setSteps={setSteps}
       />
     )
+  }
+
+  if (selectedStep === 2) {
+    return <ThirdStep setSteps={setSteps} />
   }
   return null
 }

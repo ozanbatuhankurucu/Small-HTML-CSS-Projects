@@ -2,10 +2,11 @@ import React, { FC } from 'react'
 import cx from 'classnames'
 
 interface BoxProps {
-  label?: string | number
+  label?: React.ReactElement
   icon?: React.ReactElement | string
   isSelected?: boolean
   className?: string
+  iconClassName?: string
   onClick?: () => void
 }
 export const Box: FC<BoxProps> = ({
@@ -13,6 +14,7 @@ export const Box: FC<BoxProps> = ({
   label,
   isSelected,
   className,
+  iconClassName,
   onClick
 }) => {
   return (
@@ -25,11 +27,12 @@ export const Box: FC<BoxProps> = ({
         }
       )}
       onClick={onClick}>
-      {label && (
-        <span className='font-bold text-xs text-[#B1B5C1]'>{label}</span>
-      )}
+      {label}
       {icon && (
-        <div className='flex justify-end font-normal text-xs'>{icon}</div>
+        <div
+          className={cx('flex justify-end font-normal text-xs', iconClassName)}>
+          {icon}
+        </div>
       )}
     </div>
   )

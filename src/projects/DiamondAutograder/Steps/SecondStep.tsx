@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react'
 import NumberPicker from '../components/NumberPicker'
 import cx from 'classnames'
-import { Step, StepsDataType } from '../types'
+import { SecondStepType, Step, StepsDataType } from '../types'
 
 interface SecondStepProps {
-  secondStep: Step
+  secondStep: SecondStepType
   setSelectedStep: (selectedStep: number) => void
   setSteps: React.Dispatch<React.SetStateAction<StepsDataType>>
 }
@@ -21,7 +21,7 @@ export const SecondStep: FC<SecondStepProps> = ({
       ...prev,
       secondStep: {
         ...prev.secondStep,
-        selectedValue: value === 0 ? undefined : value
+        selectedValue: value === 0 ? undefined : parseFloat(value.toFixed(2))
       }
     }))
   }

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { Box } from '../components/Box'
 import { SHAPES } from '../constants'
-import { Shape, Step, StepsDataType } from '../types'
+import { FirstStepType, Shape, Step, StepsDataType } from '../types'
 
 interface FirstStepProps {
-  firstStep: Step
+  firstStep: FirstStepType
   setSelectedStep: (selectedStep: number) => void
   setSteps: React.Dispatch<React.SetStateAction<StepsDataType>>
 }
@@ -32,7 +32,9 @@ export const FirstStep: FC<FirstStepProps> = ({
           <Box
             className='!pb-5 cursor-pointer'
             key={shape}
-            label={shape}
+            label={
+              <span className='font-bold text-xs text-[#B1B5C1]'>{shape}</span>
+            }
             isSelected={shape === firstStep.selectedValue}
             onClick={() => handleShapeBoxOnClick(shape)}
           />
