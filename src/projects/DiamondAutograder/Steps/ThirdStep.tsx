@@ -1,10 +1,6 @@
 import React, { FC } from 'react'
 import { UploadFileBox } from '../components/UploadFileBox'
-import {
-  FileInputEvent,
-  StepsDataType,
-  ThirdStepSelectedValueType
-} from '../types'
+import { FileInputEvent, StepsDataType } from '../types'
 
 interface ThirdStepProps {
   setSteps: React.Dispatch<React.SetStateAction<StepsDataType>>
