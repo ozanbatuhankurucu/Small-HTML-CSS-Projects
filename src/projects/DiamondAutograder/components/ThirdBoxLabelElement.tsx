@@ -1,8 +1,5 @@
 import React, { FC } from 'react'
-import {
-  ThirdStepSelectedValuePartialType,
-  ThirdStepSelectedValueType
-} from '../types'
+import { ThirdStepSelectedValuePartialType } from '../types'
 
 interface ThirdBoxLabelElementProps {
   selectedValue: ThirdStepSelectedValuePartialType

@@ -1,12 +1,18 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { UploadFileBox } from '../components/UploadFileBox'
-import { FileInputEvent, StepsDataType } from '../types'
+import { FileInputEvent, StepsDataType, ThirdStepType } from '../types'
 
 interface ThirdStepProps {
+  thirdStep: ThirdStepType
+  setSelectedStep: (selectedStep: number) => void
   setSteps: React.Dispatch<React.SetStateAction<StepsDataType>>
 }
 
-export const ThirdStep: FC<ThirdStepProps> = ({ setSteps }) => {
+export const ThirdStep: FC<ThirdStepProps> = ({
+  thirdStep,
+  setSelectedStep,
+  setSteps
+}) => {
   const handleFileChange = (
     event: FileInputEvent,
     imagePreview: string,
@@ -24,6 +30,16 @@ export const ThirdStep: FC<ThirdStepProps> = ({ setSteps }) => {
       }
     }))
   }
+
+  useEffect(() => {
+    if (thirdStep.selectedValue) {
+      const { bottomFile, leftFile, rightFile, topFile } =
+        thirdStep.selectedValue
+      if (bottomFile && leftFile && rightFile && topFile) {
+        setSelectedStep(3)
+      }
+    }
+  }, [thirdStep])
 
   return (
     <div>

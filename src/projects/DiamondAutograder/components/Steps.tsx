@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Box } from './Box'
 import { StepsDataType } from '../types'
 import { BoxLabel } from './BoxLabel'
@@ -13,6 +13,15 @@ interface StepsProps {
 }
 export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
   const { firstStep, secondStep, thirdStep } = steps
+  const isSelectedThirdBox =
+    getBoxIsSelectedCondition(selectedStep, thirdStep.step) &&
+    !(
+      thirdStep.selectedValue?.topFile &&
+      thirdStep.selectedValue?.leftFile &&
+      thirdStep.selectedValue?.bottomFile &&
+      thirdStep.selectedValue?.rightFile
+    )
+
   return (
     <div className='flex flex-col gap-5 items-center justify-center'>
       <Box
@@ -53,7 +62,7 @@ export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
             label={thirdStep.label}
           />
         }
-        isSelected={getBoxIsSelectedCondition(selectedStep, thirdStep.step)}
+        isSelected={isSelectedThirdBox}
       />
     </div>
   )

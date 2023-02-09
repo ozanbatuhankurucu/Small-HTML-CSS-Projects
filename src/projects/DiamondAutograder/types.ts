@@ -47,3 +47,24 @@ export interface FileInputEvent extends React.ChangeEvent<HTMLInputElement> {
     files: FileList
   }
 }
+
+export interface AIGuessResponse {
+  diamond_id: string
+  first_guess: string
+  second_guess: string
+}
+
+export type AIGuessDataType = AIGuessResponse & {
+  isFirstGuessCorrect?: boolean
+}
+
+export type DiamondClarityType =
+  | 'I2'
+  | 'I1'
+  | 'SI2'
+  | 'SI1'
+  | 'VS2'
+  | 'VS1'
+  | 'VVS2'
+  | 'VVS1'
+  | 'FL'
