@@ -1,18 +1,7 @@
 import React, { FC } from 'react'
 import { AIGuessDataType, DiamondClarityType } from '../types'
 import cx from 'classnames'
-
-const DIAMOND_CLARITY_OPTIONS: DiamondClarityType[] = [
-  'I2',
-  'I1',
-  'SI2',
-  'SI1',
-  'VS2',
-  'VS1',
-  'VVS2',
-  'VVS1',
-  'FL'
-]
+import { DIAMOND_CLARITY_OPTIONS } from '../constants'
 
 interface FifthStepProps {
   aiGuessData: AIGuessDataType | undefined

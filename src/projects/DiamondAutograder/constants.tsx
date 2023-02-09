@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { UploadSimple } from 'phosphor-react'
 import { v4 } from 'uuid'
-import { Shape, StepsDataType } from './types'
+import { DiamondClarityType, Shape, StepsDataType } from './types'
 
 export const stepsData: StepsDataType = _.mapValues(
   {
@@ -31,4 +31,16 @@ export const SHAPES: Shape[] = [
   'Oval',
   'Heart',
   'Marquise'
+]
+
+export const DIAMOND_CLARITY_OPTIONS: DiamondClarityType[] = [
+  'I2',
+  'I1',
+  'SI2',
+  'SI1',
+  'VS2',
+  'VS1',
+  'VVS2',
+  'VVS1',
+  'FL'
 ]
