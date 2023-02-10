@@ -4,10 +4,12 @@ import { FileInputEvent } from '../types'
 
 interface UploadFileBoxProps {
   label?: React.ReactElement
+  imgPreview?: string
   fileChange?: (event: FileInputEvent, imagePreview: string) => void
 }
 export const UploadFileBox: FC<UploadFileBoxProps> = ({
   label,
+  imgPreview,
   fileChange
 }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
@@ -22,17 +24,15 @@ export const UploadFileBox: FC<UploadFileBoxProps> = ({
     fileChange?.(event, imagePreview)
     setImagePreview(imagePreview)
   }
-
+  const img = imagePreview || imgPreview
   return (
     <div
       className='bg-[#272E3F] pt-3 pb-2 px-4 rounded-lg w-[200px] cursor-pointer hover:border hover:border-white'
       onClick={handleDivOnClick}>
       {label}
       <div className='flex justify-end -mt-6'>
-        {!imagePreview && <UploadSimple size={32} />}
-        {imagePreview && (
-          <img src={imagePreview} width={51} height={45} alt='Preview' />
-        )}
+        {!img && <UploadSimple size={32} />}
+        {img && <img src={img} width={51} height={45} alt='Preview' />}
       </div>
       <input
         type='file'

@@ -36,6 +36,8 @@ export const ThirdStep: FC<ThirdStepProps> = ({
     setSelectedStep(getFirstEmptyStep(steps))
   }
 
+  const { thirdStep } = steps
+
   return (
     <div>
       <div className='font-normal text-sm'>Upload diamond images</div>
@@ -45,12 +47,14 @@ export const ThirdStep: FC<ThirdStepProps> = ({
           fileChange={(event, imagePreview) =>
             handleFileChange(event, imagePreview, 'top')
           }
+          imgPreview={thirdStep.selectedValue?.topImagePreview}
         />
         <UploadFileBox
           label={<span className='font-bold text-xs text-[#B1B5C1]'>Left</span>}
           fileChange={(event, imagePreview) =>
             handleFileChange(event, imagePreview, 'left')
           }
+          imgPreview={thirdStep.selectedValue?.leftImagePreview}
         />
         <UploadFileBox
           label={
@@ -59,6 +63,7 @@ export const ThirdStep: FC<ThirdStepProps> = ({
           fileChange={(event, imagePreview) =>
             handleFileChange(event, imagePreview, 'bottom')
           }
+          imgPreview={thirdStep.selectedValue?.bottomImagePreview}
         />
         <UploadFileBox
           label={
@@ -67,6 +72,7 @@ export const ThirdStep: FC<ThirdStepProps> = ({
           fileChange={(event, imagePreview) =>
             handleFileChange(event, imagePreview, 'right')
           }
+          imgPreview={thirdStep.selectedValue?.rightImagePreview}
         />
       </div>
       <button
