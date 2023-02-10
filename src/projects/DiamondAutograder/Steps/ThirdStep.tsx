@@ -1,16 +1,17 @@
 import React, { FC, useEffect } from 'react'
 import { UploadFileBox } from '../components/UploadFileBox'
-import { FileInputEvent, StepsDataType, ThirdStepType } from '../types'
-
+import { FileInputEvent, Step, StepsDataType, ThirdStepType } from '../types'
+import cx from 'classnames'
+import { getFirstEmptyStep } from '../utils'
 interface ThirdStepProps {
-  thirdStep: ThirdStepType
   setSelectedStep: (selectedStep: number) => void
+  steps: StepsDataType
   setSteps: React.Dispatch<React.SetStateAction<StepsDataType>>
 }
 
 export const ThirdStep: FC<ThirdStepProps> = ({
-  thirdStep,
   setSelectedStep,
+  steps,
   setSteps
 }) => {
   const handleFileChange = (
@@ -31,15 +32,9 @@ export const ThirdStep: FC<ThirdStepProps> = ({
     }))
   }
 
-  useEffect(() => {
-    if (thirdStep.selectedValue) {
-      const { bottomFile, leftFile, rightFile, topFile } =
-        thirdStep.selectedValue
-      if (bottomFile && leftFile && rightFile && topFile) {
-        setSelectedStep(3)
-      }
-    }
-  }, [thirdStep])
+  const handleCompleteButtonOnClick = () => {
+    setSelectedStep(getFirstEmptyStep(steps))
+  }
 
   return (
     <div>
@@ -74,6 +69,11 @@ export const ThirdStep: FC<ThirdStepProps> = ({
           }
         />
       </div>
+      <button
+        className='py-2 px-9 border border-[#E4E4E8] text-[#E4E4E8] rounded-[20px] mt-[62px]'
+        onClick={handleCompleteButtonOnClick}>
+        Complete
+      </button>
     </div>
   )
 }

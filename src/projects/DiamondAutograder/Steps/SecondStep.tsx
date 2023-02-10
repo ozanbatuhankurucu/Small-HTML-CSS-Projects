@@ -27,7 +27,7 @@ export const SecondStep: FC<SecondStepProps> = ({
   }
 
   return (
-    <div className='-mt-10'>
+    <div>
       <div className='font-normal text-sm'>What is the diamond’s weight?</div>
       <div className='font-normal text-sm mt-11'>Carats</div>
       <NumberPicker
@@ -50,14 +50,7 @@ export const SecondStep: FC<SecondStepProps> = ({
         <span className='text-[#515674] text-xs font-normal ml-2'>C</span>
       </div>
       <button
-        className={cx(
-          'py-2 px-[13px] w-[70px] border border-[#515674] text-[#515674] rounded-[20px] mt-[62px]',
-          {
-            '!border-[#E4E4E8] !text-[#E4E4E8]':
-              isSelectedCaratNumberBiggerThanZero
-          }
-        )}
-        disabled={!isSelectedCaratNumberBiggerThanZero}
+        className='py-2 px-9 border border-[#E4E4E8] text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={() => setSelectedStep(2)}>
         Next
       </button>

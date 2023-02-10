@@ -10,8 +10,13 @@ import cx from 'classnames'
 interface StepsProps {
   steps: StepsDataType
   selectedStep: number
+  setSelectedStep: (step: number) => void
 }
-export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
+export const Steps: FC<StepsProps> = ({
+  steps,
+  selectedStep,
+  setSelectedStep
+}) => {
   const { firstStep, secondStep, thirdStep } = steps
   const isSelectedThirdBox =
     getBoxIsSelectedCondition(selectedStep, thirdStep.step) &&
@@ -25,6 +30,7 @@ export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
   return (
     <div className='flex flex-col gap-5 items-center justify-center'>
       <Box
+        className='cursor-pointer'
         key={firstStep.key}
         icon={firstStep.icon}
         label={
@@ -34,8 +40,10 @@ export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
           />
         }
         isSelected={getBoxIsSelectedCondition(selectedStep, firstStep.step)}
+        onClick={() => setSelectedStep(0)}
       />
       <Box
+        className='cursor-pointer'
         key={secondStep.key}
         icon={secondStep.icon}
         label={
@@ -45,9 +53,10 @@ export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
           />
         }
         isSelected={getBoxIsSelectedCondition(selectedStep, secondStep.step)}
+        onClick={() => setSelectedStep(1)}
       />
       <Box
-        className={cx({
+        className={cx('cursor-pointer', {
           'flex flex-col gap-[6px] !pl-[11px] !pr-[14px]':
             thirdStep.selectedValue
         })}
@@ -63,6 +72,7 @@ export const Steps: FC<StepsProps> = ({ steps, selectedStep }) => {
           />
         }
         isSelected={isSelectedThirdBox}
+        onClick={() => setSelectedStep(2)}
       />
     </div>
   )

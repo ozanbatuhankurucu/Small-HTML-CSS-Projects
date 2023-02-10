@@ -17,7 +17,11 @@ export const DiamondAutograder = () => {
 
   return (
     <div className='h-full flex items-center gap-[164px] px-[88px]'>
-      <Steps steps={steps} selectedStep={selectedStep} />
+      <Steps
+        steps={steps}
+        selectedStep={selectedStep}
+        setSelectedStep={setSelectedStep}
+      />
       <StepContent
         selectedStep={selectedStep}
         setSelectedStep={setSelectedStep}

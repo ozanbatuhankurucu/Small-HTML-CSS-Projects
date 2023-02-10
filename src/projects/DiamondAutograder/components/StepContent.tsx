@@ -50,7 +50,7 @@ export const StepContent: FC<StepContentProps> = ({
     return (
       <ThirdStep
         setSelectedStep={setSelectedStep}
-        thirdStep={steps.thirdStep}
+        steps={steps}
         setSteps={setSteps}
       />
     )

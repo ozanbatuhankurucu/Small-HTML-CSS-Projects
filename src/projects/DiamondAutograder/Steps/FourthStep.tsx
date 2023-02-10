@@ -21,6 +21,7 @@ export const FourthStep: FC<FourthStepProps> = ({
   setAIGuessData,
   setSelectedStep
 }) => {
+  const [showLoader, setShowLoader] = useState(true)
   const { data, error, mutate, isLoading } = useSWR<AIGuessResponse>(
     'https://hydra-dev.internal.arena-ai.com/hydra/api/hydra/core/diamond',
     async () => {
@@ -63,15 +64,19 @@ export const FourthStep: FC<FourthStepProps> = ({
   )
 
   const { first_guess, second_guess, isFirstGuessCorrect } = aiGuessData || {}
-  const showGuessDiamondElements = aiGuessData && !isLoading
-  console.log('%c -----aiGuessData----- ', 'background: #FF0000')
-  console.log(aiGuessData)
-  console.log('%c -----aiGuessData----- ', 'background: #FF0000')
 
+  const showTextLoadingIndicator = showLoader || isLoading
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowLoader(false)
+    }, 6000)
+    return () => clearTimeout(timeout)
+  }, [])
   return (
     <div>
-      {isLoading && <TextLoadingIndicator />}
-      {showGuessDiamondElements && (
+      {showTextLoadingIndicator && <TextLoadingIndicator />}
+      {!showTextLoadingIndicator && aiGuessData && (
         <>
           <GuessDiamond
             label='First guess'
