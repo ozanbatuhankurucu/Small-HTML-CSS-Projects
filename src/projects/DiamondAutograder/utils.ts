@@ -22,5 +22,5 @@ export const getFirstEmptyStep = (steps: StepsDataType) => {
   ) {
     return thirdStep.step
   }
-  return 3
+  return Object.keys(steps).length
 }

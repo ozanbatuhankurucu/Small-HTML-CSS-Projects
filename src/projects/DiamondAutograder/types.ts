@@ -1,4 +1,10 @@
 import React from 'react'
+export interface Step {
+  label: string
+  step: number
+  icon: React.ReactElement
+  key: string
+}
 
 export interface FirstStepType extends Step {
   selectedValue?: string
@@ -26,12 +32,6 @@ export interface StepsDataType {
   firstStep: FirstStepType
   secondStep: SecondStepType
   thirdStep: ThirdStepType
-}
-export interface Step {
-  label: string
-  step: number
-  icon: React.ReactElement
-  key: string
 }
 
 export type Shape =
