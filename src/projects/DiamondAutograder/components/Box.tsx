@@ -24,7 +24,7 @@ export const Box: FC<BoxProps> = ({
       'bg-[#272E3F] pt-3 pb-2 px-4 rounded-lg w-[200px]',
       className,
       {
-        'border border-white': isSelected
+        '!border !border-white': isSelected
       }
     )}
     onClick={isDisabled ? undefined : onClick}>
