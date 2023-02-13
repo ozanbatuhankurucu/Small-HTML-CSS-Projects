@@ -3,7 +3,7 @@ import { FifthStep } from '../Steps/FifthStep'
 import { FirstStep } from '../Steps/FirstStep'
 import { FourthStep } from '../Steps/FourthStep'
 import { SecondStep } from '../Steps/SecondStep'
-import { SeventhStep } from '../Steps/SeventhStep'
+import { LastStep } from '../Steps/LastStep'
 import { SixthStep } from '../Steps/SixthStep'
 import { ThirdStep } from '../Steps/ThirdStep'
 import { AIGuessDataType, StepsDataType } from '../types'
@@ -78,7 +78,13 @@ export const StepContent: FC<StepContentProps> = ({
   }
 
   if (selectedStep === 6) {
-    return <SeventhStep />
+    return (
+      <LastStep
+        setSelectedStep={setSelectedStep}
+        setSteps={setSteps}
+        setAIGuessData={setAIGuessData}
+      />
+    )
   }
   return null
 }

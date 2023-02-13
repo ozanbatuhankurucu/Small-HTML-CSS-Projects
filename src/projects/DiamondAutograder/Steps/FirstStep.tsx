@@ -30,7 +30,7 @@ export const FirstStep: FC<FirstStepProps> = ({
       <div className='grid grid-cols-2 gap-4 mt-4'>
         {SHAPES.map((shape) => (
           <Box
-            className='!pb-5 cursor-pointer hover:border hover:border-white'
+            className='!pb-5 cursor-pointer border border-[#272E3F] hover:border-white'
             key={shape}
             label={
               <span className='font-bold text-xs text-[#B1B5C1]'>{shape}</span>
@@ -41,7 +41,7 @@ export const FirstStep: FC<FirstStepProps> = ({
         ))}
       </div>
       <button
-        className='py-2 px-9 border border-[#E4E4E8] text-[#E4E4E8] rounded-[20px] mt-[62px]'
+        className='bg-[#272E3F]  border border-[#272E3F] hover:border-white py-2 px-9 text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={() => setSelectedStep(1)}>
         Next
       </button>

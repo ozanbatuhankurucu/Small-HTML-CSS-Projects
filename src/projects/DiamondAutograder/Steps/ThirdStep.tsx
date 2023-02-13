@@ -76,9 +76,9 @@ export const ThirdStep: FC<ThirdStepProps> = ({
         />
       </div>
       <button
-        className='py-2 px-9 border border-[#E4E4E8] text-[#E4E4E8] rounded-[20px] mt-[62px]'
+        className='py-2 px-9 bg-[#272E3F]  border border-[#272E3F] hover:border-white text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={handleCompleteButtonOnClick}>
-        Complete
+        Get Clarity
       </button>
     </div>
   )

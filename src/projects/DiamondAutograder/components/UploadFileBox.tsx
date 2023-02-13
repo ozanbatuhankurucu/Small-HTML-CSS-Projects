@@ -27,7 +27,7 @@ export const UploadFileBox: FC<UploadFileBoxProps> = ({
   const img = imagePreview || imgPreview
   return (
     <div
-      className='bg-[#272E3F] pt-3 pb-2 px-4 rounded-lg w-[200px] cursor-pointer hover:border hover:border-white'
+      className='bg-[#272E3F] pt-3 pb-2 px-4 rounded-lg w-[200px] cursor-pointer border border-[#272E3F] hover:border-white'
       onClick={handleDivOnClick}>
       {label}
       <div className='flex justify-end -mt-6'>
