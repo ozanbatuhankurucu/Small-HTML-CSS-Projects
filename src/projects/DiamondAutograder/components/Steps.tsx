@@ -18,13 +18,13 @@ export const Steps: FC<StepsProps> = ({
   setSelectedStep
 }) => {
   const { firstStep, secondStep, thirdStep } = steps
-  const isStepClickable = selectedStep >= Object.keys(steps).length
+  const isStepClickable = !(selectedStep >= Object.keys(steps).length)
 
   return (
     <div className='flex flex-col gap-5 items-center justify-center'>
       <Box
         className={cx({
-          'cursor-pointer': !isStepClickable
+          'cursor-pointer': isStepClickable
         })}
         key={firstStep.key}
         icon={firstStep.icon}
@@ -36,11 +36,11 @@ export const Steps: FC<StepsProps> = ({
         }
         isSelected={getBoxIsSelectedCondition(selectedStep, firstStep.step)}
         onClick={() => setSelectedStep(0)}
-        isDisabled={isStepClickable}
+        isDisabled={!isStepClickable}
       />
       <Box
         className={cx({
-          'cursor-pointer': !isStepClickable
+          'cursor-pointer': isStepClickable
         })}
         key={secondStep.key}
         icon={secondStep.icon}
@@ -52,13 +52,13 @@ export const Steps: FC<StepsProps> = ({
         }
         isSelected={getBoxIsSelectedCondition(selectedStep, secondStep.step)}
         onClick={() => setSelectedStep(1)}
-        isDisabled={isStepClickable}
+        isDisabled={!isStepClickable}
       />
       <Box
         className={cx({
-          'flex flex-col gap-[6px] !pl-[11px] !pr-[14px]':
+          'flex items-end justify-between gap-[6px] !pl-[11px] !pr-[14px]':
             thirdStep.selectedValue,
-          'cursor-pointer': !isStepClickable
+          'cursor-pointer': isStepClickable
         })}
         key={thirdStep.key}
         icon={thirdStep.icon}
@@ -73,7 +73,7 @@ export const Steps: FC<StepsProps> = ({
         }
         isSelected={getBoxIsSelectedCondition(selectedStep, thirdStep.step)}
         onClick={() => setSelectedStep(2)}
-        isDisabled={isStepClickable}
+        isDisabled={!isStepClickable}
       />
     </div>
   )

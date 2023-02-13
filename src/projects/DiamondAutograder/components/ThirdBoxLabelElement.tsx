@@ -13,12 +13,16 @@ export const ThirdBoxLabelElement: FC<ThirdBoxLabelElementProps> = ({
     topImagePreview,
     leftImagePreview,
     bottomImagePreview,
-    rightImagePreview
+    rightImagePreview,
+    topLeftImagePreview,
+    topRightImagePreview,
+    bottomLeftImagePreview,
+    bottomRightImagePreview
   } = selectedValue || {}
 
   if (selectedValue) {
     return (
-      <div className='flex gap-1'>
+      <div className='flex flex-wrap gap-1'>
         {topImagePreview && (
           <img
             src={topImagePreview}
@@ -49,6 +53,38 @@ export const ThirdBoxLabelElement: FC<ThirdBoxLabelElementProps> = ({
             width={31}
             height={33}
             alt='right-img-preview'
+          />
+        )}
+        {topLeftImagePreview && (
+          <img
+            src={topLeftImagePreview}
+            width={36}
+            height={33}
+            alt='top-left-img-preview'
+          />
+        )}
+        {topRightImagePreview && (
+          <img
+            src={topRightImagePreview}
+            width={34}
+            height={33}
+            alt='top-right-img-preview'
+          />
+        )}
+        {bottomLeftImagePreview && (
+          <img
+            src={bottomLeftImagePreview}
+            width={32}
+            height={33}
+            alt='bottom-left-img-preview'
+          />
+        )}
+        {bottomRightImagePreview && (
+          <img
+            src={bottomRightImagePreview}
+            width={31}
+            height={33}
+            alt='bottom-right-img-preview'
           />
         )}
       </div>
