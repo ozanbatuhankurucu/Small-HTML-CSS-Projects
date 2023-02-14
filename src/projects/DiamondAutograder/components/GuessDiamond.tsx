@@ -1,5 +1,5 @@
 import { ThumbsDown, ThumbsUp } from 'phosphor-react'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import cx from 'classnames'
 
@@ -32,17 +32,37 @@ export const GuessDiamond: FC<GuessDiamondProps> = ({
   const [hasUserGuess, setHasUserGuess] = useState(false)
   const [thumbsDownColor, setThumbsDownColor] = useState(DEFAULT_THUMBS_COLOR)
   const [thumbsUpColor, setThumbsUpColor] = useState(DEFAULT_THUMBS_COLOR)
+  const [isThumbsClickable, setIsThumbsClickable] = useState(true)
+  let handleThumbsClickTimeout: NodeJS.Timeout
 
   const handleThumbsDownClick = () => {
-    notCorrectGuessOnClick()
-    setHasUserGuess(true)
+    setIsThumbsClickable(false)
     setThumbsDownColor('#D47171')
+    if (isThumbsClickable) {
+      handleThumbsClickTimeout = setTimeout(() => {
+        notCorrectGuessOnClick()
+        setHasUserGuess(true)
+      }, 500)
+    }
   }
 
   const handleThumbsUpClick = () => {
-    correctGuessOnClick()
+    setIsThumbsClickable(false)
     setThumbsUpColor('#769274')
+    if (isThumbsClickable) {
+      handleThumbsClickTimeout = setTimeout(() => {
+        correctGuessOnClick()
+      }, 500)
+    }
   }
+
+  useEffect(() => {
+    return () => {
+      if (handleThumbsClickTimeout) {
+        clearTimeout(handleThumbsClickTimeout)
+      }
+    }
+  }, [])
 
   return (
     <DivContainer
