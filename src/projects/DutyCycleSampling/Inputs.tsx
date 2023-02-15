@@ -1,23 +1,21 @@
-import { CheckCircle, FileDotted } from 'phosphor-react'
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import DragAndDropFile from './components/DragAndDropFile'
 import { Input } from './components/Input'
 import { StateValues } from './types'
 import cx from 'classnames'
+import { FileElement } from './components/FileElement'
+import { APPLICATION_OPTIONS } from './constants'
 
 export const Inputs = () => {
   const navigate = useNavigate()
   const [stateValues, setStateValues] = useState<StateValues>({
     sutId: '',
-    firstApplicationName: 'TimeSpy Extreme, GT1',
-    secondApplicationName: 'TimeSpy Extreme, GT2',
+    applicationName: '',
     rawDramLogs: null
   })
-  const { firstApplicationName, secondApplicationName, sutId, rawDramLogs } =
-    stateValues
-  const isResultsButtonEnabled =
-    firstApplicationName && secondApplicationName && sutId && rawDramLogs
+  const { applicationName, sutId, rawDramLogs } = stateValues
+  const isResultsButtonEnabled = applicationName && sutId && rawDramLogs
 
   const handleInputOnChange = (value: string, key: string) => {
     setStateValues((prev) => ({ ...prev, [key]: value }))
@@ -36,15 +34,31 @@ export const Inputs = () => {
           type='text'
           label='SUT ID'
           value={sutId}
-          onChange={(value) => handleInputOnChange(value, 'sutId')}
+          onChange={(value) =>
+            setStateValues((prev) => ({ ...prev, sutId: value }))
+          }
           placeholder='...'
         />
-        <div className='flex items-end gap-4 mt-8'>
-          <div className='w-[200px] py-3 px-4 bg-[#272E3F] rounded-lg text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white'>
-            {firstApplicationName}
-          </div>
-          <div className='w-[200px] py-3 px-4 bg-[#272E3F] rounded-lg text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white'>
-            {secondApplicationName}
+        <div className='mt-8'>
+          <label className='font-normal text-sm'>Raw DRAM Logs</label>
+          <div className='flex items-end gap-4 mt-4'>
+            {APPLICATION_OPTIONS.map((appOption) => (
+              <button
+                className={cx(
+                  'flex items-center bg-[#272E3F] px-4 rounded-lg h-10 w-[200px] text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white',
+                  {
+                    '!border-white': applicationName === appOption
+                  }
+                )}
+                onClick={() =>
+                  setStateValues((prev) => ({
+                    ...prev,
+                    applicationName: appOption
+                  }))
+                }>
+                {appOption}
+              </button>
+            ))}
           </div>
         </div>
         <div className='mt-[52px]'>
@@ -57,18 +71,7 @@ export const Inputs = () => {
               }
             />
           )}
-          {rawDramLogs && (
-            <div className='flex items-end gap-2 p-3 bg-[#272E3F] rounded-[6px] mt-4'>
-              <FileDotted size={20} />
-              <span className='w-[245px] text-ellipsis whitespace-nowrap overflow-hidden text-xs font-normal'>
-                {rawDramLogs.name}
-              </span>
-              <span className='text-[#6CFFA7] text-xs font-normal'>
-                Upload complete
-              </span>
-              <CheckCircle size={20} color='#6CFFA7' />
-            </div>
-          )}
+          {rawDramLogs && <FileElement text={rawDramLogs.name} />}
         </div>
         <button
           type='button'
