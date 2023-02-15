@@ -56,6 +56,12 @@ const PROJECTS: Project[] = [
     to: 'diamond-autograder',
     progress: 1,
     addedDate: '2023-02-06'
+  },
+  {
+    projectName: 'Duty Cycle Sampling',
+    to: 'duty-cycle-sampling',
+    progress: 1,
+    addedDate: '2023-02-15'
   }
 ]
 

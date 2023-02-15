@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, Route } from 'react-router-dom'
 import Projects from '../pages/Projects'
 import HiddenSearchWidget from '../projects/HiddenSearchWidget'
 import BlurryLoading from '../projects/BlurryLoading'
@@ -9,6 +9,9 @@ import SoundBoard from '../projects/SoundBoard'
 import SearchDropdown from '../projects/SearchDropdown'
 import DadJokes from '../projects/DadJokes'
 import DiamondAutograder from '../projects/DiamondAutograder'
+import DutyCycleSamplingWrapper from '../projects/DutyCycleSampling'
+import { Results } from '../projects/DutyCycleSampling/Results'
+import { Inputs } from '../projects/DutyCycleSampling/Inputs'
 
 const routes = [
   {
@@ -65,6 +68,18 @@ const routes = [
     id: '10',
     path: '/projects/diamond-autograder',
     element: <DiamondAutograder />
+  },
+  {
+    id: '11',
+    path: '/projects/duty-cycle-sampling',
+    element: <DutyCycleSamplingWrapper />,
+    childRoutes: (
+      <>
+        <Route path='' element={<Navigate to='inputs' />} />
+        <Route path='inputs' element={<Inputs />} />
+        <Route path='results' element={<Results />} />
+      </>
+    )
   }
 ]
 export default routes
