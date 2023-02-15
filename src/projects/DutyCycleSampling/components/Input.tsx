@@ -27,7 +27,7 @@ export const Input: FC<InputProps> = ({
       {label && <label className='font-normal text-sm'>{label}</label>}
       <input
         className={cx(
-          'mt-3 px-4 bg-[#272E3F] rounded-lg w-[200px] h-8 text-[#B1B5C1] outline-none text-xs font-bold focus:border focus:border-white',
+          'mt-3 px-4 bg-[#272E3F] rounded-lg w-[200px] h-10 text-[#B1B5C1] outline-none text-xs font-normal border border-[#272E3F] focus:border focus:border-white hover:border hover:border-white',
           className
         )}
         type={type}

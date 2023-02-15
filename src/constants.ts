@@ -58,7 +58,7 @@ const PROJECTS: Project[] = [
     addedDate: '2023-02-06'
   },
   {
-    projectName: 'Duty Cycle Sampling',
+    projectName: 'Duty Cycle Scaling',
     to: 'duty-cycle-sampling',
     progress: 1,
     addedDate: '2023-02-15'

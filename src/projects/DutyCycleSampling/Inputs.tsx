@@ -40,22 +40,12 @@ export const Inputs = () => {
           placeholder='...'
         />
         <div className='flex items-end gap-4 mt-8'>
-          <Input
-            type='text'
-            label='Application Name'
-            value={firstApplicationName}
-            onChange={(value) =>
-              handleInputOnChange(value, 'firstApplicationName')
-            }
-          />
-          <Input
-            className='!font-normal'
-            type='text'
-            value={secondApplicationName}
-            onChange={(value) =>
-              handleInputOnChange(value, 'secondApplicationName')
-            }
-          />
+          <div className='w-[200px] py-3 px-4 bg-[#272E3F] rounded-lg text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white'>
+            {firstApplicationName}
+          </div>
+          <div className='w-[200px] py-3 px-4 bg-[#272E3F] rounded-lg text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white'>
+            {secondApplicationName}
+          </div>
         </div>
         <div className='mt-[52px]'>
           <label className='font-normal text-sm'>Raw DRAM Logs</label>
@@ -83,7 +73,7 @@ export const Inputs = () => {
         <button
           type='button'
           className={cx(
-            'border border-[#272E3F] py-2 px-9 text-[#E4E4E8] rounded-[20px] mt-[62px]',
+            'border border-[#272E3F] py-2 px-9 text-[#E4E4E8] rounded-[20px] mt-[62px] hover:border-white',
             { '!bg-[#272E3F]': isResultsButtonEnabled }
           )}
           onClick={handleResultsButtonOnClick}

@@ -7,7 +7,7 @@ const Wrapper = () => {
     <>
       <Helmet>
         <meta charSet='utf-8' />
-        <title>Duty Cycle Sampling</title>
+        <title>Duty Cycle Scaling</title>
       </Helmet>
       <div
         style={{
