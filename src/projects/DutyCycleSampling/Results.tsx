@@ -35,36 +35,31 @@ export const Results = () => {
           text={rawDramLogsFile?.name as string}
         />
       </div>
-      <div className='mt-10 text-white font-semibold text-base'>
-        <div>{takeaway_title}</div>
+      <div className='mt-10 text-white text-base'>
+        <div className='font-semibold'>{takeaway_title}</div>
         <div>{takeaway_text}</div>
       </div>
-      <div className='flex gap-[120px] mt-8'>
+
+      <div className='flex gap-[120px] mt-8 pb-4'>
         <div className='flex flex-col'>
           <span className='font-normal text-sm text-white'>Requirements</span>
           <div className='flex flex-col mt-[10px] gap-[22px]'>
-            {summary_results.map((summaryResult) => {
-              const { error_code, result } = summaryResult
+            {summary_results?.map((summaryResult) => {
+              const { error_code: errorCode, result } = summaryResult
               return (
                 <div
-                  key={error_code}
+                  key={errorCode}
                   className={cx(
-                    'flex items-center justify-between bg-[#272E3F] px-4 rounded-lg h-10 w-[200px] text-[#B1B5C1] font-normal text-xs border border-[#272E3F] ',
+                    'flex items-center justify-between bg-[#272E3F] px-4 rounded-lg h-10 w-[200px] text-[#B1B5C1] font-normal text-xs border border-[#272E3F] cursor-pointer hover:border-white',
                     {
                       '!border-white':
-                        selectedRequirement?.error_code === error_code &&
-                        result === 'FAIL',
+                        selectedRequirement?.error_code === errorCode,
                       '!text-[#669467]': result === 'PASS',
-                      '!text-[#FF6868] cursor-pointer hover:border-white':
-                        result === 'FAIL'
+                      '!text-[#FF6868] ': result === 'FAIL'
                     }
                   )}
-                  onClick={
-                    result === 'FAIL'
-                      ? () => setSelectedRequirement(summaryResult)
-                      : undefined
-                  }>
-                  <span>{error_code}</span>
+                  onClick={() => setSelectedRequirement(summaryResult)}>
+                  <span>{errorCode}</span>
                   {result === 'PASS' && <Check size={25} color='#fff' />}
                 </div>
               )
@@ -95,6 +90,7 @@ export const Results = () => {
                 <div className='absolute w-[88px] h-[62px] bg-[#272e3fbf] rounded-md flex justify-center items-center left-1/2 -translate-x-1/2 bottom-[110px]'>
                   <Lock size={32} />
                 </div>
+                <div className='w-full h-full bg-[#272e3f59] rounded-md' />
               </div>
             </div>
           )}

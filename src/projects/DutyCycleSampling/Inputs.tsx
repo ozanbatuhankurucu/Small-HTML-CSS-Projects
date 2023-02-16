@@ -18,13 +18,9 @@ export const Inputs = () => {
   })
   const { applicationName, rawDramLogsFile, sutId } = stateValues
   const {
-    register,
     clearErrors,
     formState: { errors },
-    setError,
-    getValues,
-    getFieldState,
-    watch
+    setError
   } = useForm<StateValues>({
     defaultValues: {
       sutId: ''
