@@ -1,28 +1,59 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import DragAndDropFile from './components/DragAndDropFile'
-import { Input } from './components/Input'
-import { StateValues } from './types'
 import cx from 'classnames'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
+import DragAndDropFile from './components/DragAndDropFile'
 import { FileElement } from './components/FileElement'
+import { Input } from './components/Input'
 import { APPLICATION_OPTIONS } from './constants'
+import { StateValues } from './types'
 
 export const Inputs = () => {
   const navigate = useNavigate()
   const [stateValues, setStateValues] = useState<StateValues>({
     sutId: '',
     applicationName: '',
-    rawDramLogs: null
+    rawDramLogsFile: null
   })
-  const { applicationName, sutId, rawDramLogs } = stateValues
-  const isResultsButtonEnabled = applicationName && sutId && rawDramLogs
+  const { applicationName, rawDramLogsFile, sutId } = stateValues
+  const {
+    register,
+    clearErrors,
+    formState: { errors },
+    setError,
+    getValues,
+    getFieldState,
+    watch
+  } = useForm<StateValues>({
+    defaultValues: {
+      sutId: ''
+    }
+  })
 
-  const handleInputOnChange = (value: string, key: string) => {
-    setStateValues((prev) => ({ ...prev, [key]: value }))
-  }
+  const onSubmit = () => {
+    if (!sutId) {
+      setError('sutId', {
+        type: 'manual',
+        message: 'This field is required.'
+      })
+    }
 
-  const handleResultsButtonOnClick = () => {
-    if (isResultsButtonEnabled) {
+    if (!applicationName) {
+      setError('applicationName', {
+        type: 'manual',
+        message: 'Select an application name'
+      })
+    }
+
+    if (!rawDramLogsFile) {
+      setError('rawDramLogsFile', {
+        type: 'manual',
+        message: 'Select a file'
+      })
+    }
+
+    if (applicationName && rawDramLogsFile && sutId) {
       navigate('/projects/duty-cycle-sampling/results', { state: stateValues })
     }
   }
@@ -34,53 +65,82 @@ export const Inputs = () => {
           type='text'
           label='SUT ID'
           value={sutId}
-          onChange={(value) =>
+          onChange={(value) => {
             setStateValues((prev) => ({ ...prev, sutId: value }))
-          }
+            if (value) {
+              clearErrors('sutId')
+            } else {
+              setError('sutId', {
+                type: 'manual',
+                message: 'This field is required.'
+              })
+            }
+          }}
           placeholder='...'
+          error={errors.sutId?.message}
         />
         <div className='mt-8'>
-          <label className='font-normal text-sm'>Raw DRAM Logs</label>
+          <label className='font-normal text-sm'>
+            Raw DRAM Logs{' '}
+            {errors.applicationName && (
+              <span className='text-[#DF2960]'>*</span>
+            )}
+          </label>
           <div className='flex items-end gap-4 mt-4'>
             {APPLICATION_OPTIONS.map((appOption) => (
               <button
+                key={appOption}
+                type='button'
                 className={cx(
                   'flex items-center bg-[#272E3F] px-4 rounded-lg h-10 w-[200px] text-[#B1B5C1] font-normal text-xs border border-[#272E3F] hover:border-white',
                   {
                     '!border-white': applicationName === appOption
                   }
                 )}
-                onClick={() =>
+                onClick={() => {
                   setStateValues((prev) => ({
                     ...prev,
                     applicationName: appOption
                   }))
-                }>
+                  clearErrors('applicationName')
+                }}>
                 {appOption}
               </button>
             ))}
           </div>
+          {errors.applicationName && (
+            <div className='mt-1 text-[#DF2960] font-normal text-xs'>
+              {errors.applicationName?.message}
+            </div>
+          )}
         </div>
         <div className='mt-[52px]'>
-          <label className='font-normal text-sm'>Raw DRAM Logs</label>
-          {!rawDramLogs && (
+          <label className='font-normal text-sm'>
+            Raw DRAM Logs
+            {errors.rawDramLogsFile && (
+              <span className='text-[#DF2960]'> *</span>
+            )}
+          </label>
+          {!rawDramLogsFile && (
             <DragAndDropFile
               className='mt-3 w-[414px] py-5 px-4'
-              onChange={(file) =>
-                setStateValues((prev) => ({ ...prev, rawDramLogs: file }))
-              }
+              onChange={(file) => {
+                setStateValues((prev) => ({ ...prev, rawDramLogsFile: file }))
+                clearErrors('rawDramLogsFile')
+              }}
             />
           )}
-          {rawDramLogs && <FileElement text={rawDramLogs.name} />}
+          {errors.rawDramLogsFile && (
+            <div className='mt-1 text-[#DF2960] font-normal text-xs'>
+              {errors.rawDramLogsFile?.message}
+            </div>
+          )}
+          {rawDramLogsFile && <FileElement text={rawDramLogsFile.name} />}
         </div>
         <button
           type='button'
-          className={cx(
-            'border border-[#272E3F] py-2 px-9 text-[#E4E4E8] rounded-[20px] mt-[62px] hover:border-white',
-            { '!bg-[#272E3F]': isResultsButtonEnabled }
-          )}
-          onClick={handleResultsButtonOnClick}
-          disabled={!isResultsButtonEnabled}>
+          className='border border-[#272E3F] py-2 px-9 text-[#E4E4E8] bg-[#272E3F] rounded-[20px] mt-[62px] hover:border-white'
+          onClick={onSubmit}>
           Go to results
         </button>
       </div>
