@@ -50,19 +50,19 @@ const PROJECTS: Project[] = [
     to: 'dad-jokes',
     progress: 1,
     addedDate: '2022-12-25'
-  },
-  {
-    projectName: 'Diamond Autograder',
-    to: 'diamond-autograder',
-    progress: 1,
-    addedDate: '2023-02-06'
-  },
-  {
-    projectName: 'Duty Cycle Scaling',
-    to: 'duty-cycle-sampling',
-    progress: 1,
-    addedDate: '2023-02-15'
   }
+  // {
+  //   projectName: 'Diamond Autograder',
+  //   to: 'diamond-autograder',
+  //   progress: 1,
+  //   addedDate: '2023-02-06'
+  // },
+  // {
+  //   projectName: 'Duty Cycle Scaling',
+  //   to: 'duty-cycle-sampling',
+  //   progress: 1,
+  //   addedDate: '2023-02-15'
+  // }
 ]
 
 const projectsWithId = PROJECTS.map((project) => ({

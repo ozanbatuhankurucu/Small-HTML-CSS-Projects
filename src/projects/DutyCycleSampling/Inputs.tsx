@@ -1,7 +1,8 @@
 import cx from 'classnames'
+import { ArrowLeft } from 'phosphor-react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import DragAndDropFile from './components/DragAndDropFile'
 import { FileElement } from './components/FileElement'
@@ -140,6 +141,12 @@ export const Inputs = () => {
           Go to results
         </button>
       </div>
+      <Link className='font-semibold ' to='/projects'>
+        <div className='fixed left-4 top-4 flex items-center gap-2'>
+          <ArrowLeft size={24} />
+          <span>Go to projects</span>
+        </div>
+      </Link>
     </div>
   )
 }
