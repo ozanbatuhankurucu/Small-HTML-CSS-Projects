@@ -6,7 +6,7 @@ import { FileElement } from './components/FileElement'
 import { TextElement } from './components/TextElement'
 import { DCS_DATA_RESPONSE_MOCK } from './constants'
 import { StateValues, SummaryResult } from './types'
-import ErrorImage from './images/ErrorImage.png'
+import ErrorImage from '../../assets/images/lockSs.png'
 
 export const Results = () => {
   const location = useLocation()
