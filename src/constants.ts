@@ -40,16 +40,22 @@ const PROJECTS: Project[] = [
     addedDate: '2022-12-18'
   },
   {
+    projectName: 'Dad Jokes',
+    to: 'dad-jokes',
+    progress: 1,
+    addedDate: '2022-12-25'
+  },
+  {
     projectName: 'Search Dropdown',
     to: 'search-dropdown',
     progress: 10,
     addedDate: '2023-01-04'
   },
   {
-    projectName: 'Dad Jokes',
-    to: 'dad-jokes',
+    projectName: 'Contact Form',
+    to: 'contact-form',
     progress: 1,
-    addedDate: '2022-12-25'
+    addedDate: '2023-02-17'
   }
   // {
   //   projectName: 'Diamond Autograder',

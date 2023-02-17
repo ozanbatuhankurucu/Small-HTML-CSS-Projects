@@ -12,6 +12,7 @@ import DiamondAutograder from '../projects/DiamondAutograder'
 import DutyCycleSamplingWrapper from '../projects/DutyCycleSampling'
 import { Results } from '../projects/DutyCycleSampling/Results'
 import { Inputs } from '../projects/DutyCycleSampling/Inputs'
+import ContactForm from '../projects/ContactForm'
 
 const routes = [
   {
@@ -80,6 +81,11 @@ const routes = [
         <Route path='results' element={<Results />} />
       </>
     )
+  },
+  {
+    id: '12',
+    path: '/projects/contact-form',
+    element: <ContactForm />
   }
 ]
 export default routes
