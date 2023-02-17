@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { FifthStep } from '../Steps/FifthStep'
 import { FirstStep } from '../Steps/FirstStep'
 import { FourthStep } from '../Steps/FourthStep'

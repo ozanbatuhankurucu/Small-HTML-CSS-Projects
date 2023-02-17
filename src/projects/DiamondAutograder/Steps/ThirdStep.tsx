@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { UploadFileBox } from '../components/UploadFileBox'
-import { FileInputEvent, Step, StepsDataType, ThirdStepType } from '../types'
-import cx from 'classnames'
+import { FileInputEvent, StepsDataType } from '../types'
 import { getFirstEmptyStep } from '../utils'
+
 interface ThirdStepProps {
   setSelectedStep: (selectedStep: number) => void
   steps: StepsDataType
@@ -125,6 +125,7 @@ export const ThirdStep: FC<ThirdStepProps> = ({
         />
       </div>
       <button
+        type='button'
         className='py-2 px-9 bg-[#272E3F]  border border-[#272E3F] hover:border-white text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={handleCompleteButtonOnClick}>
         Get Clarity

@@ -61,7 +61,7 @@ const NumberPicker: FC<NumberPickerProps> = ({
       <div className='flex justify-between mt-1'>
         {Array.from({ length: max + 1 }, (v, i) => i).map((number) => (
           <div key={number} className='flex flex-col gap-2 items-center'>
-            <div className='h-2 border-r-[1px] border-[#515674]'></div>
+            <div className='h-2 border-r-[1px] border-[#515674]' />
             <div className='text-xs font-normal text-[#515674]'>
               {number.toFixed(1)}
             </div>

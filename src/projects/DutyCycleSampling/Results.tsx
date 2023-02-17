@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import cx from 'classnames'
+import { Check, Lock } from 'phosphor-react'
 import { FileElement } from './components/FileElement'
 import { TextElement } from './components/TextElement'
 import { DCS_DATA_RESPONSE_MOCK } from './constants'
-import { DcsDataResponse, StateValues, SummaryResult } from './types'
-import cx from 'classnames'
-import { Check, Lock } from 'phosphor-react'
+import { StateValues, SummaryResult } from './types'
 import ErrorImage from './images/ErrorImage.png'
 
 export const Results = () => {
   const location = useLocation()
   const { applicationName, rawDramLogsFile, sutId } =
     location.state as StateValues
-  const [dcsDataResponse, setDcsDataResponse] = useState<DcsDataResponse>(
-    DCS_DATA_RESPONSE_MOCK
-  )
+
   const [selectedRequirement, setSelectedRequirement] =
     useState<SummaryResult>()
 
-  const { takeaway_title, takeaway_text, summary_results } = dcsDataResponse
+  const {
+    takeaway_title: takeawayTitle,
+    takeaway_text: takeawayText,
+    summary_results: summaryResults
+  } = DCS_DATA_RESPONSE_MOCK
 
   return (
     <div className='px-[52px] pt-4'>
@@ -36,18 +38,19 @@ export const Results = () => {
         />
       </div>
       <div className='mt-10 text-white text-base'>
-        <div className='font-semibold'>{takeaway_title}</div>
-        <div>{takeaway_text}</div>
+        <div className='font-semibold'>{takeawayTitle}</div>
+        <div>{takeawayText}</div>
       </div>
 
       <div className='flex gap-[120px] mt-8 pb-4'>
         <div className='flex flex-col'>
           <span className='font-normal text-sm text-white'>Requirements</span>
           <div className='flex flex-col mt-[10px] gap-[22px]'>
-            {summary_results?.map((summaryResult) => {
+            {summaryResults?.map((summaryResult) => {
               const { error_code: errorCode, result } = summaryResult
               return (
                 <div
+                  role='button'
                   key={errorCode}
                   className={cx(
                     'flex items-center justify-between bg-[#272E3F] px-4 rounded-lg h-10 w-[200px] text-[#B1B5C1] font-normal text-xs border border-[#272E3F] cursor-pointer hover:border-white',

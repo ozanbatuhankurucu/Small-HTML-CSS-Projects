@@ -1,11 +1,10 @@
 import React, { FC, useEffect, useState } from 'react'
-import { TextLoadingIndicator } from '../components/TextLoadingIndicator'
-import { AIGuessDataType, AIGuessResponse, StepsDataType } from '../types'
 import axios from 'axios'
 import useSWR from 'swr'
-import { GuessDiamond } from '../components/GuessDiamond'
-import cx from 'classnames'
 import _ from 'lodash'
+import { GuessDiamond } from '../components/GuessDiamond'
+import { AIGuessDataType, AIGuessResponse, StepsDataType } from '../types'
+import { TextLoadingIndicator } from '../components/TextLoadingIndicator'
 
 interface FourthStepProps {
   steps: StepsDataType
@@ -22,7 +21,7 @@ export const FourthStep: FC<FourthStepProps> = ({
   setSelectedStep
 }) => {
   const [showLoader, setShowLoader] = useState(true)
-  const { data, error, mutate, isLoading } = useSWR<AIGuessResponse>(
+  const { isLoading } = useSWR<AIGuessResponse>(
     'https://hydra-dev.internal.arena-ai.com/hydra/api/hydra/core/diamond',
     async () => {
       const { firstStep, secondStep, thirdStep } = steps
@@ -50,20 +49,24 @@ export const FourthStep: FC<FourthStepProps> = ({
           }
         )
         return response.data
-      } catch (error) {
-        console.error(error)
+      } catch (err) {
+        console.error(err)
         setAIGuessData({
           diamond_id: '18526cf8-2299-41c5-842c-cbec58e41cd1',
           first_guess: 'I2',
           second_guess: 'SI2'
         })
-        return error
+        return err
       }
     },
     { revalidateOnFocus: false }
   )
 
-  const { first_guess, second_guess, isFirstGuessCorrect } = aiGuessData || {}
+  const {
+    first_guess: firstGuess,
+    second_guess: secondGuess,
+    isFirstGuessCorrect
+  } = aiGuessData || {}
 
   const showTextLoadingIndicator = showLoader || isLoading
 
@@ -80,7 +83,7 @@ export const FourthStep: FC<FourthStepProps> = ({
         <>
           <GuessDiamond
             label='First guess'
-            guess={first_guess as string}
+            guess={firstGuess as string}
             correctGuessOnClick={() => setSelectedStep(6)}
             notCorrectGuessOnClick={() =>
               setAIGuessData({
@@ -93,7 +96,7 @@ export const FourthStep: FC<FourthStepProps> = ({
           {!_.isNil(isFirstGuessCorrect) && (
             <GuessDiamond
               label='Second guess'
-              guess={second_guess as string}
+              guess={secondGuess as string}
               correctGuessOnClick={() => setSelectedStep(6)}
               notCorrectGuessOnClick={() => setSelectedStep(4)}
             />

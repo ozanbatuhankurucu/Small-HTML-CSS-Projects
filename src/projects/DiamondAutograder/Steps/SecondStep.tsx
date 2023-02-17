@@ -1,6 +1,5 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import NumberPicker from '../components/NumberPicker'
-import cx from 'classnames'
 import { SecondStepType, StepsDataType } from '../types'
 
 interface SecondStepProps {
@@ -46,10 +45,11 @@ export const SecondStep: FC<SecondStepProps> = ({
             </span>
           )}
         </div>
-        <div className='border-r-[1px] border-[#515674] h-full ml-[11px]'></div>
+        <div className='border-r-[1px] border-[#515674] h-full ml-[11px]' />
         <span className='text-[#515674] text-xs font-normal ml-2'>C</span>
       </div>
       <button
+        type='button'
         className='py-2 px-9 bg-[#272E3F]  border border-[#272E3F] hover:border-white text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={() => setSelectedStep(2)}>
         Next

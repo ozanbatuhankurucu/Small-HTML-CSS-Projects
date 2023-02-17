@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { AIGuessDataType, DiamondClarityType } from '../types'
 import cx from 'classnames'
+import { AIGuessDataType } from '../types'
 import { DIAMOND_CLARITY_OPTIONS } from '../constants'
 
 interface FifthStepProps {
@@ -11,14 +11,11 @@ export const FifthStep: FC<FifthStepProps> = ({
   aiGuessData,
   setSelectedStep
 }) => {
-  const { first_guess, second_guess } = aiGuessData || {}
-  const guesses = [first_guess, second_guess]
-  const handleDiamondClarity = (diamondClarity: DiamondClarityType) => {
+  const { first_guess: firstGuess, second_guess: secondGuess } =
+    aiGuessData || {}
+  const guesses = [firstGuess, secondGuess]
+  const handleDiamondClarity = () => {
     setSelectedStep(5)
-    // TODOOzan: Send user clarity answer to the backend when returned response
-    // setStep to 5(sixth step) show the Thank you message
-    // after showing this message for a while on the screen
-    // set step to 6.
   }
   return (
     <>
@@ -30,11 +27,12 @@ export const FifthStep: FC<FifthStepProps> = ({
           <div className='flex gap-8 py-3 px-8 bg-[#272E3F] rounded-lg mt-4'>
             {DIAMOND_CLARITY_OPTIONS.map((diamondClarity) => (
               <button
+                type='button'
                 key={diamondClarity}
                 className={cx(
                   'text-[#ffffff80] font-normal text-2xl hover:text-white disabled:text-[#ffffff1a]'
                 )}
-                onClick={() => handleDiamondClarity(diamondClarity)}
+                onClick={handleDiamondClarity}
                 disabled={guesses.includes(diamondClarity)}>
                 {diamondClarity}
               </button>

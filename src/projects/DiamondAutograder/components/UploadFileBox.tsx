@@ -20,13 +20,14 @@ export const UploadFileBox: FC<UploadFileBoxProps> = ({
   }
 
   const handleFileChange = (event: FileInputEvent) => {
-    const imagePreview = URL.createObjectURL(event.target.files[0])
-    fileChange?.(event, imagePreview)
-    setImagePreview(imagePreview)
+    const imgPrev = URL.createObjectURL(event.target.files[0])
+    fileChange?.(event, imgPrev)
+    setImagePreview(imgPrev)
   }
   const img = imagePreview || imgPreview
   return (
     <div
+      role='button'
       className='bg-[#272E3F] pt-3 pb-2 px-4 rounded-lg w-[200px] cursor-pointer border border-[#272E3F] hover:border-white'
       onClick={handleDivOnClick}>
       {label}

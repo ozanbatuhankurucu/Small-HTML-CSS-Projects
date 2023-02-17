@@ -1,3 +1,4 @@
+/* global NodeJS */
 import { ThumbsDown, ThumbsUp } from 'phosphor-react'
 import React, { FC, useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
@@ -56,13 +57,14 @@ export const GuessDiamond: FC<GuessDiamondProps> = ({
     }
   }
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (handleThumbsClickTimeout) {
         clearTimeout(handleThumbsClickTimeout)
       }
-    }
-  }, [])
+    },
+    []
+  )
 
   return (
     <DivContainer
@@ -83,7 +85,7 @@ export const GuessDiamond: FC<GuessDiamondProps> = ({
       </span>
       {!hasUserGuess && (
         <div className='flex items-center justify-evenly w-[161px] h-[58px] bg-[#272E3F] rounded-lg'>
-          <button onClick={handleThumbsDownClick}>
+          <button type='button' onClick={handleThumbsDownClick}>
             <ThumbsDown
               size={32}
               color={thumbsDownColor}
@@ -91,7 +93,7 @@ export const GuessDiamond: FC<GuessDiamondProps> = ({
               onMouseLeave={() => setThumbsDownColor(DEFAULT_THUMBS_COLOR)}
             />
           </button>
-          <button onClick={handleThumbsUpClick}>
+          <button type='button' onClick={handleThumbsUpClick}>
             <ThumbsUp
               size={32}
               color={thumbsUpColor}

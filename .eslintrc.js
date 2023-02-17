@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true
   },
   settings: {
     'import/resolver': {
@@ -92,6 +93,10 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 'off',
     'import/prefer-default-export': 'off',
     'react/function-component-definition': 'off',
-    indent: 'off'
+    indent: 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'react/jsx-curly-newline': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'jsx-a11y/label-has-for': 'off'
   }
 }

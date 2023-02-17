@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Box } from '../components/Box'
 import { SHAPES } from '../constants'
-import { FirstStepType, Shape, Step, StepsDataType } from '../types'
+import { FirstStepType, Shape, StepsDataType } from '../types'
 
 interface FirstStepProps {
   firstStep: FirstStepType
@@ -41,6 +41,7 @@ export const FirstStep: FC<FirstStepProps> = ({
         ))}
       </div>
       <button
+        type='button'
         className='bg-[#272E3F]  border border-[#272E3F] hover:border-white py-2 px-9 text-[#E4E4E8] rounded-[20px] mt-[62px]'
         onClick={() => setSelectedStep(1)}>
         Next

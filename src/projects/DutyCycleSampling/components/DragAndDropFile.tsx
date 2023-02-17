@@ -1,3 +1,4 @@
+/* global GlobalEventHandlers */
 import React, { useState } from 'react'
 import cx from 'classnames'
 import { UploadSimple } from 'phosphor-react'
@@ -50,6 +51,7 @@ const DragAndDropFile: React.FC<DragAndDropProps> = ({
 
   return (
     <div
+      role='button'
       className={cx(
         'flex flex-col items-center justify-center border-[0.5px] border-dashed border-[#81859B] cursor-pointer text-[#81859B] text-[10px] font-normal rounded-lg hover:border-white',
         className,
