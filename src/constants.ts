@@ -50,12 +50,6 @@ const PROJECTS: Project[] = [
     to: 'search-dropdown',
     progress: 10,
     addedDate: '2023-01-04'
-  },
-  {
-    projectName: 'Contact Form',
-    to: 'contact-form',
-    progress: 1,
-    addedDate: '2023-02-17'
   }
   // {
   //   projectName: 'Diamond Autograder',
