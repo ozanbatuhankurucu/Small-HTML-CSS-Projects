@@ -4,7 +4,7 @@ import React, { ChangeEvent } from 'react'
 interface InputProps {
   type: 'text' | 'password' | 'email' | 'number' | 'search'
   value?: string
-  onChange: (value: string) => void
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
   className?: string
   label?: string
   placeholder?: string
@@ -18,7 +18,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-      onChange(event.target.value)
+      onChange(event)
     }
 
     return (
@@ -31,7 +31,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         <input
           className={cx(
-            'mt-3 px-4 bg-[#272E3F] rounded-lg w-[200px] h-10 text-[#B1B5C1] !outline-none text-xs font-normal border border-[#272E3F] focus:border focus:border-white hover:border hover:border-white',
+            'mt-3 px-4 rounded-lg h-10 !outline-none text-xs font-normal',
             className
           )}
           type={type}

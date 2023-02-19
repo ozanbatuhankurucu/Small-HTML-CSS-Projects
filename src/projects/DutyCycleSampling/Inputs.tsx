@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import DragAndDropFile from './components/DragAndDropFile'
 import { FileElement } from './components/FileElement'
-import { Input } from './components/Input'
+import { Input } from '../../components/Input'
 import { APPLICATION_OPTIONS } from './constants'
 import { StateValues } from './types'
 
@@ -59,10 +59,12 @@ export const Inputs = () => {
     <div className='h-full flex flex-col justify-center items-center'>
       <div>
         <Input
+          className='bg-[#272E3F] text-[#B1B5C1] border border-[#272E3F] w-[200px] focus:border focus:border-white hover:border hover:border-white'
           type='text'
           label='SUT ID'
           value={sutId}
-          onChange={(value) => {
+          onChange={(event) => {
+            const { value } = event.target
             setStateValues((prev) => ({ ...prev, sutId: value }))
             if (value) {
               clearErrors('sutId')
