@@ -18,11 +18,7 @@ export const ThirdStep: FC<ThirdStepProps> = ({
     bottomImagePreview,
     leftImagePreview,
     rightImagePreview,
-    topImagePreview,
-    topLeftImagePreview,
-    topRightImagePreview,
-    bottomLeftImagePreview,
-    bottomRightImagePreview
+    topImagePreview
   } = steps?.thirdStep?.selectedValue || {}
 
   const handleFileChange = (
@@ -82,46 +78,6 @@ export const ThirdStep: FC<ThirdStepProps> = ({
             handleFileChange(event, imagePreview, 'right')
           }
           imgPreview={rightImagePreview}
-        />
-        <UploadFileBox
-          label={
-            <span className='font-bold text-xs text-[#B1B5C1]'>Top-Right</span>
-          }
-          fileChange={(event, imagePreview) =>
-            handleFileChange(event, imagePreview, 'topRight')
-          }
-          imgPreview={topRightImagePreview}
-        />
-        <UploadFileBox
-          label={
-            <span className='font-bold text-xs text-[#B1B5C1]'>Top-Left</span>
-          }
-          fileChange={(event, imagePreview) =>
-            handleFileChange(event, imagePreview, 'topLeft')
-          }
-          imgPreview={topLeftImagePreview}
-        />
-        <UploadFileBox
-          label={
-            <span className='font-bold text-xs text-[#B1B5C1]'>
-              Bottom-Right
-            </span>
-          }
-          fileChange={(event, imagePreview) =>
-            handleFileChange(event, imagePreview, 'bottomRight')
-          }
-          imgPreview={bottomRightImagePreview}
-        />
-        <UploadFileBox
-          label={
-            <span className='font-bold text-xs text-[#B1B5C1]'>
-              Bottom-Left
-            </span>
-          }
-          fileChange={(event, imagePreview) =>
-            handleFileChange(event, imagePreview, 'bottomLeft')
-          }
-          imgPreview={bottomLeftImagePreview}
         />
       </div>
       <button

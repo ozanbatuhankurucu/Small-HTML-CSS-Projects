@@ -24,14 +24,6 @@ export interface ThirdStepSelectedValueType {
   bottomImagePreview: string
   rightFile: File
   rightImagePreview: string
-  topRightFile: File
-  topRightImagePreview: string
-  topLeftFile: File
-  topLeftImagePreview: string
-  bottomRightFile: File
-  bottomRightImagePreview: string
-  bottomLeftFile: File
-  bottomLeftImagePreview: string
 }
 export type ThirdStepSelectedValuePartialType =
   | Partial<ThirdStepSelectedValueType>
