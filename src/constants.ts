@@ -48,8 +48,8 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Dad Jokes',
     to: 'dad-jokes',
-    progress: 1,
-    addedDate: '2022-12-25'
+    progress: 10,
+    addedDate: '2023-02-16'
   }
   // {
   //   projectName: 'Diamond Autograder',
