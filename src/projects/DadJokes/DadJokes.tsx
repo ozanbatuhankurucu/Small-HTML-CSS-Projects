@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Joke from './components/Joke'
+import { useJokeData } from './hooks/useJokeData'
 
 const Container = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
@@ -10,30 +11,7 @@ const GetJokeButton = styled.button`
 `
 
 export const DadJokes = () => {
-  const [joke, setJoke] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
-
-  const fetchJoke = async () => {
-    setIsLoading(true)
-    setError(null)
-    try {
-      const response = await fetch('https://icanhazdadjoke.com/', {
-        headers: {
-          Accept: 'text/plain'
-        }
-      })
-      const jokeText = await response.text()
-      setJoke(jokeText)
-    } catch (err) {
-      setError(err as Error)
-    }
-    setIsLoading(false)
-  }
-
-  useEffect(() => {
-    fetchJoke()
-  }, [])
+  const { joke, isLoading, error, fetchJoke } = useJokeData()
 
   return (
     <div className='h-screen flex justify-center items-center bg-[#686de0]'>
