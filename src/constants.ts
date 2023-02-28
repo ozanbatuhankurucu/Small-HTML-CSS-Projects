@@ -50,17 +50,23 @@ const PROJECTS: Project[] = [
     to: 'dad-jokes',
     progress: 10,
     addedDate: '2023-02-16'
+  },
+  {
+    projectName: 'Event KeyCodes',
+    to: 'event-keycodes',
+    progress: 1,
+    addedDate: '2023-02-27'
   }
   // {
   //   projectName: 'Diamond Autograder',
   //   to: 'diamond-autograder',
-  //   progress: 1,
+  //   progress: 10,
   //   addedDate: '2023-02-06'
   // },
   // {
   //   projectName: 'Duty Cycle Scaling',
   //   to: 'duty-cycle-sampling',
-  //   progress: 1,
+  //   progress: 10,
   //   addedDate: '2023-02-15'
   // }
 ]
