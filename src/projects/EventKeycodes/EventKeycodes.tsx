@@ -35,7 +35,7 @@ const EventKeycodes = () => {
       {keyPressItem && (
         <div className='flex gap-4 items-center'>
           <EventBox title={<EventBoxTitle>event.key</EventBoxTitle>}>
-            {pressedKey}
+            {pressedKey === ' ' ? 'Space' : pressedKey}
           </EventBox>
           <EventBox title={<EventBoxTitle>event.keyCode </EventBoxTitle>}>
             {pressedKeyCode}

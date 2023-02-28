@@ -54,7 +54,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Event KeyCodes',
     to: 'event-keycodes',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-02-27'
   }
   // {
