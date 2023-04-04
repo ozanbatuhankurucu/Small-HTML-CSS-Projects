@@ -56,6 +56,12 @@ const PROJECTS: Project[] = [
     to: 'event-keycodes',
     progress: 10,
     addedDate: '2023-02-27'
+  },
+  {
+    projectName: 'FAQ Collapse',
+    to: 'faq-collapse',
+    progress: 1,
+    addedDate: '2023-04-4'
   }
   // {
   //   projectName: 'Diamond Autograder',
