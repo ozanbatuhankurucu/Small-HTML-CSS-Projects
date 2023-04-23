@@ -97,6 +97,8 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'react/jsx-curly-newline': 'off',
     'react/jsx-wrap-multilines': 'off',
-    'jsx-a11y/label-has-for': 'off'
+    'jsx-a11y/label-has-for': 'off',
+    'no-confusing-arrow': 'off',
+    'operator-linebreak': 'off'
   }
 }

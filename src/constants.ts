@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'FAQ Collapse',
     to: 'faq-collapse',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-04-4'
   }
   // {
