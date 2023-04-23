@@ -11,6 +11,7 @@ import DadJokes from '../projects/DadJokes'
 import DiamondAutograder from '../projects/DiamondAutograder'
 import DutyCycleSamplingWrapper from '../projects/DutyCycleSampling'
 import EventKeycodes from '../projects/EventKeycodes'
+import FaqCollapse from '../projects/FaqCollapse'
 import { Results } from '../projects/DutyCycleSampling/Results'
 import { Inputs } from '../projects/DutyCycleSampling/Inputs'
 import { generateUniqueKey } from '../utils'
@@ -74,6 +75,10 @@ const routes = [
   {
     path: '/projects/event-keycodes',
     element: <EventKeycodes />
+  },
+  {
+    path: '/projects/faq-collapse',
+    element: <FaqCollapse />
   }
 ]
 
