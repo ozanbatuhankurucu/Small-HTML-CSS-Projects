@@ -49,6 +49,13 @@ const CollapseItem: FC<CollapseItemProps> = ({ question, answer }) => {
           </div>
         )}
       </div>
+      <p
+        className={cx('mt-4', {
+          hidden: !isOpen,
+          block: isOpen
+        })}>
+        {answer}
+      </p>
       {isOpen && (
         <>
           <ChatCircle
@@ -63,13 +70,6 @@ const CollapseItem: FC<CollapseItemProps> = ({ question, answer }) => {
           />
         </>
       )}
-      <div
-        className={cx('mt-4 overflow-hidden', {
-          hidden: !isOpen,
-          block: isOpen
-        })}>
-        <p>{answer}</p>
-      </div>
     </Container>
   )
 }
