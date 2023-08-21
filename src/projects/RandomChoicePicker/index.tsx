@@ -1,13 +1,13 @@
 import { Helmet } from 'react-helmet'
-import { DadJokes } from './DadJokes'
+import RandomChoicePicker from './RandomChoicePicker'
 
 const Wrapper = () => (
   <>
     <Helmet>
       <meta charSet='utf-8' />
-      <title>Dad Jokes</title>
+      <title>Random Choice Picker</title>
     </Helmet>
-    <DadJokes />
+    <RandomChoicePicker />
   </>
 )
 export default Wrapper
