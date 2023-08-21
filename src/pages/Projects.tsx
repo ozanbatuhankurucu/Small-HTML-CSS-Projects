@@ -12,15 +12,20 @@ const App = () => (
     <div className='p-8 h-screen bg-[#25262C]'>
       <h1 className='text-white font-bold text-2xl'>PROJECTS</h1>
       <ProjectCardList>
-        {projects.map(({ projectName, to, id, progress, addedDate }) => (
-          <ProjectCard
-            key={id}
-            projectName={projectName}
-            to={to}
-            progress={progress}
-            addedDate={addedDate}
-          />
-        ))}
+        {projects
+          .sort(
+            (a, b) =>
+              new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime()
+          )
+          .map(({ projectName, to, id, progress, addedDate }) => (
+            <ProjectCard
+              key={id}
+              projectName={projectName}
+              to={to}
+              progress={progress}
+              addedDate={addedDate}
+            />
+          ))}
       </ProjectCardList>
     </div>
   </>

@@ -27,7 +27,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         <div className='mt-2 border border-[#36383E]' />
         <div className='flex justify-between items-center mt-4'>
-          <div className='flex gap-2 text-[#898A90]'>
+          <div className='flex items-center gap-2 text-[#898A90]'>
             <ListBullets size={15} />
             <span className='font-semibold text-sm'>Progress</span>
           </div>
