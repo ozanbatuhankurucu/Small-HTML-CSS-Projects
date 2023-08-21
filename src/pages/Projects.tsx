@@ -9,7 +9,7 @@ const App = () => (
       <meta charSet='utf-8' />
       <title>Small HTML & CSS & JS Projects</title>
     </Helmet>
-    <div className='p-8 h-screen bg-[#25262C]'>
+    <div className='p-8 min-h-screen bg-[#25262C]'>
       <h1 className='text-white font-bold text-2xl'>PROJECTS</h1>
       <ProjectCardList>
         {projects

@@ -38,7 +38,7 @@ export const SecondStep: FC<SecondStepProps> = ({
         onChange={handleNumberPickerOnChange}
       />
       <div className='flex items-center justify-center mt-14 w-[70px] h-8 py-1 pl-2 pr-[10px] bg-[#272E3F] rounded-lg'>
-        <div className='w-6'>
+        <div className='w-7'>
           {isSelectedCaratNumberBiggerThanZero && (
             <span className='text-[#B1B5C1] text-xs font-normal'>
               {selectedValue}

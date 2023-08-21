@@ -62,13 +62,13 @@ const PROJECTS: Project[] = [
     to: 'faq-collapse',
     progress: 10,
     addedDate: '2023-04-4'
+  },
+  {
+    projectName: 'Diamond Autograder',
+    to: 'diamond-autograder',
+    progress: 10,
+    addedDate: '2023-02-06'
   }
-  // {
-  //   projectName: 'Diamond Autograder',
-  //   to: 'diamond-autograder',
-  //   progress: 10,
-  //   addedDate: '2023-02-06'
-  // },
   // {
   //   projectName: 'Duty Cycle Scaling',
   //   to: 'duty-cycle-sampling',
