@@ -72,7 +72,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Random Choice Picker',
     to: 'random-choice-picker',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-08-21'
   }
   // {
