@@ -14,22 +14,21 @@ const RandomChoicePicker = () => {
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault() // Prevent new line on Enter press
-      const choices = input
+      const formattedChoices = input
         .split(',')
         .map((item) => item.trim())
         .filter((item) => item !== '')
 
       if (input) {
-        setChoices(choices)
+        setChoices(formattedChoices)
         setInput('')
 
-        const intervalId = setInterval(function () {
-          ;``
-          const selectedIndex = getRandomIndexFromArray(choices)
+        const intervalId = setInterval(() => {
+          const selectedIndex = getRandomIndexFromArray(formattedChoices)
           setSelectedTagIndex(selectedIndex)
         }, 200)
 
-        setTimeout(function () {
+        setTimeout(() => {
           clearInterval(intervalId) // Stops the interval execution
         }, 3000)
       }
@@ -43,7 +42,7 @@ const RandomChoicePicker = () => {
   return (
     <div className='min-h-screen flex flex-col items-center justify-center bg-[#2b88f0]'>
       <div className='text-white font-medium'>
-        Enter all of the choices divided by a comma (',').
+        Enter all of the choices divided by a comma (&apos;,&apos;).
       </div>
       <div className='text-white font-medium'>Press enter when you're done</div>
       <textarea
