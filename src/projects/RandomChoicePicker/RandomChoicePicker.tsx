@@ -44,7 +44,9 @@ const RandomChoicePicker = () => {
       <div className='text-white font-medium'>
         Enter all of the choices divided by a comma (&apos;,&apos;).
       </div>
-      <div className='text-white font-medium'>Press enter when you're done</div>
+      <div className='text-white font-medium'>
+        Press enter when you&apos;re done
+      </div>
       <textarea
         value={input}
         onChange={handleInputChange}
