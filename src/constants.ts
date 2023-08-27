@@ -68,6 +68,12 @@ const PROJECTS: Project[] = [
     to: 'diamond-autograder',
     progress: 10,
     addedDate: '2023-02-06'
+  },
+  {
+    projectName: 'Random Choice Picker',
+    to: 'random-choice-picker',
+    progress: 10,
+    addedDate: '2023-08-21'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',

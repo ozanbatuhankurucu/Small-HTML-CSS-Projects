@@ -15,6 +15,7 @@ import FaqCollapse from '../projects/FaqCollapse'
 import { Results } from '../projects/DutyCycleSampling/Results'
 import { Inputs } from '../projects/DutyCycleSampling/Inputs'
 import { generateUniqueKey } from '../utils'
+import RandomChoicePicker from '../projects/RandomChoicePicker/RandomChoicePicker'
 
 const routes = [
   {
@@ -79,6 +80,10 @@ const routes = [
   {
     path: '/projects/faq-collapse',
     element: <FaqCollapse />
+  },
+  {
+    path: '/projects/random-choice-picker',
+    element: <RandomChoicePicker />
   }
 ]
 
