@@ -74,6 +74,12 @@ const PROJECTS: Project[] = [
     to: 'random-choice-picker',
     progress: 10,
     addedDate: '2023-08-21'
+  },
+  {
+    projectName: 'Animated Navigation',
+    to: 'animated-navigation',
+    progress: 1,
+    addedDate: '2023-09-06'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
