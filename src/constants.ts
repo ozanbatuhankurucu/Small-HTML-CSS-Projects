@@ -78,7 +78,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Animated Navigation',
     to: 'animated-navigation',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-09-06'
   }
   // {
