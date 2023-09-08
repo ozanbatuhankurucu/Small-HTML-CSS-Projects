@@ -16,6 +16,9 @@ import { Results } from '../projects/DutyCycleSampling/Results'
 import { Inputs } from '../projects/DutyCycleSampling/Inputs'
 import { generateUniqueKey } from '../utils'
 import RandomChoicePicker from '../projects/RandomChoicePicker/RandomChoicePicker'
+import AnimatedNavigation from '../projects/AnimatedNavigation/AnimatedNavigation'
+
+const PROJECTS_PATH = '/projects/'
 
 const routes = [
   {
@@ -23,47 +26,47 @@ const routes = [
     element: <Navigate to='/projects' />
   },
   {
-    path: '/projects/',
+    path: PROJECTS_PATH,
     element: <Projects />
   },
   {
-    path: '/projects/hidden-search-widget',
+    path: `${PROJECTS_PATH}hidden-search-widget`,
     element: <HiddenSearchWidget />
   },
   {
-    path: '/projects/blurry-loading',
+    path: `${PROJECTS_PATH}blurry-loading`,
     element: <BlurryLoading />
   },
   {
-    path: '/projects/scroll-animation',
+    path: `${PROJECTS_PATH}scroll-animation`,
     element: <ScrollAnimation />
   },
   {
-    path: '/projects/split-landing-page',
+    path: `${PROJECTS_PATH}split-landing-page`,
     element: <SplitLandingPage />
   },
   {
-    path: '/projects/form-wave-animation',
+    path: `${PROJECTS_PATH}form-wave-animation`,
     element: <Wrapper />
   },
   {
-    path: '/projects/sound-board',
+    path: `${PROJECTS_PATH}sound-board`,
     element: <SoundBoard />
   },
   {
-    path: '/projects/search-dropdown',
+    path: `${PROJECTS_PATH}search-dropdown`,
     element: <SearchDropdown />
   },
   {
-    path: '/projects/dad-jokes',
+    path: `${PROJECTS_PATH}dad-jokes`,
     element: <DadJokes />
   },
   {
-    path: '/projects/diamond-autograder',
+    path: `${PROJECTS_PATH}diamond-autograder`,
     element: <DiamondAutograder />
   },
   {
-    path: '/projects/duty-cycle-sampling',
+    path: `${PROJECTS_PATH}duty-cycle-sampling`,
     element: <DutyCycleSamplingWrapper />,
     childRoutes: (
       <>
@@ -74,16 +77,20 @@ const routes = [
     )
   },
   {
-    path: '/projects/event-keycodes',
+    path: `${PROJECTS_PATH}event-keycodes`,
     element: <EventKeycodes />
   },
   {
-    path: '/projects/faq-collapse',
+    path: `${PROJECTS_PATH}faq-collapse`,
     element: <FaqCollapse />
   },
   {
-    path: '/projects/random-choice-picker',
+    path: `${PROJECTS_PATH}random-choice-picker`,
     element: <RandomChoicePicker />
+  },
+  {
+    path: `${PROJECTS_PATH}animated-navigation`,
+    element: <AnimatedNavigation />
   }
 ]
 

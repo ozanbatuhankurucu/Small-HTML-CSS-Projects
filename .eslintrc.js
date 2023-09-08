@@ -99,6 +99,7 @@ module.exports = {
     'react/jsx-wrap-multilines': 'off',
     'jsx-a11y/label-has-for': 'off',
     'no-confusing-arrow': 'off',
-    'operator-linebreak': 'off'
+    'operator-linebreak': 'off',
+    'jsx-a11y/anchor-is-valid': 'off'
   }
 }
