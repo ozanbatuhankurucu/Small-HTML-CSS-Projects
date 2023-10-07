@@ -17,6 +17,7 @@ import { Inputs } from '../projects/DutyCycleSampling/Inputs'
 import { generateUniqueKey } from '../utils'
 import RandomChoicePicker from '../projects/RandomChoicePicker/RandomChoicePicker'
 import AnimatedNavigation from '../projects/AnimatedNavigation/AnimatedNavigation'
+import IncrementingCounter from '../projects/IncrementingCounter/IncrementingCounter'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -91,6 +92,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}animated-navigation`,
     element: <AnimatedNavigation />
+  },
+  {
+    path: `${PROJECTS_PATH}incrementing-counter`,
+    element: <IncrementingCounter />
   }
 ]
 
