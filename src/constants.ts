@@ -80,6 +80,12 @@ const PROJECTS: Project[] = [
     to: 'animated-navigation',
     progress: 10,
     addedDate: '2023-09-06'
+  },
+  {
+    projectName: 'Incrementing Counter',
+    to: 'incrementing-counter',
+    progress: 1,
+    addedDate: '2023-10-07'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
