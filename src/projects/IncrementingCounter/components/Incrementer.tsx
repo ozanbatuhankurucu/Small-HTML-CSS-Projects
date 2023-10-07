@@ -25,7 +25,7 @@ export const Incrementer: FC<IncrementerProps> = ({
   }, [followersCount, followersCountState])
 
   return (
-    <div className='flex flex-col items-center gap-2 text-white'>
+    <div className='flex flex-col items-center gap-2 text-white min-w-[200px]'>
       <div>{icon}</div>
       <div className='text-[60px]'>{followersCountState}</div>
       <div className='text-base'>{label}</div>

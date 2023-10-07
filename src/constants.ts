@@ -84,7 +84,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Incrementing Counter',
     to: 'incrementing-counter',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-10-07'
   }
   // {
