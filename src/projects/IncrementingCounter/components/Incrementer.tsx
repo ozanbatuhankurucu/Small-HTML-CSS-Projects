@@ -15,11 +15,13 @@ export const Incrementer: FC<IncrementerProps> = ({
   useEffect(() => {
     const animationInterval = setInterval(() => {
       if (followersCountState < followersCount) {
-        setFollowersCountState((prevCount) => prevCount + 1)
+        const increment = Math.ceil(followersCount / 150)
+        setFollowersCountState((prevCount) => prevCount + increment)
       } else {
+        setFollowersCountState(followersCount)
         clearInterval(animationInterval)
       }
-    }, 1)
+    }, 10)
 
     return () => clearInterval(animationInterval)
   }, [followersCount, followersCountState])
