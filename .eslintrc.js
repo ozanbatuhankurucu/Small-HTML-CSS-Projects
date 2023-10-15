@@ -100,6 +100,7 @@ module.exports = {
     'jsx-a11y/label-has-for': 'off',
     'no-confusing-arrow': 'off',
     'operator-linebreak': 'off',
-    'jsx-a11y/anchor-is-valid': 'off'
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/no-array-index-key': 'off'
   }
 }
