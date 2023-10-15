@@ -90,7 +90,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Drink Water',
     to: 'drink-water',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-10-15'
   }
   // {
