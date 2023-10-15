@@ -86,6 +86,12 @@ const PROJECTS: Project[] = [
     to: 'incrementing-counter',
     progress: 10,
     addedDate: '2023-10-07'
+  },
+  {
+    projectName: 'Drink Water',
+    to: 'drink-water',
+    progress: 1,
+    addedDate: '2023-10-15'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
