@@ -1,13 +1,23 @@
-import React, { ChangeEventHandler, FC } from 'react'
+import React, { FC, KeyboardEvent } from 'react'
 
 interface SearchBarProps {
   search: string
   setSearch: (search: string) => void
+  searchMovie: (search: string) => void
 }
 
-export const SearchBar: FC<SearchBarProps> = ({ search, setSearch }) => {
-  const handleInputOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearch(e.target.value)
+export const SearchBar: FC<SearchBarProps> = ({
+  search,
+  setSearch,
+  searchMovie
+}) => {
+  const handleKeyPress = async (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      const inputElement = event.target as HTMLInputElement
+      const query = inputElement.value
+      setSearch('')
+      await searchMovie(query)
+    }
   }
 
   return (
@@ -17,7 +27,8 @@ export const SearchBar: FC<SearchBarProps> = ({ search, setSearch }) => {
         value={search}
         type='text'
         placeholder='Search'
-        onChange={handleInputOnChange}
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
     </header>
   )
