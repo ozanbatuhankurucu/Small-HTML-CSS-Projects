@@ -19,6 +19,7 @@ import RandomChoicePicker from '../projects/RandomChoicePicker/RandomChoicePicke
 import AnimatedNavigation from '../projects/AnimatedNavigation/AnimatedNavigation'
 import IncrementingCounter from '../projects/IncrementingCounter/IncrementingCounter'
 import DrinkWater from '../projects/DrinkWater/DrinkWater'
+import { MovieApp } from '../projects/MovieApp/MovieApp'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -101,6 +102,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}drink-water`,
     element: <DrinkWater />
+  },
+  {
+    path: `${PROJECTS_PATH}movie-app`,
+    element: <MovieApp />
   }
 ]
 
