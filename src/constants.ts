@@ -92,6 +92,12 @@ const PROJECTS: Project[] = [
     to: 'drink-water',
     progress: 10,
     addedDate: '2023-10-15'
+  },
+  {
+    projectName: 'Movie App',
+    to: 'movie-app',
+    progress: 1,
+    addedDate: '2023-10-22'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
