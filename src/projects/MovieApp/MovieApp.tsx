@@ -1,5 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { SearchBar } from './components/SearchBar'
+import { MovieList } from './components/MovieList'
 
 export const MovieApp = () => {
-  return <div>MovieApp</div>
+  const [search, setSearch] = useState('')
+
+  return (
+    <div className='bg-gray-900 min-h-screen'>
+      <SearchBar search={search} setSearch={setSearch} />
+      <MovieList />
+    </div>
+  )
 }
