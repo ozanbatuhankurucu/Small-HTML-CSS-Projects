@@ -96,7 +96,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Movie App',
     to: 'movie-app',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-10-22'
   }
   // {
