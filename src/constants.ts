@@ -98,6 +98,12 @@ const PROJECTS: Project[] = [
     to: 'movie-app',
     progress: 10,
     addedDate: '2023-10-22'
+  },
+  {
+    projectName: 'Background Slider',
+    to: 'background-slider',
+    progress: 1,
+    addedDate: '2023-10-29'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
