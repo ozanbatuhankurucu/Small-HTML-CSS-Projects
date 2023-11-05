@@ -102,7 +102,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Background Slider',
     to: 'background-slider',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-10-29'
   }
   // {

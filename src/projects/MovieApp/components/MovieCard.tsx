@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Movie } from '../../../queries/types'
+import { getVoteColor } from '../util'
 
 interface MovieCardProps {
   movie: Movie
@@ -16,7 +17,11 @@ export const MovieCard: FC<MovieCardProps> = ({
     />
     <div className='p-4'>
       <h3 className='text-white text-lg'>{title}</h3>
-      <div className='bg-[#22254b] text-orange-400 p-2 absolute top-0 left-0 rounded-br-md border border-[#373b69] shadow-sm'>
+      <div
+        style={{
+          color: getVoteColor(voteAverage)
+        }}
+        className='bg-[#22254b] p-2 absolute top-0 left-0 rounded-br-md border border-[#373b69] shadow-sm'>
         {voteAverage.toFixed(1)}
       </div>
     </div>
