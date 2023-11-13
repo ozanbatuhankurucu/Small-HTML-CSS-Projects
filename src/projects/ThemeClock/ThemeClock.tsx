@@ -1,7 +1,9 @@
-import React from 'react'
+import AnalogClock from './components/AnalogClock'
 
-const ThemeClock = () => {
-  return <div>ThemeClock</div>
-}
+const ThemeClock = () => (
+  <div className='flex items-center justify-center h-screen'>
+    <AnalogClock />
+  </div>
+)
 
 export default ThemeClock
