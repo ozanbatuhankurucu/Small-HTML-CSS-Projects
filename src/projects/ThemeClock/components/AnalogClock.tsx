@@ -3,11 +3,9 @@ import styled from 'styled-components'
 
 const Clock = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  margin: 50px auto;
   background: white;
 `
 
