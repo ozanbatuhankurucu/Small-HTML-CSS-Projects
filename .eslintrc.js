@@ -101,6 +101,7 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'operator-linebreak': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
-    'react/no-array-index-key': 'off'
+    'react/no-array-index-key': 'off',
+    'no-use-before-define': 'off'
   }
 }

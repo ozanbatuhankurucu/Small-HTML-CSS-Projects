@@ -21,6 +21,7 @@ import IncrementingCounter from '../projects/IncrementingCounter/IncrementingCou
 import DrinkWater from '../projects/DrinkWater/DrinkWater'
 import MovieApp from '../projects/MovieApp'
 import BackgroundSlider from '../projects/BackgroundSlider'
+import ThemeClock from '../projects/ThemeClock'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -111,6 +112,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}background-slider`,
     element: <BackgroundSlider />
+  },
+  {
+    path: `${PROJECTS_PATH}theme-clock`,
+    element: <ThemeClock />
   }
 ]
 

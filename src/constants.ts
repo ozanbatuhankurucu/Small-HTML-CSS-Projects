@@ -104,6 +104,12 @@ const PROJECTS: Project[] = [
     to: 'background-slider',
     progress: 10,
     addedDate: '2023-10-29'
+  },
+  {
+    projectName: 'Theme Clock',
+    to: 'theme-clock',
+    progress: 10,
+    addedDate: '2023-11-12'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
