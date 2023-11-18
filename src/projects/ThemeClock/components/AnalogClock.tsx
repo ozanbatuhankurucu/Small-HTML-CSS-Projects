@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const Clock = styled.div`
+  margin-top: 100px;
   position: relative;
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: white;
 `
 
 const Hand = styled.div<{ rotation: number }>`
@@ -65,10 +65,10 @@ const AnalogClock: React.FC = () => {
 
   return (
     <Clock>
-      <HourHand rotation={hoursRotation} />
-      <MinuteHand rotation={minutesRotation} />
+      <HourHand className='dark:bg-white' rotation={hoursRotation} />
+      <MinuteHand className='dark:bg-white' rotation={minutesRotation} />
       <SecondHand rotation={secondsRotation} />
-      <CenterPoint />
+      <CenterPoint className='dark:bg-white dark:border dark:border-red-500' />
     </Clock>
   )
 }

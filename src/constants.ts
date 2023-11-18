@@ -108,7 +108,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Theme Clock',
     to: 'theme-clock',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-11-12'
   }
   // {
