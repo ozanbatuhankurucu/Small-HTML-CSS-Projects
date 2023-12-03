@@ -110,6 +110,12 @@ const PROJECTS: Project[] = [
     to: 'theme-clock',
     progress: 10,
     addedDate: '2023-11-12'
+  },
+  {
+    projectName: 'Button Ripple Effect',
+    to: 'button-ripple-effect',
+    progress: 1,
+    addedDate: '2023-12-03'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',

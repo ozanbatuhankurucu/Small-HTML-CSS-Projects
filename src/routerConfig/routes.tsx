@@ -22,6 +22,7 @@ import DrinkWater from '../projects/DrinkWater/DrinkWater'
 import MovieApp from '../projects/MovieApp'
 import BackgroundSlider from '../projects/BackgroundSlider'
 import ThemeClock from '../projects/ThemeClock'
+import { ButtonRippleEffect } from '../projects/ButtonRippleEffect/ButtonRippleEffect'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -116,6 +117,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}theme-clock`,
     element: <ThemeClock />
+  },
+  {
+    path: `${PROJECTS_PATH}button-ripple-effect`,
+    element: <ButtonRippleEffect />
   }
 ]
 
