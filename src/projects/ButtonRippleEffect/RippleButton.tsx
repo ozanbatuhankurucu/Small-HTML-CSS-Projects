@@ -53,6 +53,11 @@ export const Button: FC = () => {
     }
 
     setRipples((currentRipples) => [...currentRipples, newRipple])
+
+    // Set a timeout to remove the ripple after the animation ends
+    setTimeout(() => {
+      setRipples((currentRipples) => currentRipples.filter((_, i) => i !== 0))
+    }, 600) // 600ms is the duration of the rippleAnimation
   }
 
   return (
