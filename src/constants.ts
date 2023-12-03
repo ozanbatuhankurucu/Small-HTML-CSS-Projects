@@ -114,7 +114,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Button Ripple Effect',
     to: 'button-ripple-effect',
-    progress: 1,
+    progress: 10,
     addedDate: '2023-12-03'
   }
   // {
