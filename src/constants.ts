@@ -116,6 +116,12 @@ const PROJECTS: Project[] = [
     to: 'button-ripple-effect',
     progress: 10,
     addedDate: '2023-12-03'
+  },
+  {
+    projectName: 'Drag N Drop',
+    to: 'drag-n-drop',
+    progress: 1,
+    addedDate: '2024-01-07'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
