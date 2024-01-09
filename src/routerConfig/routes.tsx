@@ -23,6 +23,7 @@ import MovieApp from '../projects/MovieApp'
 import BackgroundSlider from '../projects/BackgroundSlider'
 import ThemeClock from '../projects/ThemeClock'
 import { ButtonRippleEffect } from '../projects/ButtonRippleEffect/ButtonRippleEffect'
+import DragNDrop from '../projects/DragNDrop/DragNDrop'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -121,6 +122,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}button-ripple-effect`,
     element: <ButtonRippleEffect />
+  },
+  {
+    path: `${PROJECTS_PATH}drag-n-drop`,
+    element: <DragNDrop />
   }
 ]
 
