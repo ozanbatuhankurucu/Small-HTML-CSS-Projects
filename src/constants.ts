@@ -120,7 +120,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Drag N Drop',
     to: 'drag-n-drop',
-    progress: 1,
+    progress: 10,
     addedDate: '2024-01-07'
   }
   // {
