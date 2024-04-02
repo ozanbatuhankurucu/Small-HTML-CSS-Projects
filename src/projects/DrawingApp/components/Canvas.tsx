@@ -40,7 +40,7 @@ const Canvas: React.FC = () => {
       onMouseMove={draw}
       width={500}
       height={500}
-      className='bg-gray-100'
+      className='border border-steelblue'
     />
   )
 }
