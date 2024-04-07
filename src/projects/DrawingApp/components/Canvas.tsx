@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { AdjustLineWidth } from './AdjustLineWidth'
 import ColorPicker from './ColorPicker'
 
@@ -73,6 +73,17 @@ const Canvas: React.FC = () => {
     })
   }
 
+  const resetDrawing = useCallback(() => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    if (canvas && ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      setColor('#6a5acd')
+      setLineWidth(1)
+      setHistory([])
+    }
+  }, [])
+
   useEffect(() => {
     const handleUndo = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'z') {
@@ -113,6 +124,11 @@ const Canvas: React.FC = () => {
       <div className='flex items-center border border-steelblue py-4'>
         <AdjustLineWidth lineWidth={lineWidth} setLineWidth={setLineWidth} />
         <ColorPicker color={color} setColor={setColor} />
+        <button
+          onClick={resetDrawing}
+          className='px-2 py-1 ml-auto mr-2 border border-steelblue text-steelblue font-bold rounded'>
+          Reset
+        </button>
       </div>
     </div>
   )
