@@ -105,52 +105,6 @@ const Canvas: React.FC = () => {
     }
   }, [color, lineWidth])
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const handleTouchStart: (this: HTMLCanvasElement, ev: TouchEvent) => any = (
-      ev
-    ) => {
-      const touch = ev.touches[0]
-      const mouseEvent = new MouseEvent('mousedown', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      })
-      canvasRef.current?.dispatchEvent(mouseEvent)
-    }
-
-    const handleTouchMove: (this: HTMLCanvasElement, ev: TouchEvent) => any = (
-      ev
-    ) => {
-      const touch = ev.touches[0]
-      const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      })
-      canvasRef.current?.dispatchEvent(mouseEvent)
-    }
-
-    const handleTouchEnd: (
-      this: HTMLCanvasElement,
-      ev: TouchEvent
-    ) => any = () => {
-      const mouseEvent = new MouseEvent('mouseup', {})
-      canvasRef.current?.dispatchEvent(mouseEvent)
-    }
-
-    // Attach the event listeners
-    canvas.addEventListener('touchstart', handleTouchStart, false)
-    canvas.addEventListener('touchmove', handleTouchMove, false)
-    canvas.addEventListener('touchend', handleTouchEnd, false)
-
-    // Cleanup function to remove the event listeners
-    return () => {
-      canvas.removeEventListener('touchstart', handleTouchStart, false)
-      canvas.removeEventListener('touchmove', handleTouchMove, false)
-      canvas.removeEventListener('touchend', handleTouchEnd, false)
-    }
-  }, [])
   return (
     <div className='w-[500px]'>
       <canvas
