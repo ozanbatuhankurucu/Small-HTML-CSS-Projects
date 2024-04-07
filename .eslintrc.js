@@ -79,6 +79,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'react/no-array-index-key': 'off',
     'no-use-before-define': 'off',
-    'jsx-a11y/control-has-associated-label': 'off'
+    'jsx-a11y/control-has-associated-label': 'off',
+    'consistent-return': 'off'
   }
 }
