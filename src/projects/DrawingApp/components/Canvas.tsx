@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 const Canvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
-  // States for undo functionality
   const [history, setHistory] = useState<ImageData[]>([])
+  const [lineWidth, setLineWidth] = useState(5)
 
   const startDrawing = ({ nativeEvent }: React.MouseEvent) => {
     const { offsetX, offsetY } = nativeEvent
@@ -70,6 +70,10 @@ const Canvas: React.FC = () => {
     })
   }
 
+  const adjustLineWidth = (adjustment: number) => {
+    setLineWidth((prevWidth) => Math.max(1, prevWidth + adjustment))
+  }
+
   useEffect(() => {
     const handleUndo = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'z') {
@@ -84,19 +88,46 @@ const Canvas: React.FC = () => {
     }
   }, [undoLastDrawing])
 
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    if (ctx) {
+      ctx.lineWidth = lineWidth
+    }
+  }, [lineWidth])
+
   return (
-    <canvas
-      ref={canvasRef}
-      onMouseDown={startDrawing}
-      onMouseUp={() => {
-        stopDrawing()
-        saveState()
-      }}
-      onMouseMove={draw}
-      width={500}
-      height={500}
-      className='border border-steelblue'
-    />
+    <div className='w-[500px]'>
+      <canvas
+        ref={canvasRef}
+        onMouseDown={startDrawing}
+        onMouseUp={() => {
+          stopDrawing()
+          saveState()
+        }}
+        onMouseMove={draw}
+        width={500}
+        height={500}
+        className='border border-steelblue border-b-0 w-full'
+      />
+      <div className='flex items-center border border-steelblue py-4'>
+        <div className='flex items-center gap-3 justify-center ml-2'>
+          <button
+            onClick={() => adjustLineWidth(-3)}
+            className='flex items-center justify-center h-8 w-8 bg-blue-500 text-white font-bold rounded'>
+            -
+          </button>
+          <div className='flex items-center justify-center rounded text-black font-medium border border-steelblue h-8 w-8'>
+            {lineWidth}
+          </div>
+          <button
+            onClick={() => adjustLineWidth(3)}
+            className='flex items-center justify-center h-8 w-8 bg-blue-500 text-white font-bold rounded'>
+            +
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
