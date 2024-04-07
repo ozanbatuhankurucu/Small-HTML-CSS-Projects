@@ -126,7 +126,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Drawing App',
     to: 'drawing-app',
-    progress: 1,
+    progress: 10,
     addedDate: '2024-02-25'
   }
   // {
