@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AdjustLineWidth } from './AdjustLineWidth'
+import ColorPicker from './ColorPicker'
 
 const Canvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [history, setHistory] = useState<ImageData[]>([])
   const [lineWidth, setLineWidth] = useState(1)
+  const [color, setColor] = useState('#6a5acd')
 
   const startDrawing = ({ nativeEvent }: React.MouseEvent) => {
     const { offsetX, offsetY } = nativeEvent
@@ -89,9 +91,10 @@ const Canvas: React.FC = () => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (ctx) {
+      ctx.strokeStyle = color
       ctx.lineWidth = lineWidth
     }
-  }, [lineWidth])
+  }, [color, lineWidth])
 
   return (
     <div className='w-[500px]'>
@@ -107,7 +110,10 @@ const Canvas: React.FC = () => {
         height={500}
         className='border border-steelblue border-b-0 w-full'
       />
-      <AdjustLineWidth lineWidth={lineWidth} setLineWidth={setLineWidth} />
+      <div className='flex items-center border border-steelblue py-4'>
+        <AdjustLineWidth lineWidth={lineWidth} setLineWidth={setLineWidth} />
+        <ColorPicker color={color} setColor={setColor} />
+      </div>
     </div>
   )
 }
