@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 
 interface AdjustLineWidthProps {
   lineWidth: number
@@ -16,6 +16,7 @@ export const AdjustLineWidth: FC<AdjustLineWidthProps> = ({
   return (
     <div className='flex items-center gap-3 justify-center ml-2'>
       <button
+        type='button'
         onClick={() => adjustLineWidth(-3)}
         className='flex items-center justify-center h-8 w-8 bg-blue-500 text-white font-bold rounded'>
         -
@@ -24,6 +25,7 @@ export const AdjustLineWidth: FC<AdjustLineWidthProps> = ({
         {lineWidth}
       </div>
       <button
+        type='button'
         onClick={() => adjustLineWidth(3)}
         className='flex items-center justify-center h-8 w-8 bg-blue-500 text-white font-bold rounded'>
         +

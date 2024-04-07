@@ -63,8 +63,6 @@ const Canvas: React.FC = () => {
           ctx?.putImageData(previousState, 0, 0)
         } else {
           // Clear canvas if no history
-          const canvas = canvasRef.current
-          const ctx = canvas?.getContext('2d')
           ctx?.clearRect(0, 0, canvas.width, canvas.height)
         }
       }
@@ -125,6 +123,7 @@ const Canvas: React.FC = () => {
         <AdjustLineWidth lineWidth={lineWidth} setLineWidth={setLineWidth} />
         <ColorPicker color={color} setColor={setColor} />
         <button
+          type='button'
           onClick={resetDrawing}
           className='px-2 py-1 ml-auto mr-2 border border-steelblue text-steelblue font-bold rounded'>
           Reset

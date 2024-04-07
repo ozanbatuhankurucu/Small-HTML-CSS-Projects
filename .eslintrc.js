@@ -45,15 +45,6 @@ module.exports = {
     'jsx-quotes': [2, 'prefer-single'],
     'comma-dangle': ['error', 'never'],
     'object-curly-newline': 'off',
-    'operator-linebreak': [
-      'error',
-      'after',
-      {
-        overrides: {
-          ':': 'before'
-        }
-      }
-    ],
     'react/jsx-one-expression-per-line': 'off',
     'no-console': 'off',
     'react/jsx-closing-bracket-location': 'off',
@@ -70,22 +61,7 @@ module.exports = {
         }
       }
     ],
-    'jsx-a11y/label-has-for': [
-      'error',
-      {
-        required: {
-          some: ['nesting', 'id']
-        }
-      }
-    ],
     'jsx-a11y/mouse-events-have-key-events': 'off',
-    'react/function-component-definition': [
-      2,
-      {
-        namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function'
-      }
-    ],
     'jsx-a11y/media-has-caption': 'off',
     'no-param-reassign': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
@@ -102,6 +78,7 @@ module.exports = {
     'operator-linebreak': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'react/no-array-index-key': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    'jsx-a11y/control-has-associated-label': 'off'
   }
 }
