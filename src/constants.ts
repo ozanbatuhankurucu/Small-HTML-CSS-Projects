@@ -128,6 +128,12 @@ const PROJECTS: Project[] = [
     to: 'drawing-app',
     progress: 10,
     addedDate: '2024-02-25'
+  },
+  {
+    projectName: 'Kinetic CSS Loader',
+    to: 'kinetic-css-loader',
+    progress: 1,
+    addedDate: '2024-05-28'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',
