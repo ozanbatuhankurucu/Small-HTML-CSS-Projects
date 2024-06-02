@@ -132,7 +132,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Kinetic CSS Loader',
     to: 'kinetic-css-loader',
-    progress: 1,
+    progress: 10,
     addedDate: '2024-05-28'
   }
   // {
