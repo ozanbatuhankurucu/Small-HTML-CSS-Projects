@@ -25,6 +25,7 @@ import ThemeClock from '../projects/ThemeClock'
 import { ButtonRippleEffect } from '../projects/ButtonRippleEffect/ButtonRippleEffect'
 import DragNDrop from '../projects/DragNDrop/DragNDrop'
 import DrawingApp from '../projects/DrawingApp'
+import KineticCSSLoader from '../projects/KineticCSSLoader'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -131,6 +132,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}drawing-app`,
     element: <DrawingApp />
+  },
+  {
+    path: `${PROJECTS_PATH}kinetic-css-loader`,
+    element: <KineticCSSLoader />
   }
 ]
 
