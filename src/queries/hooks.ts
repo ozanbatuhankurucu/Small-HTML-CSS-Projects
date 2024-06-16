@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query'
-import { fetchMovies, searchMovie } from './APIs'
+import { fetchContentPlaceholder, fetchMovies, searchMovie } from './APIs'
 import { Movie } from './types'
 
 export function useMoviesData() {
@@ -21,4 +21,8 @@ export function useSearchMovie() {
     error,
     isLoading
   }
+}
+
+export function useContentPlaceholderData() {
+  return useQuery('content-placeholder', fetchContentPlaceholder)
 }
