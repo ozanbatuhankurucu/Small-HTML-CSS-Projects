@@ -1,5 +1,5 @@
 import endpoints from './endpoints'
-import { ContentPlaceholder, FetchContentPlaceholderResponse } from './types'
+import { ContentPlaceholder } from './types'
 
 export async function fetchMovies() {
   const response = await fetch(endpoints.MOVIE.DISCOVER)
@@ -23,24 +23,24 @@ export async function searchMovie(query: string) {
   return data.results
 }
 
-export function fetchContentPlaceholder(): Promise<FetchContentPlaceholderResponse> {
+export function fetchContentPlaceholder(): Promise<ContentPlaceholder> {
   return new Promise((resolve) => {
     setTimeout(() => {
       // Dummy data to be returned
       const dummyData: ContentPlaceholder = {
-        cardImage: 'https://via.placeholder.com/150',
-        title: 'Fake Title',
-        description: 'This is a fake description for testing purposes.',
-        userName: 'John Doe',
-        userImage: 'https://via.placeholder.com/50',
+        cardImage:
+          'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D',
+        title: 'Lorem ipsum dolor sit amet',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolore ipsum.',
+        userName: 'Ozan Kurucu',
+        userImage:
+          'https://pbs.twimg.com/profile_images/1765658127528013824/1GTWvw7L_400x400.jpg',
         userJoiningDate: new Date().toISOString()
       }
 
       // Simulate a successful fetch with the dummy data
-      resolve({
-        status: 200,
-        data: dummyData
-      })
+      resolve(dummyData)
     }, 1000) // Simulate a network delay of 1 second
   })
 }

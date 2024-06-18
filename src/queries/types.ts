@@ -23,8 +23,3 @@ export interface ContentPlaceholder {
   userImage: string
   userJoiningDate: string
 }
-
-export interface FetchContentPlaceholderResponse {
-  status: number
-  data: ContentPlaceholder
-}
