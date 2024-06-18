@@ -21,7 +21,7 @@ export interface ContentPlaceholder {
   description: string
   userName: string
   userImage: string
-  createdAt: string
+  userJoiningDate: string
 }
 
 export interface FetchContentPlaceholderResponse {

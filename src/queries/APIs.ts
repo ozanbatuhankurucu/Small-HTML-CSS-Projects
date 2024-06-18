@@ -33,7 +33,7 @@ export function fetchContentPlaceholder(): Promise<FetchContentPlaceholderRespon
         description: 'This is a fake description for testing purposes.',
         userName: 'John Doe',
         userImage: 'https://via.placeholder.com/50',
-        createdAt: new Date().toISOString()
+        userJoiningDate: new Date().toISOString()
       }
 
       // Simulate a successful fetch with the dummy data
