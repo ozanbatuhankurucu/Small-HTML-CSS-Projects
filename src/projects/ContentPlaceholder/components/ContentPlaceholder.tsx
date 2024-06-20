@@ -18,11 +18,15 @@ const PlaceholderWrapper = styled.div`
   padding: 1rem;
 `
 
-const PlaceholderItem = styled.div<{ height: string; width: string }>`
+const PlaceholderItem = styled.div<{
+  height: string
+  width: string
+  shape?: 'rect' | 'circle'
+}>`
   background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
   background-size: 800px 104px;
   animation: ${shimmer} 1.2s infinite linear;
-  border-radius: 4px;
+  border-radius: ${({ shape }) => (shape === 'circle' ? '50%' : '4px')};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
 `
@@ -30,6 +34,7 @@ const PlaceholderItem = styled.div<{ height: string; width: string }>`
 export interface Item {
   height: string
   width: string
+  shape?: 'rect' | 'circle'
 }
 
 interface ContentPlaceholderProps {
@@ -42,8 +47,13 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({
   placeholderWrapperClassName
 }) => (
   <PlaceholderWrapper className={placeholderWrapperClassName}>
-    {items.map((item, index) => (
-      <PlaceholderItem key={index} height={item.height} width={item.width} />
+    {items.map(({ height, width, shape }, index) => (
+      <PlaceholderItem
+        key={index}
+        height={height}
+        width={width}
+        shape={shape || 'rect'}
+      />
     ))}
   </PlaceholderWrapper>
 )
