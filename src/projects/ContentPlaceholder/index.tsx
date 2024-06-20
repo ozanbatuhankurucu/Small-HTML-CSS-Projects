@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import ContentPlaceholder from './ContentPlaceholder'
+import ContentPlaceholderContainer from './ContentPlaceholderContainer'
 
 const Wrapper = () => (
   <>
@@ -7,7 +7,7 @@ const Wrapper = () => (
       <meta charSet='utf-8' />
       <title>Content Placeholder</title>
     </Helmet>
-    <ContentPlaceholder />
+    <ContentPlaceholderContainer />
   </>
 )
 export default Wrapper
