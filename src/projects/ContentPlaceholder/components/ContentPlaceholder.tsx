@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import cx from 'classnames'
 
 // Define shimmer effect animation
 const shimmer = keyframes`
@@ -9,13 +10,6 @@ const shimmer = keyframes`
   100% {
     background-position: 468px 0;
   }
-`
-
-const PlaceholderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
 `
 
 const PlaceholderItem = styled.div<{
@@ -46,7 +40,7 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({
   items,
   placeholderWrapperClassName
 }) => (
-  <PlaceholderWrapper className={placeholderWrapperClassName}>
+  <div className={cx('flex flex-col gap-4', placeholderWrapperClassName)}>
     {items.map(({ height, width, shape }, index) => (
       <PlaceholderItem
         key={index}
@@ -55,7 +49,7 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({
         shape={shape || 'rect'}
       />
     ))}
-  </PlaceholderWrapper>
+  </div>
 )
 
 export default ContentPlaceholder
