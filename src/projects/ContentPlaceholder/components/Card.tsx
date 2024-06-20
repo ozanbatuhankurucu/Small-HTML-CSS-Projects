@@ -1,29 +1,35 @@
 import moment from 'moment'
 import React from 'react'
+import { ContentPlaceholder } from '../../../queries/types'
 
 interface CardProps {
-  image: string
-  title: string
-  description: string
-  userImage: string
-  userName: string
-  userJoiningDate: string
+  cardData?: ContentPlaceholder
+  isLoading?: boolean
 }
 
-const Card: React.FC<CardProps> = ({
-  image,
-  title,
-  description,
-  userImage,
-  userJoiningDate,
-  userName
-}) => {
+const Card: React.FC<CardProps> = ({ cardData, isLoading }) => {
+  const {
+    cardImage,
+    description,
+    title,
+    userImage,
+    userJoiningDate,
+    userName
+  } = cardData || {}
   const formattedDate = moment(userJoiningDate).format('MMM DD, YYYY')
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className='max-w-sm rounded overflow-hidden shadow-lg'>
       <div className='h-48 overflow-hidden'>
-        <img className='w-full h-full object-cover' src={image} alt={title} />
+        <img
+          className='w-full h-full object-cover'
+          src={cardImage}
+          alt={title}
+        />
       </div>
       <div className='px-6 py-4'>
         <div className='font-bold text-xl mb-2'>{title}</div>
