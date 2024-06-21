@@ -15,7 +15,7 @@ export interface Movie {
   vote_count: number
 }
 
-export interface ContentPlaceholder {
+export interface ContentPlaceholderType {
   cardImage: string
   title: string
   description: string
