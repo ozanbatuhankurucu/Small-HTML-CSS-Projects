@@ -12,7 +12,8 @@ export const PlaceholderForCard = () => {
     {
       height: '40px',
       width: '40px',
-      shape: 'circle'
+      shape: 'circle',
+      className: 'mb-2'
     }
   ]
 
