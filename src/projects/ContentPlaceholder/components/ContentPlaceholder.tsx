@@ -12,10 +12,12 @@ const shimmer = keyframes`
   }
 `
 
+type Shape = 'rect' | 'circle'
+
 const PlaceholderItem = styled.div<{
   height: string
   width: string
-  shape?: 'rect' | 'circle'
+  shape?: Shape
 }>`
   background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
   background-size: 800px 104px;
@@ -28,7 +30,8 @@ const PlaceholderItem = styled.div<{
 export interface Item {
   height: string
   width: string
-  shape?: 'rect' | 'circle'
+  shape?: Shape
+  className?: string
 }
 
 interface ContentPlaceholderProps {
@@ -40,10 +43,11 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({
   items,
   placeholderWrapperClassName
 }) => (
-  <div className={cx('flex flex-col gap-4', placeholderWrapperClassName)}>
-    {items.map(({ height, width, shape }, index) => (
+  <div className={cx('flex flex-col', placeholderWrapperClassName)}>
+    {items.map(({ height, width, shape, className }, index) => (
       <PlaceholderItem
         key={index}
+        className={className}
         height={height}
         width={width}
         shape={shape || 'rect'}
