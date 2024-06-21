@@ -1,9 +1,10 @@
 import moment from 'moment'
 import React from 'react'
-import { ContentPlaceholder } from '../../../queries/types'
+import { ContentPlaceholderType } from '../../../queries/types'
+import { PlaceholderForCard } from './PlaceholderForCard'
 
 interface CardProps {
-  cardData?: ContentPlaceholder
+  cardData?: ContentPlaceholderType
   isLoading?: boolean
 }
 
@@ -19,7 +20,7 @@ const Card: React.FC<CardProps> = ({ cardData, isLoading }) => {
   const formattedDate = moment(userJoiningDate).format('MMM DD, YYYY')
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <PlaceholderForCard />
   }
 
   return (
