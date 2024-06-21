@@ -4,11 +4,11 @@ import cx from 'classnames'
 
 // Define shimmer effect animation
 const shimmer = keyframes`
-  0% {
-    background-position: -468px 0;
+ 0%, 100% {
+    opacity: 0.4;
   }
-  100% {
-    background-position: 468px 0;
+  50% {
+    opacity: 1;
   }
 `
 
@@ -18,8 +18,9 @@ const PlaceholderItem = styled.div<{
   height: string
   width: string
   shape?: Shape
+  color?: string
 }>`
-  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-color: ${({ color }) => color};
   background-size: 800px 104px;
   animation: ${shimmer} 1.2s infinite linear;
   border-radius: ${({ shape }) => (shape === 'circle' ? '50%' : '4px')};
@@ -32,6 +33,7 @@ export interface Item {
   width: string
   shape?: Shape
   className?: string
+  color?: string
 }
 
 interface ContentPlaceholderProps {
@@ -44,13 +46,14 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({
   placeholderWrapperClassName
 }) => (
   <div className={cx('flex flex-col', placeholderWrapperClassName)}>
-    {items.map(({ height, width, shape, className }, index) => (
+    {items.map(({ height, width, shape, color, className }, index) => (
       <PlaceholderItem
         key={index}
         className={className}
         height={height}
         width={width}
         shape={shape || 'rect'}
+        color={color || '#dee2e6'}
       />
     ))}
   </div>
