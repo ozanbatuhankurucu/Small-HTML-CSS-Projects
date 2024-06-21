@@ -134,6 +134,12 @@ const PROJECTS: Project[] = [
     to: 'kinetic-css-loader',
     progress: 10,
     addedDate: '2024-05-28'
+  },
+  {
+    projectName: 'Content Placeholder',
+    to: 'content-placeholder',
+    progress: 10,
+    addedDate: '2024-06-16'
   }
   // {
   //   projectName: 'Duty Cycle Scaling',

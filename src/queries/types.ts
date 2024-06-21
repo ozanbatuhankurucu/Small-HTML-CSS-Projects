@@ -14,3 +14,12 @@ export interface Movie {
   vote_average: number
   vote_count: number
 }
+
+export interface ContentPlaceholderType {
+  cardImage: string
+  title: string
+  description: string
+  userName: string
+  userImage: string
+  userJoiningDate: string
+}
