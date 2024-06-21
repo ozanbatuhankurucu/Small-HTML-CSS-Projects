@@ -138,7 +138,7 @@ const PROJECTS: Project[] = [
   {
     projectName: 'Content Placeholder',
     to: 'content-placeholder',
-    progress: 1,
+    progress: 10,
     addedDate: '2024-06-16'
   }
   // {
