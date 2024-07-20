@@ -1,15 +1,20 @@
 import getRandomSize from './utils/randomSize'
 
 export const PHOTOS = [
-  {
-    src: 'https://images.unsplash.com/photo-1721332155637-8b339526cf4c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1721332155637-8b339526cf4c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1721332155637-8b339526cf4c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  }
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo1.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo2.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo3.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo4.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo5.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo6.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo7.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo8.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo9.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo10.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo11.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo12.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo13.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo14.jpg` }
 ]
 
 export const sizes = PHOTOS.map(() => getRandomSize())
