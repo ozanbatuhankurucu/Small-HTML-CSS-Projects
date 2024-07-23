@@ -3,12 +3,12 @@ import React from 'react'
 
 interface PhotoProps {
   src: string
-  size: string
   onClick: () => void
+  style?: React.CSSProperties
 }
 
-const Photo: React.FC<PhotoProps> = ({ src, size, onClick }) => (
-  <div className={`${size}`}>
+const Photo: React.FC<PhotoProps> = ({ src, style, onClick }) => (
+  <div style={style}>
     <img
       src={src}
       className='rounded-full cursor-pointer object-cover w-full h-full'

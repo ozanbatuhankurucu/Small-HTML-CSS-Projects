@@ -1,5 +1,3 @@
-import getRandomSize from './utils/randomSize'
-
 export const PHOTOS = [
   { src: `${process.env.PUBLIC_URL}/brcImages/photo1.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo2.jpg` },
@@ -16,5 +14,3 @@ export const PHOTOS = [
   { src: `${process.env.PUBLIC_URL}/brcImages/photo13.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo14.jpg` }
 ]
-
-export const sizes = PHOTOS.map(() => getRandomSize())
