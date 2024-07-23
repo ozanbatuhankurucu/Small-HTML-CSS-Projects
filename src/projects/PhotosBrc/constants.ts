@@ -12,5 +12,8 @@ export const PHOTOS = [
   { src: `${process.env.PUBLIC_URL}/brcImages/photo11.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo12.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo13.jpg` },
-  { src: `${process.env.PUBLIC_URL}/brcImages/photo14.jpg` }
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo14.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo15.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo16.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo17.jpg` }
 ]
