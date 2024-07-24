@@ -14,6 +14,7 @@ const generatePhotos = () => {
       id: newPhotos.length,
       src: currentPhotoData.src,
       useGrowShrink: currentPhotoData.useGrowShrink,
+      shape: currentPhotoData.shape as PhotoType['shape'],
       x,
       y,
       size

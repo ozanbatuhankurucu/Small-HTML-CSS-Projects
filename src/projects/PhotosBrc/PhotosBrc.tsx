@@ -22,6 +22,7 @@ const PhotosBrc = () => {
           src={photo.src}
           onClick={() => openModal(photo.src)}
           animate={photo.useGrowShrink}
+          shape={photo.shape}
         />
       ))}
       <Modal isOpen={isOpen} src={photoSrc} onClose={closeModal} />

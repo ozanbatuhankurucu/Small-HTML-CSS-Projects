@@ -5,4 +5,5 @@ export interface PhotoType {
   y: number
   size: number
   useGrowShrink?: boolean
+  shape?: 'circle' | 'heart'
 }
