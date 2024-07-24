@@ -4,4 +4,5 @@ export interface PhotoType {
   x: number
   y: number
   size: number
+  useGrowShrink?: boolean
 }

@@ -9,9 +9,11 @@ const generatePhotos = () => {
   while (newPhotos.length < PHOTOS.length) {
     const size = generateRandomSize()
     const { x, y } = generateRandomPosition(size)
-    const newPhoto = {
+    const currentPhotoData = PHOTOS[newPhotos.length % PHOTOS.length]
+    const newPhoto: PhotoType = {
       id: newPhotos.length,
-      src: PHOTOS[newPhotos.length % PHOTOS.length].src,
+      src: currentPhotoData.src,
+      useGrowShrink: currentPhotoData.useGrowShrink,
       x,
       y,
       size
