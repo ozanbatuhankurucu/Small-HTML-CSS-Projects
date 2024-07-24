@@ -1,3 +1,5 @@
+import generatePhotos from './utils/generatePhotos'
+
 export const PHOTOS = [
   { src: `${process.env.PUBLIC_URL}/brcImages/photo1.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo2.jpg` },
@@ -17,3 +19,5 @@ export const PHOTOS = [
   { src: `${process.env.PUBLIC_URL}/brcImages/photo16.jpg` },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo17.jpg` }
 ]
+
+export const generatedPhotos = generatePhotos()

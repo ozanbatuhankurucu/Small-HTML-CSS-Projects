@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, src, onClose }) => {
         <button
           type='button'
           onClick={onClose}
-          className='absolute top-2 right-2 text-white text-4xl'>
+          className='absolute top-2 right-2 text-black text-3xl'>
           X
         </button>
         <div className='flex items-center justify-center h-full w-full'>
