@@ -2,19 +2,27 @@ import { useState } from 'react'
 
 const useModal = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [photoSrc, setPhotoSrc] = useState<string | null>(null)
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(
+    null
+  )
 
-  const openModal = (src: string) => {
-    setPhotoSrc(src)
+  const openModal = (photoInfoParam: number) => {
+    setSelectedPhotoIndex(photoInfoParam)
     setIsOpen(true)
   }
 
   const closeModal = () => {
     setIsOpen(false)
-    setPhotoSrc(null)
+    setSelectedPhotoIndex(null)
   }
 
-  return { isOpen, photoSrc, openModal, closeModal }
+  return {
+    isOpen,
+    selectedPhotoIndex,
+    setSelectedPhotoIndex,
+    openModal,
+    closeModal
+  }
 }
 
 export default useModal
