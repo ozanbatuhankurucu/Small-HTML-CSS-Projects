@@ -8,7 +8,7 @@ const PhotosBrc = () => {
   const { isOpen, photoSrc, openModal, closeModal } = useModal()
 
   return (
-    <div className='w-screen h-screen'>
+    <div className='w-screen h-screen bg-[#FADBD8]'>
       {generatedPhotos.map((photo, index) => (
         <Photo
           key={index}
