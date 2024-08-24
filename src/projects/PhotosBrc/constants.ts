@@ -72,7 +72,9 @@ export const PHOTOS = [
     shape: 'heart'
   },
   { src: `${process.env.PUBLIC_URL}/brcImages/photo35.jpg` },
-  { src: `${process.env.PUBLIC_URL}/brcImages/photo36.jpg` }
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo36.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo37.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo38.jpg` }
 ]
 
 export const generatedPhotos = generatePhotos()
