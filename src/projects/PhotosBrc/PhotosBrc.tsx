@@ -5,7 +5,13 @@ import useModal from './hooks/useModal'
 import { generatedPhotos } from './constants'
 
 const PhotosBrc = () => {
-  const { isOpen, photoSrc, openModal, closeModal } = useModal()
+  const {
+    isOpen,
+    selectedPhotoIndex,
+    setSelectedPhotoIndex,
+    openModal,
+    closeModal
+  } = useModal()
 
   return (
     <div className='w-screen h-screen bg-[#FADBD8]'>
@@ -20,12 +26,17 @@ const PhotosBrc = () => {
             height: photo.size
           }}
           src={photo.src}
-          onClick={() => openModal(photo.src)}
+          onClick={() => openModal(index)}
           animate={photo.useGrowShrink}
           shape={photo.shape}
         />
       ))}
-      <Modal isOpen={isOpen} src={photoSrc} onClose={closeModal} />
+      <Modal
+        isOpen={isOpen}
+        selectedPhotoIndex={selectedPhotoIndex}
+        setSelectedPhotoIndex={setSelectedPhotoIndex}
+        onClose={closeModal}
+      />
     </div>
   )
 }

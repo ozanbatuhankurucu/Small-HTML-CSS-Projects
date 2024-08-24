@@ -41,7 +41,38 @@ export const PHOTOS = [
     useGrowShrink: true,
     shape: 'heart'
   },
-  { src: `${process.env.PUBLIC_URL}/brcImages/photo17.jpg` }
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo17.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo18.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo19.jpeg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo20.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo21.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo22.jpg` },
+  {
+    src: `${process.env.PUBLIC_URL}/brcImages/photo23.jpg`,
+    useGrowShrink: true,
+    shape: 'heart'
+  },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo24.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo25.jpg` },
+  {
+    src: `${process.env.PUBLIC_URL}/brcImages/photo26.jpg`,
+    useGrowShrink: true,
+    shape: 'heart'
+  },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo27.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo28.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo29.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo30.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo31.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo32.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo33.jpg` },
+  {
+    src: `${process.env.PUBLIC_URL}/brcImages/photo34.jpg`,
+    useGrowShrink: true,
+    shape: 'heart'
+  },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo35.jpg` },
+  { src: `${process.env.PUBLIC_URL}/brcImages/photo36.jpg` }
 ]
 
 export const generatedPhotos = generatePhotos()
