@@ -27,6 +27,7 @@ import DragNDrop from '../projects/DragNDrop/DragNDrop'
 import DrawingApp from '../projects/DrawingApp'
 import KineticCSSLoader from '../projects/KineticCSSLoader'
 import ContentPlaceholder from '../projects/ContentPlaceholder'
+import PhotosBrc from '../projects/PhotosBrc'
 
 const PROJECTS_PATH = '/projects/'
 
@@ -141,6 +142,10 @@ const routes = [
   {
     path: `${PROJECTS_PATH}content-placeholder`,
     element: <ContentPlaceholder />
+  },
+  {
+    path: `${PROJECTS_PATH}photos-brc`,
+    element: <PhotosBrc />
   }
 ]
 
